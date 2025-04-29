@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"net/http"
+	"sync"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -16,8 +17,13 @@ import (
 	"skeleton-internship-backend/database"
 	_ "skeleton-internship-backend/docs" // This will be created by swag
 	"skeleton-internship-backend/internal/controller"
+	"skeleton-internship-backend/internal/elasticsearch"
+	"skeleton-internship-backend/internal/filestate"
+	"skeleton-internship-backend/internal/kafka"
 	"skeleton-internship-backend/internal/logger"
+	"skeleton-internship-backend/internal/parser"
 	"skeleton-internship-backend/internal/repository"
+	"skeleton-internship-backend/internal/scheduler"
 	"skeleton-internship-backend/internal/service"
 )
 
@@ -34,7 +40,7 @@ import (
 // @license.url   https://opensource.org/licenses/MIT
 
 // @host      localhost:8080
-// @BasePath  /api/v1
+// @BasePath  /
 // @schemes   http https
 
 // @tag.name         todos
@@ -51,19 +57,56 @@ import (
 // @description Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".
 
 func main() {
+	var wg sync.WaitGroup
+
 	app := fx.New(
+		// Core Dependencies
 		fx.Provide(
 			NewConfig,
+		),
+		// Infrastructure Dependencies
+		fx.Provide(
 			database.NewDB,
 			NewGinEngine,
 			repository.NewRepository,
 			service.NewService,
 			controller.NewController,
+			NewFileStateManager,
+			parser.NewSimpleLogParser,
+			kafka.NewKafkaLogProducer,
+			kafka.NewKafkaLogConsumer,
+			elasticsearch.NewElasticLogStore,
+			service.NewLogProducerService,
+			service.NewLogConsumerService,
 		),
-		fx.Invoke(RegisterRoutes),
+		fx.Invoke(RegisterRoutes, RegisterScheduler,
+			func(lc fx.Lifecycle, consumerService service.LogConsumerService) { // Invoker to start consumer
+				startLogConsumer(lc, &wg, consumerService)
+			},
+		),
 	)
 
-	app.Run()
+	// app.Run()
+
+	startCtx, cancelStart := context.WithTimeout(context.Background(), 15*time.Second) // Timeout for startup
+	defer cancelStart()
+	if err := app.Start(startCtx); err != nil {
+		log.Fatal().Err(err).Msg("Failed to start application")
+	}
+	<-app.Done()
+
+	// Initiate shutdown
+	stopCtx, cancelStop := context.WithTimeout(context.Background(), 30*time.Second) // Timeout for graceful shutdown
+	defer cancelStop()
+	log.Info().Msg("Shutting down application...")
+	if err := app.Stop(stopCtx); err != nil {
+		log.Error().Err(err).Msg("Forced shutdown due to error or timeout")
+	}
+
+	// Wait for background goroutines (like the consumer) to finish
+	log.Info().Msg("Waiting for background goroutines to finish...")
+	wg.Wait() // Wait for consumer goroutine to complete
+	log.Info().Msg("All background processes finished. Exiting.")
 }
 
 func NewConfig() (*config.Config, error) {
@@ -118,6 +161,37 @@ func RegisterRoutes(
 		OnStop: func(ctx context.Context) error {
 			log.Info().Msg("Shutting down server")
 			return server.Shutdown(ctx)
+		},
+	})
+}
+
+// --- Factory Functions ---
+
+func NewFileStateManager(cfg *config.Config) filestate.Manager {
+	return filestate.NewManager(cfg.FileState.FilePath)
+}
+
+// --- Invoker Functions ---
+
+func RegisterScheduler(lc fx.Lifecycle, cfg *config.Config, logProducerSvc service.LogProducerService) {
+	scheduler.NewScheduler(lc, cfg, logProducerSvc)
+}
+
+// startLogConsumer starts the LogConsumerService in a goroutine managed by fx lifecycle
+func startLogConsumer(lc fx.Lifecycle, wg *sync.WaitGroup, consumerService service.LogConsumerService) {
+	wg.Add(1)
+	ctx, cancel := context.WithCancel(context.Background()) // Create cancellable context
+
+	lc.Append(fx.Hook{
+		OnStart: func(context.Context) error {
+			log.Info().Msg("Starting Log Consumer goroutine")
+			go consumerService.Run(ctx, wg) // Run in goroutine with cancellable context
+			return nil
+		},
+		OnStop: func(stopCtx context.Context) error {
+			log.Info().Msg("Signaling Log Consumer goroutine to stop...")
+			cancel()   // Cancel the context to signal the consumer loop to exit
+			return nil // Return immediately, main WaitGroup handles the actual wait
 		},
 	})
 }

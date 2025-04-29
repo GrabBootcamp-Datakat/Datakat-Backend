@@ -1,0 +1,1753 @@
+17/07/27 21:34:48 INFO executor.CoarseGrainedExecutorBackend: Registered signal handlers for [TERM, HUP, INT]
+17/07/27 21:34:49 INFO spark.SecurityManager: Changing view acls to: yarn,curi
+17/07/27 21:34:49 INFO spark.SecurityManager: Changing modify acls to: yarn,curi
+17/07/27 21:34:49 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(yarn, curi); users with modify permissions: Set(yarn, curi)
+17/07/27 21:34:49 INFO spark.SecurityManager: Changing view acls to: yarn,curi
+17/07/27 21:34:49 INFO spark.SecurityManager: Changing modify acls to: yarn,curi
+17/07/27 21:34:49 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(yarn, curi); users with modify permissions: Set(yarn, curi)
+17/07/27 21:34:49 INFO slf4j.Slf4jLogger: Slf4jLogger started
+17/07/27 21:34:49 INFO Remoting: Starting remoting
+17/07/27 21:34:50 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkExecutorActorSystem@mesos-master-2:54675]
+17/07/27 21:34:50 INFO util.Utils: Successfully started service 'sparkExecutorActorSystem' on port 54675.
+17/07/27 21:34:50 INFO storage.DiskBlockManager: Created local directory at /opt/hdfs/nodemanager/usercache/curi/appcache/application_1485248649253_0187/blockmgr-7fdfd8c8-ac8c-4a56-9052-432e55e408a2
+17/07/27 21:34:50 INFO storage.MemoryStore: MemoryStore started with capacity 17.7 GB
+17/07/27 21:34:50 INFO executor.CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@10.10.34.11:54324
+17/07/27 21:34:50 INFO executor.CoarseGrainedExecutorBackend: Successfully registered with driver
+17/07/27 21:34:50 INFO executor.Executor: Starting executor ID 7 on host mesos-master-2
+17/07/27 21:34:50 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 37147.
+17/07/27 21:34:50 INFO netty.NettyBlockTransferService: Server created on 37147
+17/07/27 21:34:50 INFO storage.BlockManagerMaster: Trying to register BlockManager
+17/07/27 21:34:50 INFO storage.BlockManagerMaster: Registered BlockManager
+17/07/27 21:34:55 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 18
+17/07/27 21:34:55 INFO executor.Executor: Running task 18.0 in stage 0.0 (TID 18)
+17/07/27 21:34:55 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 6
+17/07/27 21:34:55 INFO storage.MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 4.8 KB, free 4.8 KB)
+17/07/27 21:34:55 INFO broadcast.TorrentBroadcast: Reading broadcast variable 6 took 150 ms
+17/07/27 21:34:56 INFO storage.MemoryStore: Block broadcast_6 stored as values in memory (estimated size 7.8 KB, free 12.6 KB)
+17/07/27 21:34:56 INFO spark.CacheManager: Partition rdd_2_18 not found, computing it
+17/07/27 21:34:56 INFO rdd.HadoopRDD: Input split: hdfs://10.10.34.11:9000/pjhe/logs/rawlog.log:1341794970+74544165
+17/07/27 21:34:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 5
+17/07/27 21:34:56 INFO storage.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 21.4 KB, free 34.0 KB)
+17/07/27 21:34:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 5 took 32 ms
+17/07/27 21:34:56 INFO storage.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 281.6 KB, free 315.7 KB)
+17/07/27 21:34:57 INFO Configuration.deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+17/07/27 21:34:57 INFO Configuration.deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+17/07/27 21:34:57 INFO Configuration.deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+17/07/27 21:34:57 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+17/07/27 21:34:57 INFO Configuration.deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 1
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 107.0 B, free 315.8 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 1 took 10 ms
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 384.0 B, free 316.1 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 2
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 93.0 B, free 316.2 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 2 took 9 ms
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 384.0 B, free 316.6 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 3
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 152.0 B, free 316.8 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 3 took 70 ms
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 384.0 B, free 317.1 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 0
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 93.0 B, free 317.2 KB)
+17/07/27 21:34:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 0 took 30 ms
+17/07/27 21:34:59 INFO storage.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 384.0 B, free 317.6 KB)
+17/07/27 21:35:19 INFO python.PythonRunner: Times: total = 21521, boot = 1492, init = 173, finish = 19856
+17/07/27 21:35:19 INFO storage.MemoryStore: Block rdd_2_18 stored as bytes in memory (estimated size 5.2 MB, free 5.5 MB)
+17/07/27 21:35:19 INFO python.PythonRunner: Times: total = 265, boot = -141, init = 142, finish = 264
+17/07/27 21:35:19 INFO executor.Executor: Finished task 18.0 in stage 0.0 (TID 18). 2670 bytes result sent to driver
+17/07/27 21:35:21 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 21
+17/07/27 21:35:21 INFO executor.Executor: Running task 18.0 in stage 1.0 (TID 21)
+17/07/27 21:35:21 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 7
+17/07/27 21:35:21 INFO storage.MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 4.8 KB, free 5.5 MB)
+17/07/27 21:35:21 INFO broadcast.TorrentBroadcast: Reading broadcast variable 7 took 15 ms
+17/07/27 21:35:21 INFO storage.MemoryStore: Block broadcast_7 stored as values in memory (estimated size 7.8 KB, free 5.5 MB)
+17/07/27 21:35:21 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:35:22 INFO python.PythonRunner: Times: total = 989, boot = -1674, init = 1676, finish = 987
+17/07/27 21:35:22 INFO executor.Executor: Finished task 18.0 in stage 1.0 (TID 21). 2131 bytes result sent to driver
+17/07/27 21:35:22 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 43
+17/07/27 21:35:22 INFO executor.Executor: Running task 18.0 in stage 2.0 (TID 43)
+17/07/27 21:35:22 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 8
+17/07/27 21:35:22 INFO storage.MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 5.3 KB, free 5.5 MB)
+17/07/27 21:35:22 INFO broadcast.TorrentBroadcast: Reading broadcast variable 8 took 14 ms
+17/07/27 21:35:22 INFO storage.MemoryStore: Block broadcast_8 stored as values in memory (estimated size 9.0 KB, free 5.5 MB)
+17/07/27 21:35:22 INFO spark.CacheManager: Partition rdd_5_18 not found, computing it
+17/07/27 21:35:22 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:35:23 INFO python.PythonRunner: Times: total = 877, boot = -507, init = 510, finish = 874
+17/07/27 21:35:23 INFO storage.MemoryStore: Block rdd_5_18 stored as bytes in memory (estimated size 16.0 B, free 5.5 MB)
+17/07/27 21:35:23 INFO python.PythonRunner: Times: total = 39, boot = 6, init = 32, finish = 1
+17/07/27 21:35:23 INFO executor.Executor: Finished task 18.0 in stage 2.0 (TID 43). 2701 bytes result sent to driver
+17/07/27 21:35:24 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 70
+17/07/27 21:35:24 INFO executor.Executor: Running task 18.0 in stage 3.0 (TID 70)
+17/07/27 21:35:24 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 9
+17/07/27 21:35:24 INFO storage.MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 5.3 KB, free 5.5 MB)
+17/07/27 21:35:24 INFO broadcast.TorrentBroadcast: Reading broadcast variable 9 took 45 ms
+17/07/27 21:35:24 INFO storage.MemoryStore: Block broadcast_9 stored as values in memory (estimated size 9.0 KB, free 5.5 MB)
+17/07/27 21:35:24 INFO storage.BlockManager: Found block rdd_5_18 locally
+17/07/27 21:35:24 INFO python.PythonRunner: Times: total = 41, boot = -388, init = 429, finish = 0
+17/07/27 21:35:24 INFO executor.Executor: Finished task 18.0 in stage 3.0 (TID 70). 2076 bytes result sent to driver
+17/07/27 21:35:24 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 89
+17/07/27 21:35:24 INFO executor.Executor: Running task 18.0 in stage 4.0 (TID 89)
+17/07/27 21:35:24 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 10
+17/07/27 21:35:24 INFO storage.MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 28.3 KB, free 5.6 MB)
+17/07/27 21:35:24 INFO broadcast.TorrentBroadcast: Reading broadcast variable 10 took 34 ms
+17/07/27 21:35:24 INFO storage.MemoryStore: Block broadcast_10 stored as values in memory (estimated size 76.4 KB, free 5.6 MB)
+17/07/27 21:35:24 INFO storage.BlockManager: Found block rdd_5_18 locally
+17/07/27 21:35:24 INFO python.PythonRunner: Times: total = 39, boot = -340, init = 379, finish = 0
+17/07/27 21:35:24 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:24 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0004_m_000018_89' to hdfs://10.10.34.11:9000/pjhe/test/1/_temporary/0/task_201707272133_0004_m_000018
+17/07/27 21:35:24 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0004_m_000018_89: Committed
+17/07/27 21:35:24 INFO executor.Executor: Finished task 18.0 in stage 4.0 (TID 89). 2364 bytes result sent to driver
+17/07/27 21:35:25 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 102
+17/07/27 21:35:25 INFO executor.Executor: Running task 18.0 in stage 5.0 (TID 102)
+17/07/27 21:35:25 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 11
+17/07/27 21:35:25 INFO storage.MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 5.3 KB, free 5.6 MB)
+17/07/27 21:35:25 INFO broadcast.TorrentBroadcast: Reading broadcast variable 11 took 11 ms
+17/07/27 21:35:25 INFO storage.MemoryStore: Block broadcast_11 stored as values in memory (estimated size 9.1 KB, free 5.6 MB)
+17/07/27 21:35:25 INFO spark.CacheManager: Partition rdd_11_18 not found, computing it
+17/07/27 21:35:25 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:35:26 INFO python.PythonRunner: Times: total = 996, boot = -557, init = 559, finish = 994
+17/07/27 21:35:26 INFO storage.MemoryStore: Block rdd_11_18 stored as bytes in memory (estimated size 548.7 KB, free 6.1 MB)
+17/07/27 21:35:26 INFO python.PythonRunner: Times: total = 77, boot = -6, init = 6, finish = 77
+17/07/27 21:35:26 INFO executor.Executor: Finished task 18.0 in stage 5.0 (TID 102). 3047 bytes result sent to driver
+17/07/27 21:35:26 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 130
+17/07/27 21:35:26 INFO executor.Executor: Running task 18.0 in stage 6.0 (TID 130)
+17/07/27 21:35:26 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 12
+17/07/27 21:35:26 INFO storage.MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 5.1 KB, free 6.1 MB)
+17/07/27 21:35:26 INFO broadcast.TorrentBroadcast: Reading broadcast variable 12 took 12 ms
+17/07/27 21:35:26 INFO storage.MemoryStore: Block broadcast_12 stored as values in memory (estimated size 8.9 KB, free 6.1 MB)
+17/07/27 21:35:26 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:26 INFO python.PythonRunner: Times: total = 42, boot = -692, init = 694, finish = 40
+17/07/27 21:35:26 INFO executor.Executor: Finished task 18.0 in stage 6.0 (TID 130). 2088 bytes result sent to driver
+17/07/27 21:35:27 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 145
+17/07/27 21:35:27 INFO executor.Executor: Running task 18.0 in stage 7.0 (TID 145)
+17/07/27 21:35:27 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 13
+17/07/27 21:35:27 INFO storage.MemoryStore: Block broadcast_13_piece0 stored as bytes in memory (estimated size 5.5 KB, free 6.2 MB)
+17/07/27 21:35:27 INFO broadcast.TorrentBroadcast: Reading broadcast variable 13 took 12 ms
+17/07/27 21:35:27 INFO storage.MemoryStore: Block broadcast_13 stored as values in memory (estimated size 9.5 KB, free 6.2 MB)
+17/07/27 21:35:27 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:27 INFO python.PythonRunner: Times: total = 89, boot = -184, init = 186, finish = 87
+17/07/27 21:35:27 INFO executor.Executor: Finished task 18.0 in stage 7.0 (TID 145). 2182 bytes result sent to driver
+17/07/27 21:35:27 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 163
+17/07/27 21:35:27 INFO executor.Executor: Running task 18.0 in stage 8.0 (TID 163)
+17/07/27 21:35:27 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 14
+17/07/27 21:35:27 INFO storage.MemoryStore: Block broadcast_14_piece0 stored as bytes in memory (estimated size 5.5 KB, free 6.2 MB)
+17/07/27 21:35:27 INFO broadcast.TorrentBroadcast: Reading broadcast variable 14 took 16 ms
+17/07/27 21:35:27 INFO storage.MemoryStore: Block broadcast_14 stored as values in memory (estimated size 9.5 KB, free 6.2 MB)
+17/07/27 21:35:27 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:27 INFO python.PythonRunner: Times: total = 90, boot = -506, init = 508, finish = 88
+17/07/27 21:35:27 INFO executor.Executor: Finished task 18.0 in stage 8.0 (TID 163). 2135 bytes result sent to driver
+17/07/27 21:35:28 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 188
+17/07/27 21:35:28 INFO executor.Executor: Running task 18.0 in stage 9.0 (TID 188)
+17/07/27 21:35:28 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 15
+17/07/27 21:35:28 INFO storage.MemoryStore: Block broadcast_15_piece0 stored as bytes in memory (estimated size 28.6 KB, free 6.2 MB)
+17/07/27 21:35:28 INFO broadcast.TorrentBroadcast: Reading broadcast variable 15 took 13 ms
+17/07/27 21:35:28 INFO storage.MemoryStore: Block broadcast_15 stored as values in memory (estimated size 76.9 KB, free 6.3 MB)
+17/07/27 21:35:28 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:28 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:28 INFO python.PythonRunner: Times: total = 94, boot = -673, init = 675, finish = 92
+17/07/27 21:35:28 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0009_m_000018_188' to hdfs://10.10.34.11:9000/pjhe/test/2/_temporary/0/task_201707272133_0009_m_000018
+17/07/27 21:35:28 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0009_m_000018_188: Committed
+17/07/27 21:35:29 INFO executor.Executor: Finished task 18.0 in stage 9.0 (TID 188). 2364 bytes result sent to driver
+17/07/27 21:35:29 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 212
+17/07/27 21:35:29 INFO executor.Executor: Running task 18.0 in stage 10.0 (TID 212)
+17/07/27 21:35:29 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 16
+17/07/27 21:35:29 INFO storage.MemoryStore: Block broadcast_16_piece0 stored as bytes in memory (estimated size 5.6 KB, free 6.3 MB)
+17/07/27 21:35:29 INFO broadcast.TorrentBroadcast: Reading broadcast variable 16 took 11 ms
+17/07/27 21:35:29 INFO storage.MemoryStore: Block broadcast_16 stored as values in memory (estimated size 9.5 KB, free 6.3 MB)
+17/07/27 21:35:29 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:29 INFO python.PythonRunner: Times: total = 108, boot = -635, init = 637, finish = 106
+17/07/27 21:35:29 INFO executor.Executor: Finished task 18.0 in stage 10.0 (TID 212). 2387 bytes result sent to driver
+17/07/27 21:35:29 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 226
+17/07/27 21:35:29 INFO executor.Executor: Running task 18.0 in stage 11.0 (TID 226)
+17/07/27 21:35:29 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 17
+17/07/27 21:35:29 INFO storage.MemoryStore: Block broadcast_17_piece0 stored as bytes in memory (estimated size 5.5 KB, free 6.3 MB)
+17/07/27 21:35:29 INFO broadcast.TorrentBroadcast: Reading broadcast variable 17 took 25 ms
+17/07/27 21:35:29 INFO storage.MemoryStore: Block broadcast_17 stored as values in memory (estimated size 9.5 KB, free 6.3 MB)
+17/07/27 21:35:29 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:30 INFO python.PythonRunner: Times: total = 239, boot = -490, init = 492, finish = 237
+17/07/27 21:35:30 INFO executor.Executor: Finished task 18.0 in stage 11.0 (TID 226). 2138 bytes result sent to driver
+17/07/27 21:35:30 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 243
+17/07/27 21:35:30 INFO executor.Executor: Running task 18.0 in stage 12.0 (TID 243)
+17/07/27 21:35:30 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 18
+17/07/27 21:35:30 INFO storage.MemoryStore: Block broadcast_18_piece0 stored as bytes in memory (estimated size 28.6 KB, free 6.3 MB)
+17/07/27 21:35:30 INFO broadcast.TorrentBroadcast: Reading broadcast variable 18 took 12 ms
+17/07/27 21:35:30 INFO storage.MemoryStore: Block broadcast_18 stored as values in memory (estimated size 76.9 KB, free 6.4 MB)
+17/07/27 21:35:30 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:30 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:31 INFO python.PythonRunner: Times: total = 363, boot = -480, init = 482, finish = 361
+17/07/27 21:35:31 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0012_m_000018_243' to hdfs://10.10.34.11:9000/pjhe/test/3/_temporary/0/task_201707272133_0012_m_000018
+17/07/27 21:35:31 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0012_m_000018_243: Committed
+17/07/27 21:35:31 INFO executor.Executor: Finished task 18.0 in stage 12.0 (TID 243). 2364 bytes result sent to driver
+17/07/27 21:35:31 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 260
+17/07/27 21:35:31 INFO executor.Executor: Running task 18.0 in stage 13.0 (TID 260)
+17/07/27 21:35:31 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 19
+17/07/27 21:35:31 INFO storage.MemoryStore: Block broadcast_19_piece0 stored as bytes in memory (estimated size 5.5 KB, free 6.4 MB)
+17/07/27 21:35:31 INFO broadcast.TorrentBroadcast: Reading broadcast variable 19 took 11 ms
+17/07/27 21:35:31 INFO storage.MemoryStore: Block broadcast_19 stored as values in memory (estimated size 9.5 KB, free 6.4 MB)
+17/07/27 21:35:31 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:31 INFO python.PythonRunner: Times: total = 90, boot = -343, init = 346, finish = 87
+17/07/27 21:35:31 INFO executor.Executor: Finished task 18.0 in stage 13.0 (TID 260). 2190 bytes result sent to driver
+17/07/27 21:35:32 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 284
+17/07/27 21:35:32 INFO executor.Executor: Running task 18.0 in stage 14.0 (TID 284)
+17/07/27 21:35:32 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 20
+17/07/27 21:35:32 INFO storage.MemoryStore: Block broadcast_20_piece0 stored as bytes in memory (estimated size 5.5 KB, free 6.4 MB)
+17/07/27 21:35:32 INFO broadcast.TorrentBroadcast: Reading broadcast variable 20 took 12 ms
+17/07/27 21:35:32 INFO storage.MemoryStore: Block broadcast_20 stored as values in memory (estimated size 9.5 KB, free 6.4 MB)
+17/07/27 21:35:32 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:32 INFO python.PythonRunner: Times: total = 90, boot = -880, init = 882, finish = 88
+17/07/27 21:35:32 INFO executor.Executor: Finished task 18.0 in stage 14.0 (TID 284). 2114 bytes result sent to driver
+17/07/27 21:35:33 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 305
+17/07/27 21:35:33 INFO executor.Executor: Running task 18.0 in stage 15.0 (TID 305)
+17/07/27 21:35:33 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 21
+17/07/27 21:35:33 INFO storage.MemoryStore: Block broadcast_21_piece0 stored as bytes in memory (estimated size 28.6 KB, free 6.3 MB)
+17/07/27 21:35:33 INFO broadcast.TorrentBroadcast: Reading broadcast variable 21 took 16 ms
+17/07/27 21:35:33 INFO storage.MemoryStore: Block broadcast_21 stored as values in memory (estimated size 76.9 KB, free 6.3 MB)
+17/07/27 21:35:33 INFO storage.BlockManager: Found block rdd_11_18 locally
+17/07/27 21:35:33 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:33 INFO python.PythonRunner: Times: total = 97, boot = -754, init = 756, finish = 95
+17/07/27 21:35:33 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0015_m_000018_305' to hdfs://10.10.34.11:9000/pjhe/test/4/_temporary/0/task_201707272133_0015_m_000018
+17/07/27 21:35:33 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0015_m_000018_305: Committed
+17/07/27 21:35:33 INFO executor.Executor: Finished task 18.0 in stage 15.0 (TID 305). 2364 bytes result sent to driver
+17/07/27 21:35:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 330
+17/07/27 21:35:34 INFO executor.Executor: Running task 18.0 in stage 16.0 (TID 330)
+17/07/27 21:35:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 22
+17/07/27 21:35:34 INFO storage.MemoryStore: Block broadcast_22_piece0 stored as bytes in memory (estimated size 5.3 KB, free 6.1 MB)
+17/07/27 21:35:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 22 took 13 ms
+17/07/27 21:35:34 INFO storage.MemoryStore: Block broadcast_22 stored as values in memory (estimated size 9.1 KB, free 6.1 MB)
+17/07/27 21:35:34 INFO spark.CacheManager: Partition rdd_29_18 not found, computing it
+17/07/27 21:35:34 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:35:35 INFO python.PythonRunner: Times: total = 1021, boot = -1308, init = 1310, finish = 1019
+17/07/27 21:35:35 INFO storage.MemoryStore: Block rdd_29_18 stored as bytes in memory (estimated size 1675.5 KB, free 7.8 MB)
+17/07/27 21:35:36 INFO python.PythonRunner: Times: total = 550, boot = -26, init = 26, finish = 550
+17/07/27 21:35:36 INFO executor.Executor: Finished task 18.0 in stage 16.0 (TID 330). 5796 bytes result sent to driver
+17/07/27 21:35:36 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 352
+17/07/27 21:35:36 INFO executor.Executor: Running task 18.0 in stage 17.0 (TID 352)
+17/07/27 21:35:36 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 23
+17/07/27 21:35:36 INFO storage.MemoryStore: Block broadcast_23_piece0 stored as bytes in memory (estimated size 5.1 KB, free 7.8 MB)
+17/07/27 21:35:36 INFO broadcast.TorrentBroadcast: Reading broadcast variable 23 took 14 ms
+17/07/27 21:35:36 INFO storage.MemoryStore: Block broadcast_23 stored as values in memory (estimated size 8.9 KB, free 7.8 MB)
+17/07/27 21:35:36 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:37 INFO python.PythonRunner: Times: total = 198, boot = -550, init = 552, finish = 196
+17/07/27 21:35:37 INFO executor.Executor: Finished task 18.0 in stage 17.0 (TID 352). 2090 bytes result sent to driver
+17/07/27 21:35:37 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 371
+17/07/27 21:35:37 INFO executor.Executor: Running task 18.0 in stage 18.0 (TID 371)
+17/07/27 21:35:37 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 24
+17/07/27 21:35:37 INFO storage.MemoryStore: Block broadcast_24_piece0 stored as bytes in memory (estimated size 5.6 KB, free 7.8 MB)
+17/07/27 21:35:37 INFO broadcast.TorrentBroadcast: Reading broadcast variable 24 took 11 ms
+17/07/27 21:35:37 INFO storage.MemoryStore: Block broadcast_24 stored as values in memory (estimated size 9.5 KB, free 7.8 MB)
+17/07/27 21:35:37 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:37 INFO python.PythonRunner: Times: total = 428, boot = -88, init = 90, finish = 426
+17/07/27 21:35:37 INFO executor.Executor: Finished task 18.0 in stage 18.0 (TID 371). 2214 bytes result sent to driver
+17/07/27 21:35:37 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 392
+17/07/27 21:35:37 INFO executor.Executor: Running task 18.0 in stage 19.0 (TID 392)
+17/07/27 21:35:37 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 25
+17/07/27 21:35:37 INFO storage.MemoryStore: Block broadcast_25_piece0 stored as bytes in memory (estimated size 5.5 KB, free 7.8 MB)
+17/07/27 21:35:37 INFO broadcast.TorrentBroadcast: Reading broadcast variable 25 took 11 ms
+17/07/27 21:35:37 INFO storage.MemoryStore: Block broadcast_25 stored as values in memory (estimated size 9.5 KB, free 7.8 MB)
+17/07/27 21:35:37 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:38 INFO python.PythonRunner: Times: total = 428, boot = -100, init = 102, finish = 426
+17/07/27 21:35:38 INFO executor.Executor: Finished task 18.0 in stage 19.0 (TID 392). 2156 bytes result sent to driver
+17/07/27 21:35:38 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 404
+17/07/27 21:35:38 INFO executor.Executor: Running task 18.0 in stage 20.0 (TID 404)
+17/07/27 21:35:38 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 26
+17/07/27 21:35:38 INFO storage.MemoryStore: Block broadcast_26_piece0 stored as bytes in memory (estimated size 28.6 KB, free 7.7 MB)
+17/07/27 21:35:38 INFO broadcast.TorrentBroadcast: Reading broadcast variable 26 took 12 ms
+17/07/27 21:35:38 INFO storage.MemoryStore: Block broadcast_26 stored as values in memory (estimated size 76.9 KB, free 7.8 MB)
+17/07/27 21:35:38 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:39 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:39 INFO python.PythonRunner: Times: total = 428, boot = -460, init = 462, finish = 426
+17/07/27 21:35:39 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0020_m_000018_404' to hdfs://10.10.34.11:9000/pjhe/test/5/_temporary/0/task_201707272133_0020_m_000018
+17/07/27 21:35:39 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0020_m_000018_404: Committed
+17/07/27 21:35:39 INFO executor.Executor: Finished task 18.0 in stage 20.0 (TID 404). 2364 bytes result sent to driver
+17/07/27 21:35:39 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 426
+17/07/27 21:35:39 INFO executor.Executor: Running task 18.0 in stage 21.0 (TID 426)
+17/07/27 21:35:39 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 27
+17/07/27 21:35:39 INFO storage.MemoryStore: Block broadcast_27_piece0 stored as bytes in memory (estimated size 5.6 KB, free 7.8 MB)
+17/07/27 21:35:39 INFO broadcast.TorrentBroadcast: Reading broadcast variable 27 took 10 ms
+17/07/27 21:35:39 INFO storage.MemoryStore: Block broadcast_27 stored as values in memory (estimated size 9.5 KB, free 7.8 MB)
+17/07/27 21:35:39 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:39 INFO python.PythonRunner: Times: total = 427, boot = -356, init = 358, finish = 425
+17/07/27 21:35:39 INFO executor.Executor: Finished task 18.0 in stage 21.0 (TID 426). 2135 bytes result sent to driver
+17/07/27 21:35:40 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 450
+17/07/27 21:35:40 INFO executor.Executor: Running task 18.0 in stage 22.0 (TID 450)
+17/07/27 21:35:40 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 28
+17/07/27 21:35:40 INFO storage.MemoryStore: Block broadcast_28_piece0 stored as bytes in memory (estimated size 5.4 KB, free 7.8 MB)
+17/07/27 21:35:40 INFO broadcast.TorrentBroadcast: Reading broadcast variable 28 took 11 ms
+17/07/27 21:35:40 INFO storage.MemoryStore: Block broadcast_28 stored as values in memory (estimated size 9.3 KB, free 7.8 MB)
+17/07/27 21:35:40 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:40 INFO python.PythonRunner: Times: total = 428, boot = -217, init = 219, finish = 426
+17/07/27 21:35:40 INFO executor.Executor: Finished task 18.0 in stage 22.0 (TID 450). 2087 bytes result sent to driver
+17/07/27 21:35:40 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 460
+17/07/27 21:35:40 INFO executor.Executor: Running task 18.0 in stage 23.0 (TID 460)
+17/07/27 21:35:40 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 29
+17/07/27 21:35:40 INFO storage.MemoryStore: Block broadcast_29_piece0 stored as bytes in memory (estimated size 5.7 KB, free 7.8 MB)
+17/07/27 21:35:40 INFO broadcast.TorrentBroadcast: Reading broadcast variable 29 took 12 ms
+17/07/27 21:35:40 INFO storage.MemoryStore: Block broadcast_29 stored as values in memory (estimated size 9.7 KB, free 7.8 MB)
+17/07/27 21:35:40 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:41 INFO python.PythonRunner: Times: total = 428, boot = -94, init = 96, finish = 426
+17/07/27 21:35:41 INFO executor.Executor: Finished task 18.0 in stage 23.0 (TID 460). 2135 bytes result sent to driver
+17/07/27 21:35:41 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 482
+17/07/27 21:35:41 INFO executor.Executor: Running task 18.0 in stage 24.0 (TID 482)
+17/07/27 21:35:41 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 30
+17/07/27 21:35:41 INFO storage.MemoryStore: Block broadcast_30_piece0 stored as bytes in memory (estimated size 5.6 KB, free 7.8 MB)
+17/07/27 21:35:41 INFO broadcast.TorrentBroadcast: Reading broadcast variable 30 took 13 ms
+17/07/27 21:35:41 INFO storage.MemoryStore: Block broadcast_30 stored as values in memory (estimated size 9.6 KB, free 7.8 MB)
+17/07/27 21:35:41 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:41 INFO python.PythonRunner: Times: total = 428, boot = -296, init = 299, finish = 425
+17/07/27 21:35:41 INFO executor.Executor: Finished task 18.0 in stage 24.0 (TID 482). 2076 bytes result sent to driver
+17/07/27 21:35:42 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 510
+17/07/27 21:35:42 INFO executor.Executor: Running task 18.0 in stage 25.0 (TID 510)
+17/07/27 21:35:42 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 31
+17/07/27 21:35:42 INFO storage.MemoryStore: Block broadcast_31_piece0 stored as bytes in memory (estimated size 28.7 KB, free 7.7 MB)
+17/07/27 21:35:42 INFO broadcast.TorrentBroadcast: Reading broadcast variable 31 took 11 ms
+17/07/27 21:35:42 INFO storage.MemoryStore: Block broadcast_31 stored as values in memory (estimated size 77.1 KB, free 7.8 MB)
+17/07/27 21:35:42 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:42 INFO python.PythonRunner: Times: total = 428, boot = -332, init = 334, finish = 426
+17/07/27 21:35:42 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:42 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0025_m_000018_510' to hdfs://10.10.34.11:9000/pjhe/test/6/_temporary/0/task_201707272133_0025_m_000018
+17/07/27 21:35:42 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0025_m_000018_510: Committed
+17/07/27 21:35:42 INFO executor.Executor: Finished task 18.0 in stage 25.0 (TID 510). 2364 bytes result sent to driver
+17/07/27 21:35:42 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 521
+17/07/27 21:35:42 INFO executor.Executor: Running task 18.0 in stage 26.0 (TID 521)
+17/07/27 21:35:42 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 32
+17/07/27 21:35:42 INFO storage.MemoryStore: Block broadcast_32_piece0 stored as bytes in memory (estimated size 5.7 KB, free 7.8 MB)
+17/07/27 21:35:42 INFO broadcast.TorrentBroadcast: Reading broadcast variable 32 took 10 ms
+17/07/27 21:35:42 INFO storage.MemoryStore: Block broadcast_32 stored as values in memory (estimated size 9.7 KB, free 7.8 MB)
+17/07/27 21:35:42 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:43 INFO python.PythonRunner: Times: total = 428, boot = -170, init = 172, finish = 426
+17/07/27 21:35:43 INFO executor.Executor: Finished task 18.0 in stage 26.0 (TID 521). 2135 bytes result sent to driver
+17/07/27 21:35:43 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 552
+17/07/27 21:35:43 INFO executor.Executor: Running task 18.0 in stage 27.0 (TID 552)
+17/07/27 21:35:43 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 33
+17/07/27 21:35:43 INFO storage.MemoryStore: Block broadcast_33_piece0 stored as bytes in memory (estimated size 5.7 KB, free 7.8 MB)
+17/07/27 21:35:43 INFO broadcast.TorrentBroadcast: Reading broadcast variable 33 took 11 ms
+17/07/27 21:35:43 INFO storage.MemoryStore: Block broadcast_33 stored as values in memory (estimated size 9.6 KB, free 7.8 MB)
+17/07/27 21:35:43 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:44 INFO python.PythonRunner: Times: total = 385, boot = -285, init = 287, finish = 383
+17/07/27 21:35:44 INFO executor.Executor: Finished task 18.0 in stage 27.0 (TID 552). 2076 bytes result sent to driver
+17/07/27 21:35:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 560
+17/07/27 21:35:44 INFO executor.Executor: Running task 18.0 in stage 28.0 (TID 560)
+17/07/27 21:35:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 34
+17/07/27 21:35:44 INFO storage.MemoryStore: Block broadcast_34_piece0 stored as bytes in memory (estimated size 28.7 KB, free 7.8 MB)
+17/07/27 21:35:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 34 took 11 ms
+17/07/27 21:35:44 INFO storage.MemoryStore: Block broadcast_34 stored as values in memory (estimated size 77.1 KB, free 7.9 MB)
+17/07/27 21:35:44 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:44 INFO python.PythonRunner: Times: total = 429, boot = -230, init = 232, finish = 427
+17/07/27 21:35:44 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:44 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0028_m_000018_560' to hdfs://10.10.34.11:9000/pjhe/test/7/_temporary/0/task_201707272133_0028_m_000018
+17/07/27 21:35:44 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0028_m_000018_560: Committed
+17/07/27 21:35:44 INFO executor.Executor: Finished task 18.0 in stage 28.0 (TID 560). 2364 bytes result sent to driver
+17/07/27 21:35:45 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 580
+17/07/27 21:35:45 INFO executor.Executor: Running task 18.0 in stage 29.0 (TID 580)
+17/07/27 21:35:45 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 35
+17/07/27 21:35:45 INFO storage.MemoryStore: Block broadcast_35_piece0 stored as bytes in memory (estimated size 5.6 KB, free 7.9 MB)
+17/07/27 21:35:45 INFO broadcast.TorrentBroadcast: Reading broadcast variable 35 took 12 ms
+17/07/27 21:35:45 INFO storage.MemoryStore: Block broadcast_35 stored as values in memory (estimated size 9.5 KB, free 7.9 MB)
+17/07/27 21:35:45 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:45 INFO python.PythonRunner: Times: total = 427, boot = -388, init = 391, finish = 424
+17/07/27 21:35:45 INFO executor.Executor: Finished task 18.0 in stage 29.0 (TID 580). 2135 bytes result sent to driver
+17/07/27 21:35:45 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 605
+17/07/27 21:35:45 INFO executor.Executor: Running task 18.0 in stage 30.0 (TID 605)
+17/07/27 21:35:45 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 36
+17/07/27 21:35:45 INFO storage.MemoryStore: Block broadcast_36_piece0 stored as bytes in memory (estimated size 5.5 KB, free 7.8 MB)
+17/07/27 21:35:45 INFO broadcast.TorrentBroadcast: Reading broadcast variable 36 took 16 ms
+17/07/27 21:35:45 INFO storage.MemoryStore: Block broadcast_36 stored as values in memory (estimated size 9.5 KB, free 7.7 MB)
+17/07/27 21:35:45 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:46 INFO python.PythonRunner: Times: total = 426, boot = -327, init = 329, finish = 424
+17/07/27 21:35:46 INFO executor.Executor: Finished task 18.0 in stage 30.0 (TID 605). 2076 bytes result sent to driver
+17/07/27 21:35:46 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 628
+17/07/27 21:35:46 INFO executor.Executor: Running task 18.0 in stage 31.0 (TID 628)
+17/07/27 21:35:46 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 37
+17/07/27 21:35:46 INFO storage.MemoryStore: Block broadcast_37_piece0 stored as bytes in memory (estimated size 28.6 KB, free 7.7 MB)
+17/07/27 21:35:46 INFO broadcast.TorrentBroadcast: Reading broadcast variable 37 took 10 ms
+17/07/27 21:35:46 INFO storage.MemoryStore: Block broadcast_37 stored as values in memory (estimated size 76.9 KB, free 7.8 MB)
+17/07/27 21:35:46 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:47 INFO python.PythonRunner: Times: total = 391, boot = -330, init = 331, finish = 390
+17/07/27 21:35:47 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:47 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272133_0031_m_000018_628' to hdfs://10.10.34.11:9000/pjhe/test/8/_temporary/0/task_201707272133_0031_m_000018
+17/07/27 21:35:47 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272133_0031_m_000018_628: Committed
+17/07/27 21:35:47 INFO executor.Executor: Finished task 18.0 in stage 31.0 (TID 628). 2364 bytes result sent to driver
+17/07/27 21:35:47 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 651
+17/07/27 21:35:47 INFO executor.Executor: Running task 18.0 in stage 32.0 (TID 651)
+17/07/27 21:35:47 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 38
+17/07/27 21:35:47 INFO storage.MemoryStore: Block broadcast_38_piece0 stored as bytes in memory (estimated size 5.6 KB, free 7.8 MB)
+17/07/27 21:35:47 INFO broadcast.TorrentBroadcast: Reading broadcast variable 38 took 10 ms
+17/07/27 21:35:47 INFO storage.MemoryStore: Block broadcast_38 stored as values in memory (estimated size 9.5 KB, free 7.8 MB)
+17/07/27 21:35:47 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:48 INFO python.PythonRunner: Times: total = 788, boot = -163, init = 165, finish = 786
+17/07/27 21:35:48 INFO executor.Executor: Finished task 18.0 in stage 32.0 (TID 651). 2198 bytes result sent to driver
+17/07/27 21:35:48 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 666
+17/07/27 21:35:48 INFO executor.Executor: Running task 18.0 in stage 33.0 (TID 666)
+17/07/27 21:35:48 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 39
+17/07/27 21:35:48 INFO storage.MemoryStore: Block broadcast_39_piece0 stored as bytes in memory (estimated size 5.5 KB, free 7.8 MB)
+17/07/27 21:35:48 INFO broadcast.TorrentBroadcast: Reading broadcast variable 39 took 7 ms
+17/07/27 21:35:48 INFO storage.MemoryStore: Block broadcast_39 stored as values in memory (estimated size 9.5 KB, free 7.8 MB)
+17/07/27 21:35:48 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:48 INFO python.PythonRunner: Times: total = 663, boot = -209, init = 210, finish = 662
+17/07/27 21:35:48 INFO executor.Executor: Finished task 18.0 in stage 33.0 (TID 666). 2141 bytes result sent to driver
+17/07/27 21:35:49 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 692
+17/07/27 21:35:49 INFO executor.Executor: Running task 18.0 in stage 34.0 (TID 692)
+17/07/27 21:35:49 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 40
+17/07/27 21:35:49 INFO storage.MemoryStore: Block broadcast_40_piece0 stored as bytes in memory (estimated size 28.6 KB, free 7.8 MB)
+17/07/27 21:35:49 INFO broadcast.TorrentBroadcast: Reading broadcast variable 40 took 6 ms
+17/07/27 21:35:49 INFO storage.MemoryStore: Block broadcast_40 stored as values in memory (estimated size 76.9 KB, free 7.9 MB)
+17/07/27 21:35:49 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:49 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:49 INFO python.PythonRunner: Times: total = 783, boot = -237, init = 238, finish = 782
+17/07/27 21:35:49 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0034_m_000018_692' to hdfs://10.10.34.11:9000/pjhe/test/9/_temporary/0/task_201707272134_0034_m_000018
+17/07/27 21:35:49 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0034_m_000018_692: Committed
+17/07/27 21:35:49 INFO executor.Executor: Finished task 18.0 in stage 34.0 (TID 692). 2364 bytes result sent to driver
+17/07/27 21:35:50 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 709
+17/07/27 21:35:50 INFO executor.Executor: Running task 18.0 in stage 35.0 (TID 709)
+17/07/27 21:35:50 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 41
+17/07/27 21:35:50 INFO storage.MemoryStore: Block broadcast_41_piece0 stored as bytes in memory (estimated size 5.6 KB, free 7.8 MB)
+17/07/27 21:35:50 INFO broadcast.TorrentBroadcast: Reading broadcast variable 41 took 12 ms
+17/07/27 21:35:50 INFO storage.MemoryStore: Block broadcast_41 stored as values in memory (estimated size 9.5 KB, free 7.7 MB)
+17/07/27 21:35:50 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:51 INFO python.PythonRunner: Times: total = 1016, boot = -491, init = 494, finish = 1013
+17/07/27 21:35:51 INFO executor.Executor: Finished task 18.0 in stage 35.0 (TID 709). 5106 bytes result sent to driver
+17/07/27 21:35:51 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 725
+17/07/27 21:35:51 INFO executor.Executor: Running task 18.0 in stage 36.0 (TID 725)
+17/07/27 21:35:51 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 42
+17/07/27 21:35:51 INFO storage.MemoryStore: Block broadcast_42_piece0 stored as bytes in memory (estimated size 5.5 KB, free 7.7 MB)
+17/07/27 21:35:51 INFO broadcast.TorrentBroadcast: Reading broadcast variable 42 took 6 ms
+17/07/27 21:35:51 INFO storage.MemoryStore: Block broadcast_42 stored as values in memory (estimated size 9.5 KB, free 7.7 MB)
+17/07/27 21:35:51 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:52 INFO python.PythonRunner: Times: total = 428, boot = -110, init = 112, finish = 426
+17/07/27 21:35:52 INFO executor.Executor: Finished task 18.0 in stage 36.0 (TID 725). 2131 bytes result sent to driver
+17/07/27 21:35:52 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 749
+17/07/27 21:35:52 INFO executor.Executor: Running task 18.0 in stage 37.0 (TID 749)
+17/07/27 21:35:52 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 43
+17/07/27 21:35:52 INFO storage.MemoryStore: Block broadcast_43_piece0 stored as bytes in memory (estimated size 28.6 KB, free 7.7 MB)
+17/07/27 21:35:52 INFO broadcast.TorrentBroadcast: Reading broadcast variable 43 took 11 ms
+17/07/27 21:35:52 INFO storage.MemoryStore: Block broadcast_43 stored as values in memory (estimated size 76.9 KB, free 7.8 MB)
+17/07/27 21:35:52 INFO storage.BlockManager: Found block rdd_29_18 locally
+17/07/27 21:35:52 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:53 INFO python.PythonRunner: Times: total = 1030, boot = -611, init = 613, finish = 1028
+17/07/27 21:35:53 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0037_m_000018_749' to hdfs://10.10.34.11:9000/pjhe/test/10/_temporary/0/task_201707272134_0037_m_000018
+17/07/27 21:35:53 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0037_m_000018_749: Committed
+17/07/27 21:35:53 INFO executor.Executor: Finished task 18.0 in stage 37.0 (TID 749). 2364 bytes result sent to driver
+17/07/27 21:35:54 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 771
+17/07/27 21:35:54 INFO executor.Executor: Running task 18.0 in stage 38.0 (TID 771)
+17/07/27 21:35:54 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 44
+17/07/27 21:35:54 INFO storage.MemoryStore: Block broadcast_44_piece0 stored as bytes in memory (estimated size 5.3 KB, free 7.8 MB)
+17/07/27 21:35:54 INFO broadcast.TorrentBroadcast: Reading broadcast variable 44 took 10 ms
+17/07/27 21:35:54 INFO storage.MemoryStore: Block broadcast_44 stored as values in memory (estimated size 9.1 KB, free 7.8 MB)
+17/07/27 21:35:54 INFO spark.CacheManager: Partition rdd_64_18 not found, computing it
+17/07/27 21:35:54 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:35:55 INFO python.PythonRunner: Times: total = 1145, boot = -703, init = 705, finish = 1143
+17/07/27 21:35:55 INFO storage.MemoryStore: Block rdd_64_18 stored as bytes in memory (estimated size 740.3 KB, free 8.5 MB)
+17/07/27 21:35:55 INFO python.PythonRunner: Times: total = 257, boot = -6, init = 7, finish = 256
+17/07/27 21:35:55 INFO executor.Executor: Finished task 18.0 in stage 38.0 (TID 771). 2886 bytes result sent to driver
+17/07/27 21:35:56 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 784
+17/07/27 21:35:56 INFO executor.Executor: Running task 18.0 in stage 39.0 (TID 784)
+17/07/27 21:35:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 45
+17/07/27 21:35:56 INFO storage.MemoryStore: Block broadcast_45_piece0 stored as bytes in memory (estimated size 5.1 KB, free 8.5 MB)
+17/07/27 21:35:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 45 took 9 ms
+17/07/27 21:35:56 INFO storage.MemoryStore: Block broadcast_45 stored as values in memory (estimated size 8.9 KB, free 8.5 MB)
+17/07/27 21:35:56 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:56 INFO python.PythonRunner: Times: total = 78, boot = -351, init = 353, finish = 76
+17/07/27 21:35:56 INFO executor.Executor: Finished task 18.0 in stage 39.0 (TID 784). 2090 bytes result sent to driver
+17/07/27 21:35:56 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 811
+17/07/27 21:35:56 INFO executor.Executor: Running task 18.0 in stage 40.0 (TID 811)
+17/07/27 21:35:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 46
+17/07/27 21:35:56 INFO storage.MemoryStore: Block broadcast_46_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.4 MB)
+17/07/27 21:35:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 46 took 10 ms
+17/07/27 21:35:56 INFO storage.MemoryStore: Block broadcast_46 stored as values in memory (estimated size 9.5 KB, free 8.4 MB)
+17/07/27 21:35:56 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:56 INFO python.PythonRunner: Times: total = 184, boot = -115, init = 117, finish = 182
+17/07/27 21:35:56 INFO executor.Executor: Finished task 18.0 in stage 40.0 (TID 811). 2142 bytes result sent to driver
+17/07/27 21:35:56 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 825
+17/07/27 21:35:56 INFO executor.Executor: Running task 18.0 in stage 41.0 (TID 825)
+17/07/27 21:35:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 47
+17/07/27 21:35:56 INFO storage.MemoryStore: Block broadcast_47_piece0 stored as bytes in memory (estimated size 5.5 KB, free 8.4 MB)
+17/07/27 21:35:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 47 took 9 ms
+17/07/27 21:35:56 INFO storage.MemoryStore: Block broadcast_47 stored as values in memory (estimated size 9.5 KB, free 8.4 MB)
+17/07/27 21:35:56 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:56 INFO python.PythonRunner: Times: total = 184, boot = -123, init = 125, finish = 182
+17/07/27 21:35:56 INFO executor.Executor: Finished task 18.0 in stage 41.0 (TID 825). 2076 bytes result sent to driver
+17/07/27 21:35:57 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 844
+17/07/27 21:35:57 INFO executor.Executor: Running task 18.0 in stage 42.0 (TID 844)
+17/07/27 21:35:57 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 48
+17/07/27 21:35:57 INFO storage.MemoryStore: Block broadcast_48_piece0 stored as bytes in memory (estimated size 28.6 KB, free 8.4 MB)
+17/07/27 21:35:57 INFO broadcast.TorrentBroadcast: Reading broadcast variable 48 took 9 ms
+17/07/27 21:35:57 INFO storage.MemoryStore: Block broadcast_48 stored as values in memory (estimated size 76.9 KB, free 8.5 MB)
+17/07/27 21:35:57 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:57 INFO python.PythonRunner: Times: total = 184, boot = -460, init = 462, finish = 182
+17/07/27 21:35:57 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:57 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0042_m_000018_844' to hdfs://10.10.34.11:9000/pjhe/test/11/_temporary/0/task_201707272134_0042_m_000018
+17/07/27 21:35:57 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0042_m_000018_844: Committed
+17/07/27 21:35:57 INFO executor.Executor: Finished task 18.0 in stage 42.0 (TID 844). 2364 bytes result sent to driver
+17/07/27 21:35:57 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 866
+17/07/27 21:35:57 INFO executor.Executor: Running task 18.0 in stage 43.0 (TID 866)
+17/07/27 21:35:57 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 49
+17/07/27 21:35:57 INFO storage.MemoryStore: Block broadcast_49_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.5 MB)
+17/07/27 21:35:57 INFO broadcast.TorrentBroadcast: Reading broadcast variable 49 took 9 ms
+17/07/27 21:35:57 INFO storage.MemoryStore: Block broadcast_49 stored as values in memory (estimated size 9.5 KB, free 8.5 MB)
+17/07/27 21:35:57 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:57 INFO python.PythonRunner: Times: total = 185, boot = -145, init = 147, finish = 183
+17/07/27 21:35:57 INFO executor.Executor: Finished task 18.0 in stage 43.0 (TID 866). 2142 bytes result sent to driver
+17/07/27 21:35:58 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 881
+17/07/27 21:35:58 INFO executor.Executor: Running task 18.0 in stage 44.0 (TID 881)
+17/07/27 21:35:58 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 50
+17/07/27 21:35:58 INFO storage.MemoryStore: Block broadcast_50_piece0 stored as bytes in memory (estimated size 5.5 KB, free 8.5 MB)
+17/07/27 21:35:58 INFO broadcast.TorrentBroadcast: Reading broadcast variable 50 took 8 ms
+17/07/27 21:35:58 INFO storage.MemoryStore: Block broadcast_50 stored as values in memory (estimated size 9.5 KB, free 8.5 MB)
+17/07/27 21:35:58 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:58 INFO python.PythonRunner: Times: total = 184, boot = -210, init = 213, finish = 181
+17/07/27 21:35:58 INFO executor.Executor: Finished task 18.0 in stage 44.0 (TID 881). 2076 bytes result sent to driver
+17/07/27 21:35:58 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 902
+17/07/27 21:35:58 INFO executor.Executor: Running task 18.0 in stage 45.0 (TID 902)
+17/07/27 21:35:58 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 51
+17/07/27 21:35:58 INFO storage.MemoryStore: Block broadcast_51_piece0 stored as bytes in memory (estimated size 28.6 KB, free 8.5 MB)
+17/07/27 21:35:58 INFO broadcast.TorrentBroadcast: Reading broadcast variable 51 took 12 ms
+17/07/27 21:35:58 INFO storage.MemoryStore: Block broadcast_51 stored as values in memory (estimated size 76.9 KB, free 8.6 MB)
+17/07/27 21:35:58 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:58 INFO python.PythonRunner: Times: total = 184, boot = -234, init = 236, finish = 182
+17/07/27 21:35:58 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:35:58 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0045_m_000018_902' to hdfs://10.10.34.11:9000/pjhe/test/12/_temporary/0/task_201707272134_0045_m_000018
+17/07/27 21:35:58 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0045_m_000018_902: Committed
+17/07/27 21:35:58 INFO executor.Executor: Finished task 18.0 in stage 45.0 (TID 902). 2364 bytes result sent to driver
+17/07/27 21:35:59 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 924
+17/07/27 21:35:59 INFO executor.Executor: Running task 18.0 in stage 46.0 (TID 924)
+17/07/27 21:35:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 52
+17/07/27 21:35:59 INFO storage.MemoryStore: Block broadcast_52_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.5 MB)
+17/07/27 21:35:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 52 took 9 ms
+17/07/27 21:35:59 INFO storage.MemoryStore: Block broadcast_52 stored as values in memory (estimated size 9.5 KB, free 8.5 MB)
+17/07/27 21:35:59 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:35:59 INFO python.PythonRunner: Times: total = 810, boot = -261, init = 263, finish = 808
+17/07/27 21:35:59 INFO executor.Executor: Finished task 18.0 in stage 46.0 (TID 924). 2239 bytes result sent to driver
+17/07/27 21:35:59 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 951
+17/07/27 21:35:59 INFO executor.Executor: Running task 18.0 in stage 47.0 (TID 951)
+17/07/27 21:35:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 53
+17/07/27 21:35:59 INFO storage.MemoryStore: Block broadcast_53_piece0 stored as bytes in memory (estimated size 5.4 KB, free 8.5 MB)
+17/07/27 21:35:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 53 took 5 ms
+17/07/27 21:35:59 INFO storage.MemoryStore: Block broadcast_53 stored as values in memory (estimated size 9.3 KB, free 8.5 MB)
+17/07/27 21:35:59 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:00 INFO python.PythonRunner: Times: total = 78, boot = -82, init = 82, finish = 78
+17/07/27 21:36:00 INFO executor.Executor: Finished task 18.0 in stage 47.0 (TID 951). 2090 bytes result sent to driver
+17/07/27 21:36:00 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 972
+17/07/27 21:36:00 INFO executor.Executor: Running task 18.0 in stage 48.0 (TID 972)
+17/07/27 21:36:00 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 54
+17/07/27 21:36:00 INFO storage.MemoryStore: Block broadcast_54_piece0 stored as bytes in memory (estimated size 5.7 KB, free 8.5 MB)
+17/07/27 21:36:00 INFO broadcast.TorrentBroadcast: Reading broadcast variable 54 took 4 ms
+17/07/27 21:36:00 INFO storage.MemoryStore: Block broadcast_54 stored as values in memory (estimated size 9.7 KB, free 8.5 MB)
+17/07/27 21:36:00 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:00 INFO python.PythonRunner: Times: total = 208, boot = -242, init = 243, finish = 207
+17/07/27 21:36:00 INFO executor.Executor: Finished task 18.0 in stage 48.0 (TID 972). 2142 bytes result sent to driver
+17/07/27 21:36:00 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 983
+17/07/27 21:36:00 INFO executor.Executor: Running task 18.0 in stage 49.0 (TID 983)
+17/07/27 21:36:00 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 55
+17/07/27 21:36:00 INFO storage.MemoryStore: Block broadcast_55_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.5 MB)
+17/07/27 21:36:00 INFO broadcast.TorrentBroadcast: Reading broadcast variable 55 took 10 ms
+17/07/27 21:36:00 INFO storage.MemoryStore: Block broadcast_55 stored as values in memory (estimated size 9.6 KB, free 8.5 MB)
+17/07/27 21:36:00 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:01 INFO python.PythonRunner: Times: total = 306, boot = -378, init = 380, finish = 304
+17/07/27 21:36:01 INFO executor.Executor: Finished task 18.0 in stage 49.0 (TID 983). 2076 bytes result sent to driver
+17/07/27 21:36:01 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1005
+17/07/27 21:36:01 INFO executor.Executor: Running task 18.0 in stage 50.0 (TID 1005)
+17/07/27 21:36:01 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 56
+17/07/27 21:36:01 INFO storage.MemoryStore: Block broadcast_56_piece0 stored as bytes in memory (estimated size 28.7 KB, free 8.6 MB)
+17/07/27 21:36:01 INFO broadcast.TorrentBroadcast: Reading broadcast variable 56 took 15 ms
+17/07/27 21:36:01 INFO storage.MemoryStore: Block broadcast_56 stored as values in memory (estimated size 77.1 KB, free 8.6 MB)
+17/07/27 21:36:01 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:01 INFO python.PythonRunner: Times: total = 306, boot = -354, init = 355, finish = 305
+17/07/27 21:36:01 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:01 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0050_m_000018_1005' to hdfs://10.10.34.11:9000/pjhe/test/13/_temporary/0/task_201707272134_0050_m_000018
+17/07/27 21:36:01 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0050_m_000018_1005: Committed
+17/07/27 21:36:01 INFO executor.Executor: Finished task 18.0 in stage 50.0 (TID 1005). 2364 bytes result sent to driver
+17/07/27 21:36:02 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1022
+17/07/27 21:36:02 INFO executor.Executor: Running task 18.0 in stage 51.0 (TID 1022)
+17/07/27 21:36:02 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 57
+17/07/27 21:36:02 INFO storage.MemoryStore: Block broadcast_57_piece0 stored as bytes in memory (estimated size 5.7 KB, free 8.5 MB)
+17/07/27 21:36:02 INFO broadcast.TorrentBroadcast: Reading broadcast variable 57 took 8 ms
+17/07/27 21:36:02 INFO storage.MemoryStore: Block broadcast_57 stored as values in memory (estimated size 9.7 KB, free 8.5 MB)
+17/07/27 21:36:02 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:03 INFO python.PythonRunner: Times: total = 715, boot = -362, init = 364, finish = 713
+17/07/27 21:36:03 INFO executor.Executor: Finished task 18.0 in stage 51.0 (TID 1022). 2239 bytes result sent to driver
+17/07/27 21:36:03 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1042
+17/07/27 21:36:03 INFO executor.Executor: Running task 18.0 in stage 52.0 (TID 1042)
+17/07/27 21:36:03 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 58
+17/07/27 21:36:03 INFO storage.MemoryStore: Block broadcast_58_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.5 MB)
+17/07/27 21:36:03 INFO broadcast.TorrentBroadcast: Reading broadcast variable 58 took 10 ms
+17/07/27 21:36:03 INFO storage.MemoryStore: Block broadcast_58 stored as values in memory (estimated size 9.6 KB, free 8.5 MB)
+17/07/27 21:36:03 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:04 INFO python.PythonRunner: Times: total = 873, boot = -407, init = 409, finish = 871
+17/07/27 21:36:04 INFO executor.Executor: Finished task 18.0 in stage 52.0 (TID 1042). 2155 bytes result sent to driver
+17/07/27 21:36:04 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1071
+17/07/27 21:36:04 INFO executor.Executor: Running task 18.0 in stage 53.0 (TID 1071)
+17/07/27 21:36:04 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 59
+17/07/27 21:36:04 INFO storage.MemoryStore: Block broadcast_59_piece0 stored as bytes in memory (estimated size 28.7 KB, free 8.5 MB)
+17/07/27 21:36:04 INFO broadcast.TorrentBroadcast: Reading broadcast variable 59 took 8 ms
+17/07/27 21:36:04 INFO storage.MemoryStore: Block broadcast_59 stored as values in memory (estimated size 77.1 KB, free 8.6 MB)
+17/07/27 21:36:04 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:04 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:05 INFO python.PythonRunner: Times: total = 919, boot = -98, init = 99, finish = 918
+17/07/27 21:36:05 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0053_m_000018_1071' to hdfs://10.10.34.11:9000/pjhe/test/14/_temporary/0/task_201707272134_0053_m_000018
+17/07/27 21:36:05 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0053_m_000018_1071: Committed
+17/07/27 21:36:05 INFO executor.Executor: Finished task 18.0 in stage 53.0 (TID 1071). 2364 bytes result sent to driver
+17/07/27 21:36:05 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1087
+17/07/27 21:36:05 INFO executor.Executor: Running task 18.0 in stage 54.0 (TID 1087)
+17/07/27 21:36:05 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 60
+17/07/27 21:36:05 INFO storage.MemoryStore: Block broadcast_60_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.6 MB)
+17/07/27 21:36:05 INFO broadcast.TorrentBroadcast: Reading broadcast variable 60 took 5 ms
+17/07/27 21:36:05 INFO storage.MemoryStore: Block broadcast_60 stored as values in memory (estimated size 9.5 KB, free 8.6 MB)
+17/07/27 21:36:05 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:05 INFO python.PythonRunner: Times: total = 71, boot = -375, init = 376, finish = 70
+17/07/27 21:36:05 INFO executor.Executor: Finished task 18.0 in stage 54.0 (TID 1087). 2142 bytes result sent to driver
+17/07/27 21:36:06 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1102
+17/07/27 21:36:06 INFO executor.Executor: Running task 18.0 in stage 55.0 (TID 1102)
+17/07/27 21:36:06 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 61
+17/07/27 21:36:06 INFO storage.MemoryStore: Block broadcast_61_piece0 stored as bytes in memory (estimated size 5.5 KB, free 8.6 MB)
+17/07/27 21:36:06 INFO broadcast.TorrentBroadcast: Reading broadcast variable 61 took 11 ms
+17/07/27 21:36:06 INFO storage.MemoryStore: Block broadcast_61 stored as values in memory (estimated size 9.5 KB, free 8.6 MB)
+17/07/27 21:36:06 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:06 INFO python.PythonRunner: Times: total = 183, boot = -824, init = 826, finish = 181
+17/07/27 21:36:06 INFO executor.Executor: Finished task 18.0 in stage 55.0 (TID 1102). 2076 bytes result sent to driver
+17/07/27 21:36:07 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1126
+17/07/27 21:36:07 INFO executor.Executor: Running task 18.0 in stage 56.0 (TID 1126)
+17/07/27 21:36:07 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 62
+17/07/27 21:36:07 INFO storage.MemoryStore: Block broadcast_62_piece0 stored as bytes in memory (estimated size 28.6 KB, free 8.5 MB)
+17/07/27 21:36:07 INFO broadcast.TorrentBroadcast: Reading broadcast variable 62 took 9 ms
+17/07/27 21:36:07 INFO storage.MemoryStore: Block broadcast_62 stored as values in memory (estimated size 76.9 KB, free 8.6 MB)
+17/07/27 21:36:07 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:07 INFO python.PythonRunner: Times: total = 187, boot = -557, init = 559, finish = 185
+17/07/27 21:36:07 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:07 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0056_m_000018_1126' to hdfs://10.10.34.11:9000/pjhe/test/15/_temporary/0/task_201707272134_0056_m_000018
+17/07/27 21:36:07 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0056_m_000018_1126: Committed
+17/07/27 21:36:07 INFO executor.Executor: Finished task 18.0 in stage 56.0 (TID 1126). 2364 bytes result sent to driver
+17/07/27 21:36:08 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1146
+17/07/27 21:36:08 INFO executor.Executor: Running task 18.0 in stage 57.0 (TID 1146)
+17/07/27 21:36:08 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 63
+17/07/27 21:36:08 INFO storage.MemoryStore: Block broadcast_63_piece0 stored as bytes in memory (estimated size 5.6 KB, free 8.6 MB)
+17/07/27 21:36:08 INFO broadcast.TorrentBroadcast: Reading broadcast variable 63 took 9 ms
+17/07/27 21:36:08 INFO storage.MemoryStore: Block broadcast_63 stored as values in memory (estimated size 9.5 KB, free 8.6 MB)
+17/07/27 21:36:08 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:08 INFO python.PythonRunner: Times: total = 184, boot = -690, init = 693, finish = 181
+17/07/27 21:36:08 INFO executor.Executor: Finished task 18.0 in stage 57.0 (TID 1146). 2221 bytes result sent to driver
+17/07/27 21:36:08 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1172
+17/07/27 21:36:08 INFO executor.Executor: Running task 18.0 in stage 58.0 (TID 1172)
+17/07/27 21:36:08 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 64
+17/07/27 21:36:08 INFO storage.MemoryStore: Block broadcast_64_piece0 stored as bytes in memory (estimated size 5.5 KB, free 8.6 MB)
+17/07/27 21:36:08 INFO broadcast.TorrentBroadcast: Reading broadcast variable 64 took 9 ms
+17/07/27 21:36:08 INFO storage.MemoryStore: Block broadcast_64 stored as values in memory (estimated size 9.5 KB, free 8.6 MB)
+17/07/27 21:36:08 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:08 INFO python.PythonRunner: Times: total = 184, boot = -202, init = 204, finish = 182
+17/07/27 21:36:08 INFO executor.Executor: Finished task 18.0 in stage 58.0 (TID 1172). 2153 bytes result sent to driver
+17/07/27 21:36:09 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1187
+17/07/27 21:36:09 INFO executor.Executor: Running task 18.0 in stage 59.0 (TID 1187)
+17/07/27 21:36:09 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 65
+17/07/27 21:36:09 INFO storage.MemoryStore: Block broadcast_65_piece0 stored as bytes in memory (estimated size 28.6 KB, free 8.7 MB)
+17/07/27 21:36:09 INFO broadcast.TorrentBroadcast: Reading broadcast variable 65 took 9 ms
+17/07/27 21:36:09 INFO storage.MemoryStore: Block broadcast_65 stored as values in memory (estimated size 76.9 KB, free 8.7 MB)
+17/07/27 21:36:09 INFO storage.BlockManager: Found block rdd_64_18 locally
+17/07/27 21:36:09 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:09 INFO python.PythonRunner: Times: total = 184, boot = -310, init = 312, finish = 182
+17/07/27 21:36:09 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0059_m_000018_1187' to hdfs://10.10.34.11:9000/pjhe/test/16/_temporary/0/task_201707272134_0059_m_000018
+17/07/27 21:36:09 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0059_m_000018_1187: Committed
+17/07/27 21:36:09 INFO executor.Executor: Finished task 18.0 in stage 59.0 (TID 1187). 2364 bytes result sent to driver
+17/07/27 21:36:09 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1207
+17/07/27 21:36:09 INFO executor.Executor: Running task 18.0 in stage 60.0 (TID 1207)
+17/07/27 21:36:09 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 66
+17/07/27 21:36:09 INFO storage.MemoryStore: Block broadcast_66_piece0 stored as bytes in memory (estimated size 5.3 KB, free 8.7 MB)
+17/07/27 21:36:09 INFO broadcast.TorrentBroadcast: Reading broadcast variable 66 took 8 ms
+17/07/27 21:36:09 INFO storage.MemoryStore: Block broadcast_66 stored as values in memory (estimated size 9.1 KB, free 8.7 MB)
+17/07/27 21:36:09 INFO spark.CacheManager: Partition rdd_99_18 not found, computing it
+17/07/27 21:36:09 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:10 INFO python.PythonRunner: Times: total = 945, boot = -309, init = 311, finish = 943
+17/07/27 21:36:10 INFO storage.MemoryStore: Block rdd_99_18 stored as bytes in memory (estimated size 629.7 KB, free 9.4 MB)
+17/07/27 21:36:11 INFO python.PythonRunner: Times: total = 294, boot = -4, init = 5, finish = 293
+17/07/27 21:36:11 INFO executor.Executor: Finished task 18.0 in stage 60.0 (TID 1207). 3133 bytes result sent to driver
+17/07/27 21:36:11 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1223
+17/07/27 21:36:11 INFO executor.Executor: Running task 18.0 in stage 61.0 (TID 1223)
+17/07/27 21:36:11 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 67
+17/07/27 21:36:11 INFO storage.MemoryStore: Block broadcast_67_piece0 stored as bytes in memory (estimated size 5.1 KB, free 9.1 MB)
+17/07/27 21:36:11 INFO broadcast.TorrentBroadcast: Reading broadcast variable 67 took 8 ms
+17/07/27 21:36:11 INFO storage.MemoryStore: Block broadcast_67 stored as values in memory (estimated size 8.9 KB, free 9.1 MB)
+17/07/27 21:36:11 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:11 INFO python.PythonRunner: Times: total = 85, boot = -384, init = 386, finish = 83
+17/07/27 21:36:11 INFO executor.Executor: Finished task 18.0 in stage 61.0 (TID 1223). 2090 bytes result sent to driver
+17/07/27 21:36:11 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1243
+17/07/27 21:36:11 INFO executor.Executor: Running task 18.0 in stage 62.0 (TID 1243)
+17/07/27 21:36:11 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 68
+17/07/27 21:36:11 INFO storage.MemoryStore: Block broadcast_68_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.1 MB)
+17/07/27 21:36:11 INFO broadcast.TorrentBroadcast: Reading broadcast variable 68 took 10 ms
+17/07/27 21:36:11 INFO storage.MemoryStore: Block broadcast_68 stored as values in memory (estimated size 9.5 KB, free 9.2 MB)
+17/07/27 21:36:11 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:11 INFO python.PythonRunner: Times: total = 207, boot = -68, init = 70, finish = 205
+17/07/27 21:36:11 INFO executor.Executor: Finished task 18.0 in stage 62.0 (TID 1243). 2315 bytes result sent to driver
+17/07/27 21:36:11 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1265
+17/07/27 21:36:11 INFO executor.Executor: Running task 18.0 in stage 63.0 (TID 1265)
+17/07/27 21:36:11 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 69
+17/07/27 21:36:11 INFO storage.MemoryStore: Block broadcast_69_piece0 stored as bytes in memory (estimated size 5.4 KB, free 9.2 MB)
+17/07/27 21:36:11 INFO broadcast.TorrentBroadcast: Reading broadcast variable 69 took 9 ms
+17/07/27 21:36:11 INFO storage.MemoryStore: Block broadcast_69 stored as values in memory (estimated size 9.3 KB, free 9.2 MB)
+17/07/27 21:36:11 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:12 INFO python.PythonRunner: Times: total = 191, boot = -44, init = 45, finish = 190
+17/07/27 21:36:12 INFO executor.Executor: Finished task 18.0 in stage 63.0 (TID 1265). 2088 bytes result sent to driver
+17/07/27 21:36:12 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1280
+17/07/27 21:36:12 INFO executor.Executor: Running task 18.0 in stage 64.0 (TID 1280)
+17/07/27 21:36:12 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 70
+17/07/27 21:36:12 INFO storage.MemoryStore: Block broadcast_70_piece0 stored as bytes in memory (estimated size 5.7 KB, free 9.2 MB)
+17/07/27 21:36:12 INFO broadcast.TorrentBroadcast: Reading broadcast variable 70 took 9 ms
+17/07/27 21:36:12 INFO storage.MemoryStore: Block broadcast_70 stored as values in memory (estimated size 9.6 KB, free 9.2 MB)
+17/07/27 21:36:12 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:12 INFO python.PythonRunner: Times: total = 202, boot = -93, init = 95, finish = 200
+17/07/27 21:36:12 INFO executor.Executor: Finished task 18.0 in stage 64.0 (TID 1280). 2241 bytes result sent to driver
+17/07/27 21:36:12 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1304
+17/07/27 21:36:12 INFO executor.Executor: Running task 18.0 in stage 65.0 (TID 1304)
+17/07/27 21:36:12 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 71
+17/07/27 21:36:12 INFO storage.MemoryStore: Block broadcast_71_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.2 MB)
+17/07/27 21:36:12 INFO broadcast.TorrentBroadcast: Reading broadcast variable 71 took 11 ms
+17/07/27 21:36:12 INFO storage.MemoryStore: Block broadcast_71 stored as values in memory (estimated size 9.6 KB, free 9.2 MB)
+17/07/27 21:36:12 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:12 INFO python.PythonRunner: Times: total = 200, boot = -120, init = 122, finish = 198
+17/07/27 21:36:12 INFO executor.Executor: Finished task 18.0 in stage 65.0 (TID 1304). 2163 bytes result sent to driver
+17/07/27 21:36:12 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1330
+17/07/27 21:36:12 INFO executor.Executor: Running task 18.0 in stage 66.0 (TID 1330)
+17/07/27 21:36:12 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 72
+17/07/27 21:36:12 INFO storage.MemoryStore: Block broadcast_72_piece0 stored as bytes in memory (estimated size 28.7 KB, free 9.2 MB)
+17/07/27 21:36:12 INFO broadcast.TorrentBroadcast: Reading broadcast variable 72 took 10 ms
+17/07/27 21:36:12 INFO storage.MemoryStore: Block broadcast_72 stored as values in memory (estimated size 77.0 KB, free 9.3 MB)
+17/07/27 21:36:12 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:13 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:13 INFO python.PythonRunner: Times: total = 203, boot = -156, init = 158, finish = 201
+17/07/27 21:36:13 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0066_m_000018_1330' to hdfs://10.10.34.11:9000/pjhe/test/17/_temporary/0/task_201707272134_0066_m_000018
+17/07/27 21:36:13 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0066_m_000018_1330: Committed
+17/07/27 21:36:13 INFO executor.Executor: Finished task 18.0 in stage 66.0 (TID 1330). 2364 bytes result sent to driver
+17/07/27 21:36:13 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1349
+17/07/27 21:36:13 INFO executor.Executor: Running task 18.0 in stage 67.0 (TID 1349)
+17/07/27 21:36:13 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 73
+17/07/27 21:36:13 INFO storage.MemoryStore: Block broadcast_73_piece0 stored as bytes in memory (estimated size 5.7 KB, free 9.2 MB)
+17/07/27 21:36:13 INFO broadcast.TorrentBroadcast: Reading broadcast variable 73 took 8 ms
+17/07/27 21:36:13 INFO storage.MemoryStore: Block broadcast_73 stored as values in memory (estimated size 9.6 KB, free 9.2 MB)
+17/07/27 21:36:13 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:13 INFO python.PythonRunner: Times: total = 202, boot = -138, init = 140, finish = 200
+17/07/27 21:36:13 INFO executor.Executor: Finished task 18.0 in stage 67.0 (TID 1349). 2243 bytes result sent to driver
+17/07/27 21:36:13 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1370
+17/07/27 21:36:13 INFO executor.Executor: Running task 18.0 in stage 68.0 (TID 1370)
+17/07/27 21:36:13 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 74
+17/07/27 21:36:13 INFO storage.MemoryStore: Block broadcast_74_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.2 MB)
+17/07/27 21:36:13 INFO broadcast.TorrentBroadcast: Reading broadcast variable 74 took 9 ms
+17/07/27 21:36:13 INFO storage.MemoryStore: Block broadcast_74 stored as values in memory (estimated size 9.6 KB, free 9.3 MB)
+17/07/27 21:36:13 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:13 INFO python.PythonRunner: Times: total = 201, boot = -101, init = 103, finish = 199
+17/07/27 21:36:13 INFO executor.Executor: Finished task 18.0 in stage 68.0 (TID 1370). 2165 bytes result sent to driver
+17/07/27 21:36:13 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1384
+17/07/27 21:36:13 INFO executor.Executor: Running task 18.0 in stage 69.0 (TID 1384)
+17/07/27 21:36:13 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 75
+17/07/27 21:36:13 INFO storage.MemoryStore: Block broadcast_75_piece0 stored as bytes in memory (estimated size 28.7 KB, free 9.3 MB)
+17/07/27 21:36:14 INFO broadcast.TorrentBroadcast: Reading broadcast variable 75 took 10 ms
+17/07/27 21:36:14 INFO storage.MemoryStore: Block broadcast_75 stored as values in memory (estimated size 77.0 KB, free 9.4 MB)
+17/07/27 21:36:14 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:14 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:14 INFO python.PythonRunner: Times: total = 202, boot = -181, init = 183, finish = 200
+17/07/27 21:36:14 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0069_m_000018_1384' to hdfs://10.10.34.11:9000/pjhe/test/18/_temporary/0/task_201707272134_0069_m_000018
+17/07/27 21:36:14 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0069_m_000018_1384: Committed
+17/07/27 21:36:14 INFO executor.Executor: Finished task 18.0 in stage 69.0 (TID 1384). 2364 bytes result sent to driver
+17/07/27 21:36:14 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1402
+17/07/27 21:36:14 INFO executor.Executor: Running task 18.0 in stage 70.0 (TID 1402)
+17/07/27 21:36:14 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 76
+17/07/27 21:36:14 INFO storage.MemoryStore: Block broadcast_76_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.4 MB)
+17/07/27 21:36:14 INFO broadcast.TorrentBroadcast: Reading broadcast variable 76 took 8 ms
+17/07/27 21:36:14 INFO storage.MemoryStore: Block broadcast_76 stored as values in memory (estimated size 9.5 KB, free 9.4 MB)
+17/07/27 21:36:14 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:14 INFO python.PythonRunner: Times: total = 192, boot = -160, init = 161, finish = 191
+17/07/27 21:36:14 INFO executor.Executor: Finished task 18.0 in stage 70.0 (TID 1402). 2149 bytes result sent to driver
+17/07/27 21:36:14 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1424
+17/07/27 21:36:14 INFO executor.Executor: Running task 18.0 in stage 71.0 (TID 1424)
+17/07/27 21:36:14 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 77
+17/07/27 21:36:14 INFO storage.MemoryStore: Block broadcast_77_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.4 MB)
+17/07/27 21:36:14 INFO broadcast.TorrentBroadcast: Reading broadcast variable 77 took 9 ms
+17/07/27 21:36:14 INFO storage.MemoryStore: Block broadcast_77 stored as values in memory (estimated size 9.5 KB, free 9.4 MB)
+17/07/27 21:36:14 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:14 INFO python.PythonRunner: Times: total = 193, boot = -135, init = 137, finish = 191
+17/07/27 21:36:14 INFO executor.Executor: Finished task 18.0 in stage 71.0 (TID 1424). 2076 bytes result sent to driver
+17/07/27 21:36:15 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1446
+17/07/27 21:36:15 INFO executor.Executor: Running task 18.0 in stage 72.0 (TID 1446)
+17/07/27 21:36:15 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 78
+17/07/27 21:36:15 INFO storage.MemoryStore: Block broadcast_78_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.3 MB)
+17/07/27 21:36:15 INFO broadcast.TorrentBroadcast: Reading broadcast variable 78 took 9 ms
+17/07/27 21:36:15 INFO storage.MemoryStore: Block broadcast_78 stored as values in memory (estimated size 76.9 KB, free 9.3 MB)
+17/07/27 21:36:15 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:15 INFO python.PythonRunner: Times: total = 192, boot = -197, init = 199, finish = 190
+17/07/27 21:36:15 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:15 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0072_m_000018_1446' to hdfs://10.10.34.11:9000/pjhe/test/19/_temporary/0/task_201707272134_0072_m_000018
+17/07/27 21:36:15 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0072_m_000018_1446: Committed
+17/07/27 21:36:15 INFO executor.Executor: Finished task 18.0 in stage 72.0 (TID 1446). 2364 bytes result sent to driver
+17/07/27 21:36:15 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1461
+17/07/27 21:36:15 INFO executor.Executor: Running task 18.0 in stage 73.0 (TID 1461)
+17/07/27 21:36:15 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 79
+17/07/27 21:36:15 INFO storage.MemoryStore: Block broadcast_79_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.4 MB)
+17/07/27 21:36:15 INFO broadcast.TorrentBroadcast: Reading broadcast variable 79 took 7 ms
+17/07/27 21:36:15 INFO storage.MemoryStore: Block broadcast_79 stored as values in memory (estimated size 9.5 KB, free 9.4 MB)
+17/07/27 21:36:15 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:15 INFO python.PythonRunner: Times: total = 193, boot = -202, init = 204, finish = 191
+17/07/27 21:36:15 INFO executor.Executor: Finished task 18.0 in stage 73.0 (TID 1461). 2149 bytes result sent to driver
+17/07/27 21:36:15 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1491
+17/07/27 21:36:15 INFO executor.Executor: Running task 18.0 in stage 74.0 (TID 1491)
+17/07/27 21:36:15 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 80
+17/07/27 21:36:15 INFO storage.MemoryStore: Block broadcast_80_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.4 MB)
+17/07/27 21:36:15 INFO broadcast.TorrentBroadcast: Reading broadcast variable 80 took 9 ms
+17/07/27 21:36:15 INFO storage.MemoryStore: Block broadcast_80 stored as values in memory (estimated size 9.5 KB, free 9.4 MB)
+17/07/27 21:36:15 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:16 INFO python.PythonRunner: Times: total = 193, boot = -123, init = 125, finish = 191
+17/07/27 21:36:16 INFO executor.Executor: Finished task 18.0 in stage 74.0 (TID 1491). 2076 bytes result sent to driver
+17/07/27 21:36:16 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1505
+17/07/27 21:36:16 INFO executor.Executor: Running task 18.0 in stage 75.0 (TID 1505)
+17/07/27 21:36:16 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 81
+17/07/27 21:36:16 INFO storage.MemoryStore: Block broadcast_81_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.4 MB)
+17/07/27 21:36:16 INFO broadcast.TorrentBroadcast: Reading broadcast variable 81 took 8 ms
+17/07/27 21:36:16 INFO storage.MemoryStore: Block broadcast_81 stored as values in memory (estimated size 76.9 KB, free 9.5 MB)
+17/07/27 21:36:16 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:16 INFO python.PythonRunner: Times: total = 192, boot = -168, init = 170, finish = 190
+17/07/27 21:36:16 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:16 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0075_m_000018_1505' to hdfs://10.10.34.11:9000/pjhe/test/20/_temporary/0/task_201707272134_0075_m_000018
+17/07/27 21:36:16 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0075_m_000018_1505: Committed
+17/07/27 21:36:16 INFO executor.Executor: Finished task 18.0 in stage 75.0 (TID 1505). 2364 bytes result sent to driver
+17/07/27 21:36:16 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1525
+17/07/27 21:36:16 INFO executor.Executor: Running task 18.0 in stage 76.0 (TID 1525)
+17/07/27 21:36:16 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 82
+17/07/27 21:36:16 INFO storage.MemoryStore: Block broadcast_82_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.5 MB)
+17/07/27 21:36:16 INFO broadcast.TorrentBroadcast: Reading broadcast variable 82 took 8 ms
+17/07/27 21:36:16 INFO storage.MemoryStore: Block broadcast_82 stored as values in memory (estimated size 9.5 KB, free 9.5 MB)
+17/07/27 21:36:16 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:17 INFO python.PythonRunner: Times: total = 775, boot = -149, init = 150, finish = 774
+17/07/27 21:36:17 INFO executor.Executor: Finished task 18.0 in stage 76.0 (TID 1525). 2430 bytes result sent to driver
+17/07/27 21:36:17 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1551
+17/07/27 21:36:17 INFO executor.Executor: Running task 18.0 in stage 77.0 (TID 1551)
+17/07/27 21:36:17 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 83
+17/07/27 21:36:17 INFO storage.MemoryStore: Block broadcast_83_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.3 MB)
+17/07/27 21:36:17 INFO broadcast.TorrentBroadcast: Reading broadcast variable 83 took 6 ms
+17/07/27 21:36:17 INFO storage.MemoryStore: Block broadcast_83 stored as values in memory (estimated size 9.5 KB, free 9.3 MB)
+17/07/27 21:36:17 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:17 INFO python.PythonRunner: Times: total = 313, boot = -109, init = 110, finish = 312
+17/07/27 21:36:17 INFO executor.Executor: Finished task 18.0 in stage 77.0 (TID 1551). 2151 bytes result sent to driver
+17/07/27 21:36:18 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1563
+17/07/27 21:36:18 INFO executor.Executor: Running task 18.0 in stage 78.0 (TID 1563)
+17/07/27 21:36:18 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 84
+17/07/27 21:36:18 INFO storage.MemoryStore: Block broadcast_84_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.3 MB)
+17/07/27 21:36:18 INFO broadcast.TorrentBroadcast: Reading broadcast variable 84 took 5 ms
+17/07/27 21:36:18 INFO storage.MemoryStore: Block broadcast_84 stored as values in memory (estimated size 76.9 KB, free 9.4 MB)
+17/07/27 21:36:18 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:18 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:19 INFO python.PythonRunner: Times: total = 695, boot = -434, init = 435, finish = 694
+17/07/27 21:36:19 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0078_m_000018_1563' to hdfs://10.10.34.11:9000/pjhe/test/21/_temporary/0/task_201707272134_0078_m_000018
+17/07/27 21:36:19 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0078_m_000018_1563: Committed
+17/07/27 21:36:19 INFO executor.Executor: Finished task 18.0 in stage 78.0 (TID 1563). 2364 bytes result sent to driver
+17/07/27 21:36:19 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1589
+17/07/27 21:36:19 INFO executor.Executor: Running task 18.0 in stage 79.0 (TID 1589)
+17/07/27 21:36:19 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 85
+17/07/27 21:36:19 INFO storage.MemoryStore: Block broadcast_85_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.4 MB)
+17/07/27 21:36:19 INFO broadcast.TorrentBroadcast: Reading broadcast variable 85 took 9 ms
+17/07/27 21:36:19 INFO storage.MemoryStore: Block broadcast_85 stored as values in memory (estimated size 9.5 KB, free 9.4 MB)
+17/07/27 21:36:19 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:19 INFO python.PythonRunner: Times: total = 191, boot = -527, init = 529, finish = 189
+17/07/27 21:36:19 INFO executor.Executor: Finished task 18.0 in stage 79.0 (TID 1589). 2149 bytes result sent to driver
+17/07/27 21:36:19 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1609
+17/07/27 21:36:19 INFO executor.Executor: Running task 18.0 in stage 80.0 (TID 1609)
+17/07/27 21:36:19 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 86
+17/07/27 21:36:19 INFO storage.MemoryStore: Block broadcast_86_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.4 MB)
+17/07/27 21:36:19 INFO broadcast.TorrentBroadcast: Reading broadcast variable 86 took 9 ms
+17/07/27 21:36:19 INFO storage.MemoryStore: Block broadcast_86 stored as values in memory (estimated size 9.5 KB, free 9.4 MB)
+17/07/27 21:36:19 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:20 INFO python.PythonRunner: Times: total = 192, boot = -33, init = 35, finish = 190
+17/07/27 21:36:20 INFO executor.Executor: Finished task 18.0 in stage 80.0 (TID 1609). 2076 bytes result sent to driver
+17/07/27 21:36:20 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1622
+17/07/27 21:36:20 INFO executor.Executor: Running task 18.0 in stage 81.0 (TID 1622)
+17/07/27 21:36:20 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 87
+17/07/27 21:36:20 INFO storage.MemoryStore: Block broadcast_87_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.4 MB)
+17/07/27 21:36:20 INFO broadcast.TorrentBroadcast: Reading broadcast variable 87 took 9 ms
+17/07/27 21:36:20 INFO storage.MemoryStore: Block broadcast_87 stored as values in memory (estimated size 76.9 KB, free 9.5 MB)
+17/07/27 21:36:20 INFO storage.BlockManager: Found block rdd_99_18 locally
+17/07/27 21:36:20 INFO python.PythonRunner: Times: total = 192, boot = -176, init = 179, finish = 189
+17/07/27 21:36:20 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:20 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0081_m_000018_1622' to hdfs://10.10.34.11:9000/pjhe/test/22/_temporary/0/task_201707272134_0081_m_000018
+17/07/27 21:36:20 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0081_m_000018_1622: Committed
+17/07/27 21:36:20 INFO executor.Executor: Finished task 18.0 in stage 81.0 (TID 1622). 2364 bytes result sent to driver
+17/07/27 21:36:20 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1643
+17/07/27 21:36:20 INFO executor.Executor: Running task 18.0 in stage 82.0 (TID 1643)
+17/07/27 21:36:20 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 88
+17/07/27 21:36:20 INFO storage.MemoryStore: Block broadcast_88_piece0 stored as bytes in memory (estimated size 5.3 KB, free 9.3 MB)
+17/07/27 21:36:20 INFO broadcast.TorrentBroadcast: Reading broadcast variable 88 took 8 ms
+17/07/27 21:36:20 INFO storage.MemoryStore: Block broadcast_88 stored as values in memory (estimated size 9.1 KB, free 9.3 MB)
+17/07/27 21:36:20 INFO spark.CacheManager: Partition rdd_134_18 not found, computing it
+17/07/27 21:36:20 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:21 INFO python.PythonRunner: Times: total = 1023, boot = -182, init = 184, finish = 1021
+17/07/27 21:36:21 INFO storage.MemoryStore: Block rdd_134_18 stored as bytes in memory (estimated size 568.6 KB, free 9.8 MB)
+17/07/27 21:36:21 INFO python.PythonRunner: Times: total = 324, boot = -4, init = 5, finish = 323
+17/07/27 21:36:21 INFO executor.Executor: Finished task 18.0 in stage 82.0 (TID 1643). 3907 bytes result sent to driver
+17/07/27 21:36:23 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1666
+17/07/27 21:36:23 INFO executor.Executor: Running task 18.0 in stage 83.0 (TID 1666)
+17/07/27 21:36:23 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 89
+17/07/27 21:36:23 INFO storage.MemoryStore: Block broadcast_89_piece0 stored as bytes in memory (estimated size 5.1 KB, free 9.8 MB)
+17/07/27 21:36:23 INFO broadcast.TorrentBroadcast: Reading broadcast variable 89 took 10 ms
+17/07/27 21:36:23 INFO storage.MemoryStore: Block broadcast_89 stored as values in memory (estimated size 8.9 KB, free 9.8 MB)
+17/07/27 21:36:23 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:23 INFO python.PythonRunner: Times: total = 86, boot = -1446, init = 1448, finish = 84
+17/07/27 21:36:23 INFO executor.Executor: Finished task 18.0 in stage 83.0 (TID 1666). 2090 bytes result sent to driver
+17/07/27 21:36:23 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1691
+17/07/27 21:36:23 INFO executor.Executor: Running task 18.0 in stage 84.0 (TID 1691)
+17/07/27 21:36:23 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 90
+17/07/27 21:36:23 INFO storage.MemoryStore: Block broadcast_90_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.8 MB)
+17/07/27 21:36:23 INFO broadcast.TorrentBroadcast: Reading broadcast variable 90 took 8 ms
+17/07/27 21:36:23 INFO storage.MemoryStore: Block broadcast_90 stored as values in memory (estimated size 9.5 KB, free 9.9 MB)
+17/07/27 21:36:23 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:23 INFO python.PythonRunner: Times: total = 208, boot = -82, init = 84, finish = 206
+17/07/27 21:36:23 INFO executor.Executor: Finished task 18.0 in stage 84.0 (TID 1691). 3148 bytes result sent to driver
+17/07/27 21:36:24 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1705
+17/07/27 21:36:24 INFO executor.Executor: Running task 18.0 in stage 85.0 (TID 1705)
+17/07/27 21:36:24 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 91
+17/07/27 21:36:24 INFO storage.MemoryStore: Block broadcast_91_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.9 MB)
+17/07/27 21:36:24 INFO broadcast.TorrentBroadcast: Reading broadcast variable 91 took 8 ms
+17/07/27 21:36:24 INFO storage.MemoryStore: Block broadcast_91 stored as values in memory (estimated size 9.5 KB, free 9.9 MB)
+17/07/27 21:36:24 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:24 INFO python.PythonRunner: Times: total = 206, boot = -161, init = 163, finish = 204
+17/07/27 21:36:24 INFO executor.Executor: Finished task 18.0 in stage 85.0 (TID 1705). 2163 bytes result sent to driver
+17/07/27 21:36:24 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1729
+17/07/27 21:36:24 INFO executor.Executor: Running task 18.0 in stage 86.0 (TID 1729)
+17/07/27 21:36:24 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 92
+17/07/27 21:36:24 INFO storage.MemoryStore: Block broadcast_92_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.9 MB)
+17/07/27 21:36:24 INFO broadcast.TorrentBroadcast: Reading broadcast variable 92 took 8 ms
+17/07/27 21:36:24 INFO storage.MemoryStore: Block broadcast_92 stored as values in memory (estimated size 76.9 KB, free 10.0 MB)
+17/07/27 21:36:24 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:24 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:24 INFO python.PythonRunner: Times: total = 205, boot = -489, init = 491, finish = 203
+17/07/27 21:36:25 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0086_m_000018_1729' to hdfs://10.10.34.11:9000/pjhe/test/23/_temporary/0/task_201707272134_0086_m_000018
+17/07/27 21:36:25 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0086_m_000018_1729: Committed
+17/07/27 21:36:25 INFO executor.Executor: Finished task 18.0 in stage 86.0 (TID 1729). 2364 bytes result sent to driver
+17/07/27 21:36:25 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1740
+17/07/27 21:36:25 INFO executor.Executor: Running task 18.0 in stage 87.0 (TID 1740)
+17/07/27 21:36:25 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 93
+17/07/27 21:36:25 INFO storage.MemoryStore: Block broadcast_93_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.0 MB)
+17/07/27 21:36:25 INFO broadcast.TorrentBroadcast: Reading broadcast variable 93 took 11 ms
+17/07/27 21:36:25 INFO storage.MemoryStore: Block broadcast_93 stored as values in memory (estimated size 9.5 KB, free 9.9 MB)
+17/07/27 21:36:25 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:25 INFO python.PythonRunner: Times: total = 200, boot = -248, init = 250, finish = 198
+17/07/27 21:36:25 INFO executor.Executor: Finished task 18.0 in stage 87.0 (TID 1740). 2257 bytes result sent to driver
+17/07/27 21:36:26 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1771
+17/07/27 21:36:26 INFO executor.Executor: Running task 18.0 in stage 88.0 (TID 1771)
+17/07/27 21:36:26 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 94
+17/07/27 21:36:26 INFO storage.MemoryStore: Block broadcast_94_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.8 MB)
+17/07/27 21:36:26 INFO broadcast.TorrentBroadcast: Reading broadcast variable 94 took 10 ms
+17/07/27 21:36:26 INFO storage.MemoryStore: Block broadcast_94 stored as values in memory (estimated size 9.5 KB, free 9.8 MB)
+17/07/27 21:36:26 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:26 INFO python.PythonRunner: Times: total = 199, boot = -618, init = 620, finish = 197
+17/07/27 21:36:26 INFO executor.Executor: Finished task 18.0 in stage 88.0 (TID 1771). 2169 bytes result sent to driver
+17/07/27 21:36:26 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1785
+17/07/27 21:36:26 INFO executor.Executor: Running task 18.0 in stage 89.0 (TID 1785)
+17/07/27 21:36:26 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 95
+17/07/27 21:36:26 INFO storage.MemoryStore: Block broadcast_95_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.9 MB)
+17/07/27 21:36:26 INFO broadcast.TorrentBroadcast: Reading broadcast variable 95 took 9 ms
+17/07/27 21:36:26 INFO storage.MemoryStore: Block broadcast_95 stored as values in memory (estimated size 76.9 KB, free 9.9 MB)
+17/07/27 21:36:26 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:26 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:26 INFO python.PythonRunner: Times: total = 199, boot = -497, init = 499, finish = 197
+17/07/27 21:36:27 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0089_m_000018_1785' to hdfs://10.10.34.11:9000/pjhe/test/24/_temporary/0/task_201707272134_0089_m_000018
+17/07/27 21:36:27 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0089_m_000018_1785: Committed
+17/07/27 21:36:27 INFO executor.Executor: Finished task 18.0 in stage 89.0 (TID 1785). 2364 bytes result sent to driver
+17/07/27 21:36:27 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1805
+17/07/27 21:36:27 INFO executor.Executor: Running task 18.0 in stage 90.0 (TID 1805)
+17/07/27 21:36:27 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 96
+17/07/27 21:36:27 INFO storage.MemoryStore: Block broadcast_96_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.0 MB)
+17/07/27 21:36:27 INFO broadcast.TorrentBroadcast: Reading broadcast variable 96 took 9 ms
+17/07/27 21:36:27 INFO storage.MemoryStore: Block broadcast_96 stored as values in memory (estimated size 9.5 KB, free 10.0 MB)
+17/07/27 21:36:27 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:28 INFO python.PythonRunner: Times: total = 826, boot = -660, init = 662, finish = 824
+17/07/27 21:36:28 INFO executor.Executor: Finished task 18.0 in stage 90.0 (TID 1805). 2272 bytes result sent to driver
+17/07/27 21:36:29 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1821
+17/07/27 21:36:29 INFO executor.Executor: Running task 18.0 in stage 91.0 (TID 1821)
+17/07/27 21:36:29 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 97
+17/07/27 21:36:29 INFO storage.MemoryStore: Block broadcast_97_piece0 stored as bytes in memory (estimated size 5.5 KB, free 10.0 MB)
+17/07/27 21:36:29 INFO broadcast.TorrentBroadcast: Reading broadcast variable 97 took 9 ms
+17/07/27 21:36:29 INFO storage.MemoryStore: Block broadcast_97 stored as values in memory (estimated size 9.5 KB, free 10.0 MB)
+17/07/27 21:36:29 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:30 INFO python.PythonRunner: Times: total = 814, boot = -1115, init = 1116, finish = 813
+17/07/27 21:36:30 INFO executor.Executor: Finished task 18.0 in stage 91.0 (TID 1821). 2184 bytes result sent to driver
+17/07/27 21:36:30 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1849
+17/07/27 21:36:30 INFO executor.Executor: Running task 18.0 in stage 92.0 (TID 1849)
+17/07/27 21:36:30 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 98
+17/07/27 21:36:30 INFO storage.MemoryStore: Block broadcast_98_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.9 MB)
+17/07/27 21:36:30 INFO broadcast.TorrentBroadcast: Reading broadcast variable 98 took 10 ms
+17/07/27 21:36:30 INFO storage.MemoryStore: Block broadcast_98 stored as values in memory (estimated size 76.9 KB, free 9.9 MB)
+17/07/27 21:36:30 INFO storage.BlockManager: Found block rdd_134_18 locally
+17/07/27 21:36:31 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:31 INFO python.PythonRunner: Times: total = 922, boot = -533, init = 535, finish = 920
+17/07/27 21:36:31 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0092_m_000018_1849' to hdfs://10.10.34.11:9000/pjhe/test/25/_temporary/0/task_201707272134_0092_m_000018
+17/07/27 21:36:31 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0092_m_000018_1849: Committed
+17/07/27 21:36:31 INFO executor.Executor: Finished task 18.0 in stage 92.0 (TID 1849). 2364 bytes result sent to driver
+17/07/27 21:36:32 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1864
+17/07/27 21:36:32 INFO executor.Executor: Running task 18.0 in stage 93.0 (TID 1864)
+17/07/27 21:36:32 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 99
+17/07/27 21:36:32 INFO storage.MemoryStore: Block broadcast_99_piece0 stored as bytes in memory (estimated size 5.3 KB, free 9.9 MB)
+17/07/27 21:36:32 INFO broadcast.TorrentBroadcast: Reading broadcast variable 99 took 8 ms
+17/07/27 21:36:32 INFO storage.MemoryStore: Block broadcast_99 stored as values in memory (estimated size 9.1 KB, free 9.9 MB)
+17/07/27 21:36:32 INFO spark.CacheManager: Partition rdd_152_18 not found, computing it
+17/07/27 21:36:32 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:33 INFO python.PythonRunner: Times: total = 1007, boot = -657, init = 658, finish = 1006
+17/07/27 21:36:33 INFO storage.MemoryStore: Block rdd_152_18 stored as bytes in memory (estimated size 16.0 B, free 9.9 MB)
+17/07/27 21:36:33 INFO python.PythonRunner: Times: total = 38, boot = 8, init = 30, finish = 0
+17/07/27 21:36:33 INFO executor.Executor: Finished task 18.0 in stage 93.0 (TID 1864). 2743 bytes result sent to driver
+17/07/27 21:36:33 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1888
+17/07/27 21:36:33 INFO executor.Executor: Running task 18.0 in stage 94.0 (TID 1888)
+17/07/27 21:36:33 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 100
+17/07/27 21:36:33 INFO storage.MemoryStore: Block broadcast_100_piece0 stored as bytes in memory (estimated size 5.1 KB, free 9.9 MB)
+17/07/27 21:36:33 INFO broadcast.TorrentBroadcast: Reading broadcast variable 100 took 5 ms
+17/07/27 21:36:33 INFO storage.MemoryStore: Block broadcast_100 stored as values in memory (estimated size 8.9 KB, free 9.9 MB)
+17/07/27 21:36:33 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:33 INFO python.PythonRunner: Times: total = 41, boot = -134, init = 175, finish = 0
+17/07/27 21:36:33 INFO executor.Executor: Finished task 18.0 in stage 94.0 (TID 1888). 2087 bytes result sent to driver
+17/07/27 21:36:33 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1908
+17/07/27 21:36:33 INFO executor.Executor: Running task 18.0 in stage 95.0 (TID 1908)
+17/07/27 21:36:33 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 101
+17/07/27 21:36:33 INFO storage.MemoryStore: Block broadcast_101_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.9 MB)
+17/07/27 21:36:33 INFO broadcast.TorrentBroadcast: Reading broadcast variable 101 took 4 ms
+17/07/27 21:36:33 INFO storage.MemoryStore: Block broadcast_101 stored as values in memory (estimated size 9.5 KB, free 10.0 MB)
+17/07/27 21:36:33 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:33 INFO python.PythonRunner: Times: total = 39, boot = -48, init = 87, finish = 0
+17/07/27 21:36:33 INFO executor.Executor: Finished task 18.0 in stage 95.0 (TID 1908). 2163 bytes result sent to driver
+17/07/27 21:36:33 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1931
+17/07/27 21:36:33 INFO executor.Executor: Running task 18.0 in stage 96.0 (TID 1931)
+17/07/27 21:36:33 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 102
+17/07/27 21:36:33 INFO storage.MemoryStore: Block broadcast_102_piece0 stored as bytes in memory (estimated size 5.4 KB, free 10.0 MB)
+17/07/27 21:36:33 INFO broadcast.TorrentBroadcast: Reading broadcast variable 102 took 8 ms
+17/07/27 21:36:33 INFO storage.MemoryStore: Block broadcast_102 stored as values in memory (estimated size 9.3 KB, free 10.0 MB)
+17/07/27 21:36:33 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 39, boot = -50, init = 89, finish = 0
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 96.0 (TID 1931). 2087 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1950
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 97.0 (TID 1950)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 103
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_103_piece0 stored as bytes in memory (estimated size 5.7 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 103 took 8 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_103 stored as values in memory (estimated size 9.7 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 40, boot = -38, init = 78, finish = 0
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 97.0 (TID 1950). 2163 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1964
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 98.0 (TID 1964)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 104
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_104_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.8 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 104 took 8 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_104 stored as values in memory (estimated size 9.6 KB, free 9.8 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 38, boot = -30, init = 68, finish = 0
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 98.0 (TID 1964). 2076 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 1987
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 99.0 (TID 1987)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 105
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_105_piece0 stored as bytes in memory (estimated size 28.7 KB, free 9.9 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 105 took 8 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_105 stored as values in memory (estimated size 77.1 KB, free 9.9 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 39, boot = -87, init = 126, finish = 0
+17/07/27 21:36:34 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:34 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0099_m_000018_1987' to hdfs://10.10.34.11:9000/pjhe/test/26/_temporary/0/task_201707272134_0099_m_000018
+17/07/27 21:36:34 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0099_m_000018_1987: Committed
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 99.0 (TID 1987). 2364 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2010
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 100.0 (TID 2010)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 106
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_106_piece0 stored as bytes in memory (estimated size 5.7 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 106 took 8 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_106 stored as values in memory (estimated size 9.7 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 41, boot = -104, init = 145, finish = 0
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 100.0 (TID 2010). 2163 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2025
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 101.0 (TID 2025)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 107
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_107_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 107 took 8 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_107 stored as values in memory (estimated size 9.6 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 40, boot = -30, init = 70, finish = 0
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 101.0 (TID 2025). 2076 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2041
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 102.0 (TID 2041)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 108
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_108_piece0 stored as bytes in memory (estimated size 28.7 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 108 took 7 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_108 stored as values in memory (estimated size 77.1 KB, free 10.1 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 38, boot = -91, init = 129, finish = 0
+17/07/27 21:36:34 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:34 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0102_m_000018_2041' to hdfs://10.10.34.11:9000/pjhe/test/27/_temporary/0/task_201707272134_0102_m_000018
+17/07/27 21:36:34 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0102_m_000018_2041: Committed
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 102.0 (TID 2041). 2364 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2071
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 103.0 (TID 2071)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 109
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_109_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.1 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 109 took 9 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_109 stored as values in memory (estimated size 9.5 KB, free 10.0 MB)
+17/07/27 21:36:34 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:34 INFO python.PythonRunner: Times: total = 39, boot = -113, init = 152, finish = 0
+17/07/27 21:36:34 INFO executor.Executor: Finished task 18.0 in stage 103.0 (TID 2071). 2163 bytes result sent to driver
+17/07/27 21:36:34 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2089
+17/07/27 21:36:34 INFO executor.Executor: Running task 18.0 in stage 104.0 (TID 2089)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 110
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_110_piece0 stored as bytes in memory (estimated size 5.5 KB, free 9.8 MB)
+17/07/27 21:36:34 INFO broadcast.TorrentBroadcast: Reading broadcast variable 110 took 8 ms
+17/07/27 21:36:34 INFO storage.MemoryStore: Block broadcast_110 stored as values in memory (estimated size 9.5 KB, free 9.9 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 39, boot = -30, init = 69, finish = 0
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 104.0 (TID 2089). 2076 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2111
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 105.0 (TID 2111)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 111
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_111_piece0 stored as bytes in memory (estimated size 28.6 KB, free 9.9 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 111 took 8 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_111 stored as values in memory (estimated size 76.9 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 40, boot = -98, init = 138, finish = 0
+17/07/27 21:36:35 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:35 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0105_m_000018_2111' to hdfs://10.10.34.11:9000/pjhe/test/28/_temporary/0/task_201707272134_0105_m_000018
+17/07/27 21:36:35 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0105_m_000018_2111: Committed
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 105.0 (TID 2111). 2364 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2121
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 106.0 (TID 2121)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 112
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_112_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 112 took 8 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_112 stored as values in memory (estimated size 9.6 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 40, boot = -99, init = 139, finish = 0
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 106.0 (TID 2121). 2163 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2151
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 107.0 (TID 2151)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 113
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_113_piece0 stored as bytes in memory (estimated size 5.4 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 113 took 7 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_113 stored as values in memory (estimated size 9.3 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 41, boot = -64, init = 105, finish = 0
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 107.0 (TID 2151). 2087 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2166
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 108.0 (TID 2166)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 114
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_114_piece0 stored as bytes in memory (estimated size 5.7 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 114 took 7 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_114 stored as values in memory (estimated size 9.7 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 40, boot = -29, init = 69, finish = 0
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 108.0 (TID 2166). 2163 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2191
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 109.0 (TID 2191)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 115
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_115_piece0 stored as bytes in memory (estimated size 5.6 KB, free 9.9 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 115 took 11 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_115 stored as values in memory (estimated size 9.6 KB, free 9.9 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 40, boot = -37, init = 77, finish = 0
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 109.0 (TID 2191). 2076 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2210
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 110.0 (TID 2210)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 116
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_116_piece0 stored as bytes in memory (estimated size 28.7 KB, free 9.9 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 116 took 8 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_116 stored as values in memory (estimated size 77.1 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:35 INFO python.PythonRunner: Times: total = 39, boot = -90, init = 129, finish = 0
+17/07/27 21:36:35 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:35 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0110_m_000018_2210' to hdfs://10.10.34.11:9000/pjhe/test/29/_temporary/0/task_201707272134_0110_m_000018
+17/07/27 21:36:35 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0110_m_000018_2210: Committed
+17/07/27 21:36:35 INFO executor.Executor: Finished task 18.0 in stage 110.0 (TID 2210). 2364 bytes result sent to driver
+17/07/27 21:36:35 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2221
+17/07/27 21:36:35 INFO executor.Executor: Running task 18.0 in stage 111.0 (TID 2221)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 117
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_117_piece0 stored as bytes in memory (estimated size 5.7 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO broadcast.TorrentBroadcast: Reading broadcast variable 117 took 7 ms
+17/07/27 21:36:35 INFO storage.MemoryStore: Block broadcast_117 stored as values in memory (estimated size 9.7 KB, free 10.0 MB)
+17/07/27 21:36:35 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:36 INFO python.PythonRunner: Times: total = 41, boot = -100, init = 141, finish = 0
+17/07/27 21:36:36 INFO executor.Executor: Finished task 18.0 in stage 111.0 (TID 2221). 2163 bytes result sent to driver
+17/07/27 21:36:36 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2240
+17/07/27 21:36:36 INFO executor.Executor: Running task 18.0 in stage 112.0 (TID 2240)
+17/07/27 21:36:36 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 118
+17/07/27 21:36:36 INFO storage.MemoryStore: Block broadcast_118_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.0 MB)
+17/07/27 21:36:36 INFO broadcast.TorrentBroadcast: Reading broadcast variable 118 took 8 ms
+17/07/27 21:36:36 INFO storage.MemoryStore: Block broadcast_118 stored as values in memory (estimated size 9.6 KB, free 10.0 MB)
+17/07/27 21:36:36 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:36 INFO python.PythonRunner: Times: total = 38, boot = -31, init = 69, finish = 0
+17/07/27 21:36:36 INFO executor.Executor: Finished task 18.0 in stage 112.0 (TID 2240). 2076 bytes result sent to driver
+17/07/27 21:36:36 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2262
+17/07/27 21:36:36 INFO executor.Executor: Running task 18.0 in stage 113.0 (TID 2262)
+17/07/27 21:36:36 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 119
+17/07/27 21:36:36 INFO storage.MemoryStore: Block broadcast_119_piece0 stored as bytes in memory (estimated size 28.7 KB, free 10.0 MB)
+17/07/27 21:36:36 INFO broadcast.TorrentBroadcast: Reading broadcast variable 119 took 8 ms
+17/07/27 21:36:36 INFO storage.MemoryStore: Block broadcast_119 stored as values in memory (estimated size 77.0 KB, free 10.1 MB)
+17/07/27 21:36:36 INFO storage.BlockManager: Found block rdd_152_18 locally
+17/07/27 21:36:36 INFO python.PythonRunner: Times: total = 41, boot = -108, init = 149, finish = 0
+17/07/27 21:36:36 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:36 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0113_m_000018_2262' to hdfs://10.10.34.11:9000/pjhe/test/30/_temporary/0/task_201707272134_0113_m_000018
+17/07/27 21:36:36 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0113_m_000018_2262: Committed
+17/07/27 21:36:36 INFO executor.Executor: Finished task 18.0 in stage 113.0 (TID 2262). 2364 bytes result sent to driver
+17/07/27 21:36:36 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2280
+17/07/27 21:36:36 INFO executor.Executor: Running task 18.0 in stage 114.0 (TID 2280)
+17/07/27 21:36:36 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 120
+17/07/27 21:36:36 INFO storage.MemoryStore: Block broadcast_120_piece0 stored as bytes in memory (estimated size 5.3 KB, free 10.1 MB)
+17/07/27 21:36:36 INFO broadcast.TorrentBroadcast: Reading broadcast variable 120 took 9 ms
+17/07/27 21:36:36 INFO storage.MemoryStore: Block broadcast_120 stored as values in memory (estimated size 9.1 KB, free 10.1 MB)
+17/07/27 21:36:36 INFO spark.CacheManager: Partition rdd_184_18 not found, computing it
+17/07/27 21:36:36 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:37 INFO python.PythonRunner: Times: total = 1142, boot = -100, init = 101, finish = 1141
+17/07/27 21:36:37 INFO storage.MemoryStore: Block rdd_184_18 stored as bytes in memory (estimated size 855.1 KB, free 10.9 MB)
+17/07/27 21:36:37 INFO python.PythonRunner: Times: total = 393, boot = -7, init = 8, finish = 392
+17/07/27 21:36:37 INFO executor.Executor: Finished task 18.0 in stage 114.0 (TID 2280). 3226 bytes result sent to driver
+17/07/27 21:36:38 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2307
+17/07/27 21:36:38 INFO executor.Executor: Running task 18.0 in stage 115.0 (TID 2307)
+17/07/27 21:36:38 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 121
+17/07/27 21:36:38 INFO storage.MemoryStore: Block broadcast_121_piece0 stored as bytes in memory (estimated size 5.1 KB, free 10.9 MB)
+17/07/27 21:36:38 INFO broadcast.TorrentBroadcast: Reading broadcast variable 121 took 6 ms
+17/07/27 21:36:38 INFO storage.MemoryStore: Block broadcast_121 stored as values in memory (estimated size 8.9 KB, free 11.0 MB)
+17/07/27 21:36:38 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:38 INFO python.PythonRunner: Times: total = 38, boot = -165, init = 166, finish = 37
+17/07/27 21:36:38 INFO executor.Executor: Finished task 18.0 in stage 115.0 (TID 2307). 2090 bytes result sent to driver
+17/07/27 21:36:38 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2322
+17/07/27 21:36:38 INFO executor.Executor: Running task 18.0 in stage 116.0 (TID 2322)
+17/07/27 21:36:38 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 122
+17/07/27 21:36:38 INFO storage.MemoryStore: Block broadcast_122_piece0 stored as bytes in memory (estimated size 5.6 KB, free 11.0 MB)
+17/07/27 21:36:38 INFO broadcast.TorrentBroadcast: Reading broadcast variable 122 took 6 ms
+17/07/27 21:36:38 INFO storage.MemoryStore: Block broadcast_122 stored as values in memory (estimated size 9.6 KB, free 10.9 MB)
+17/07/27 21:36:38 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:38 INFO python.PythonRunner: Times: total = 90, boot = -119, init = 120, finish = 89
+17/07/27 21:36:38 INFO executor.Executor: Finished task 18.0 in stage 116.0 (TID 2322). 2333 bytes result sent to driver
+17/07/27 21:36:38 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2341
+17/07/27 21:36:38 INFO executor.Executor: Running task 18.0 in stage 117.0 (TID 2341)
+17/07/27 21:36:38 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 123
+17/07/27 21:36:38 INFO storage.MemoryStore: Block broadcast_123_piece0 stored as bytes in memory (estimated size 5.5 KB, free 10.7 MB)
+17/07/27 21:36:38 INFO broadcast.TorrentBroadcast: Reading broadcast variable 123 took 7 ms
+17/07/27 21:36:38 INFO storage.MemoryStore: Block broadcast_123 stored as values in memory (estimated size 9.5 KB, free 10.7 MB)
+17/07/27 21:36:38 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:38 INFO python.PythonRunner: Times: total = 239, boot = -291, init = 293, finish = 237
+17/07/27 21:36:38 INFO executor.Executor: Finished task 18.0 in stage 117.0 (TID 2341). 2223 bytes result sent to driver
+17/07/27 21:36:39 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2372
+17/07/27 21:36:39 INFO executor.Executor: Running task 18.0 in stage 118.0 (TID 2372)
+17/07/27 21:36:39 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 124
+17/07/27 21:36:39 INFO storage.MemoryStore: Block broadcast_124_piece0 stored as bytes in memory (estimated size 28.6 KB, free 10.8 MB)
+17/07/27 21:36:39 INFO broadcast.TorrentBroadcast: Reading broadcast variable 124 took 70 ms
+17/07/27 21:36:39 INFO storage.MemoryStore: Block broadcast_124 stored as values in memory (estimated size 76.9 KB, free 10.8 MB)
+17/07/27 21:36:39 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:39 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:39 INFO python.PythonRunner: Times: total = 240, boot = -282, init = 284, finish = 238
+17/07/27 21:36:39 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0118_m_000018_2372' to hdfs://10.10.34.11:9000/pjhe/test/31/_temporary/0/task_201707272134_0118_m_000018
+17/07/27 21:36:39 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0118_m_000018_2372: Committed
+17/07/27 21:36:39 INFO executor.Executor: Finished task 18.0 in stage 118.0 (TID 2372). 2364 bytes result sent to driver
+17/07/27 21:36:39 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2383
+17/07/27 21:36:39 INFO executor.Executor: Running task 18.0 in stage 119.0 (TID 2383)
+17/07/27 21:36:39 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 125
+17/07/27 21:36:39 INFO storage.MemoryStore: Block broadcast_125_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.8 MB)
+17/07/27 21:36:39 INFO broadcast.TorrentBroadcast: Reading broadcast variable 125 took 7 ms
+17/07/27 21:36:39 INFO storage.MemoryStore: Block broadcast_125 stored as values in memory (estimated size 9.6 KB, free 10.8 MB)
+17/07/27 21:36:39 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:40 INFO python.PythonRunner: Times: total = 908, boot = -139, init = 141, finish = 906
+17/07/27 21:36:40 INFO executor.Executor: Finished task 18.0 in stage 119.0 (TID 2383). 2519 bytes result sent to driver
+17/07/27 21:36:40 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2405
+17/07/27 21:36:40 INFO executor.Executor: Running task 18.0 in stage 120.0 (TID 2405)
+17/07/27 21:36:40 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 126
+17/07/27 21:36:40 INFO storage.MemoryStore: Block broadcast_126_piece0 stored as bytes in memory (estimated size 5.5 KB, free 10.8 MB)
+17/07/27 21:36:40 INFO broadcast.TorrentBroadcast: Reading broadcast variable 126 took 6 ms
+17/07/27 21:36:40 INFO storage.MemoryStore: Block broadcast_126 stored as values in memory (estimated size 9.5 KB, free 10.9 MB)
+17/07/27 21:36:40 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:41 INFO python.PythonRunner: Times: total = 462, boot = -111, init = 112, finish = 461
+17/07/27 21:36:41 INFO executor.Executor: Finished task 18.0 in stage 120.0 (TID 2405). 2211 bytes result sent to driver
+17/07/27 21:36:41 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2432
+17/07/27 21:36:41 INFO executor.Executor: Running task 18.0 in stage 121.0 (TID 2432)
+17/07/27 21:36:41 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 127
+17/07/27 21:36:41 INFO storage.MemoryStore: Block broadcast_127_piece0 stored as bytes in memory (estimated size 28.6 KB, free 10.9 MB)
+17/07/27 21:36:41 INFO broadcast.TorrentBroadcast: Reading broadcast variable 127 took 8 ms
+17/07/27 21:36:41 INFO storage.MemoryStore: Block broadcast_127 stored as values in memory (estimated size 76.9 KB, free 11.0 MB)
+17/07/27 21:36:41 INFO storage.BlockManager: Found block rdd_184_18 locally
+17/07/27 21:36:41 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:42 INFO python.PythonRunner: Times: total = 849, boot = -517, init = 518, finish = 848
+17/07/27 21:36:42 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0121_m_000018_2432' to hdfs://10.10.34.11:9000/pjhe/test/32/_temporary/0/task_201707272134_0121_m_000018
+17/07/27 21:36:42 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0121_m_000018_2432: Committed
+17/07/27 21:36:42 INFO executor.Executor: Finished task 18.0 in stage 121.0 (TID 2432). 2364 bytes result sent to driver
+17/07/27 21:36:42 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2449
+17/07/27 21:36:42 INFO executor.Executor: Running task 18.0 in stage 122.0 (TID 2449)
+17/07/27 21:36:42 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 128
+17/07/27 21:36:42 INFO storage.MemoryStore: Block broadcast_128_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.0 MB)
+17/07/27 21:36:42 INFO broadcast.TorrentBroadcast: Reading broadcast variable 128 took 4 ms
+17/07/27 21:36:42 INFO storage.MemoryStore: Block broadcast_128 stored as values in memory (estimated size 9.1 KB, free 11.0 MB)
+17/07/27 21:36:42 INFO spark.CacheManager: Partition rdd_197_18 not found, computing it
+17/07/27 21:36:42 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:43 INFO python.PythonRunner: Times: total = 818, boot = -174, init = 175, finish = 817
+17/07/27 21:36:43 INFO storage.MemoryStore: Block rdd_197_18 stored as bytes in memory (estimated size 527.0 B, free 11.0 MB)
+17/07/27 21:36:43 INFO python.PythonRunner: Times: total = 41, boot = 7, init = 34, finish = 0
+17/07/27 21:36:43 INFO executor.Executor: Finished task 18.0 in stage 122.0 (TID 2449). 2977 bytes result sent to driver
+17/07/27 21:36:43 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2468
+17/07/27 21:36:43 INFO executor.Executor: Running task 18.0 in stage 123.0 (TID 2468)
+17/07/27 21:36:43 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 129
+17/07/27 21:36:43 INFO storage.MemoryStore: Block broadcast_129_piece0 stored as bytes in memory (estimated size 5.1 KB, free 10.9 MB)
+17/07/27 21:36:43 INFO broadcast.TorrentBroadcast: Reading broadcast variable 129 took 5 ms
+17/07/27 21:36:43 INFO storage.MemoryStore: Block broadcast_129 stored as values in memory (estimated size 8.9 KB, free 10.9 MB)
+17/07/27 21:36:43 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:43 INFO python.PythonRunner: Times: total = 38, boot = -93, init = 130, finish = 1
+17/07/27 21:36:43 INFO executor.Executor: Finished task 18.0 in stage 123.0 (TID 2468). 2087 bytes result sent to driver
+17/07/27 21:36:43 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2482
+17/07/27 21:36:43 INFO executor.Executor: Running task 18.0 in stage 124.0 (TID 2482)
+17/07/27 21:36:43 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 130
+17/07/27 21:36:43 INFO storage.MemoryStore: Block broadcast_130_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.7 MB)
+17/07/27 21:36:43 INFO broadcast.TorrentBroadcast: Reading broadcast variable 130 took 4 ms
+17/07/27 21:36:43 INFO storage.MemoryStore: Block broadcast_130 stored as values in memory (estimated size 9.6 KB, free 10.7 MB)
+17/07/27 21:36:43 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:43 INFO python.PythonRunner: Times: total = 40, boot = -45, init = 85, finish = 0
+17/07/27 21:36:43 INFO executor.Executor: Finished task 18.0 in stage 124.0 (TID 2482). 2397 bytes result sent to driver
+17/07/27 21:36:43 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2512
+17/07/27 21:36:43 INFO executor.Executor: Running task 18.0 in stage 125.0 (TID 2512)
+17/07/27 21:36:43 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 131
+17/07/27 21:36:43 INFO storage.MemoryStore: Block broadcast_131_piece0 stored as bytes in memory (estimated size 5.5 KB, free 10.7 MB)
+17/07/27 21:36:43 INFO broadcast.TorrentBroadcast: Reading broadcast variable 131 took 4 ms
+17/07/27 21:36:43 INFO storage.MemoryStore: Block broadcast_131 stored as values in memory (estimated size 9.5 KB, free 10.8 MB)
+17/07/27 21:36:43 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:43 INFO python.PythonRunner: Times: total = 39, boot = -44, init = 83, finish = 0
+17/07/27 21:36:43 INFO executor.Executor: Finished task 18.0 in stage 125.0 (TID 2512). 2236 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2520
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 126.0 (TID 2520)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 132
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_132_piece0 stored as bytes in memory (estimated size 28.6 KB, free 10.8 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 132 took 8 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_132 stored as values in memory (estimated size 76.9 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 38, boot = -115, init = 153, finish = 0
+17/07/27 21:36:44 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0126_m_000018_2520' to hdfs://10.10.34.11:9000/pjhe/test/33/_temporary/0/task_201707272134_0126_m_000018
+17/07/27 21:36:44 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0126_m_000018_2520: Committed
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 126.0 (TID 2520). 2364 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2552
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 127.0 (TID 2552)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 133
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_133_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 133 took 7 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_133 stored as values in memory (estimated size 9.6 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 38, boot = -117, init = 155, finish = 0
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 127.0 (TID 2552). 2177 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2561
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 128.0 (TID 2561)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 134
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_134_piece0 stored as bytes in memory (estimated size 5.4 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 134 took 7 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_134 stored as values in memory (estimated size 9.3 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 38, boot = -33, init = 71, finish = 0
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 128.0 (TID 2561). 2087 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2584
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 129.0 (TID 2584)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 135
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_135_piece0 stored as bytes in memory (estimated size 5.7 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 135 took 7 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_135 stored as values in memory (estimated size 9.7 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 38, boot = -31, init = 69, finish = 0
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 129.0 (TID 2584). 2177 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2604
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 130.0 (TID 2604)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 136
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_136_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 136 took 7 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_136 stored as values in memory (estimated size 9.6 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 40, boot = -45, init = 85, finish = 0
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 130.0 (TID 2604). 2076 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2620
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 131.0 (TID 2620)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 137
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_137_piece0 stored as bytes in memory (estimated size 28.7 KB, free 10.8 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 137 took 10 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_137 stored as values in memory (estimated size 77.1 KB, free 10.9 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 40, boot = -80, init = 120, finish = 0
+17/07/27 21:36:44 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:44 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0131_m_000018_2620' to hdfs://10.10.34.11:9000/pjhe/test/34/_temporary/0/task_201707272134_0131_m_000018
+17/07/27 21:36:44 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0131_m_000018_2620: Committed
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 131.0 (TID 2620). 2364 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2647
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 132.0 (TID 2647)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 138
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_138_piece0 stored as bytes in memory (estimated size 5.7 KB, free 10.8 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 138 took 8 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_138 stored as values in memory (estimated size 9.7 KB, free 10.8 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 38, boot = -113, init = 151, finish = 0
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 132.0 (TID 2647). 2177 bytes result sent to driver
+17/07/27 21:36:44 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2669
+17/07/27 21:36:44 INFO executor.Executor: Running task 18.0 in stage 133.0 (TID 2669)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 139
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_139_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.8 MB)
+17/07/27 21:36:44 INFO broadcast.TorrentBroadcast: Reading broadcast variable 139 took 7 ms
+17/07/27 21:36:44 INFO storage.MemoryStore: Block broadcast_139 stored as values in memory (estimated size 9.6 KB, free 10.8 MB)
+17/07/27 21:36:44 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:44 INFO python.PythonRunner: Times: total = 39, boot = -29, init = 68, finish = 0
+17/07/27 21:36:44 INFO executor.Executor: Finished task 18.0 in stage 133.0 (TID 2669). 2076 bytes result sent to driver
+17/07/27 21:36:45 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2690
+17/07/27 21:36:45 INFO executor.Executor: Running task 18.0 in stage 134.0 (TID 2690)
+17/07/27 21:36:45 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 140
+17/07/27 21:36:45 INFO storage.MemoryStore: Block broadcast_140_piece0 stored as bytes in memory (estimated size 28.7 KB, free 10.9 MB)
+17/07/27 21:36:45 INFO broadcast.TorrentBroadcast: Reading broadcast variable 140 took 7 ms
+17/07/27 21:36:45 INFO storage.MemoryStore: Block broadcast_140 stored as values in memory (estimated size 77.1 KB, free 10.9 MB)
+17/07/27 21:36:45 INFO storage.BlockManager: Found block rdd_197_18 locally
+17/07/27 21:36:45 INFO python.PythonRunner: Times: total = 40, boot = -90, init = 130, finish = 0
+17/07/27 21:36:45 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:45 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0134_m_000018_2690' to hdfs://10.10.34.11:9000/pjhe/test/35/_temporary/0/task_201707272134_0134_m_000018
+17/07/27 21:36:45 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0134_m_000018_2690: Committed
+17/07/27 21:36:45 INFO executor.Executor: Finished task 18.0 in stage 134.0 (TID 2690). 2364 bytes result sent to driver
+17/07/27 21:36:45 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2707
+17/07/27 21:36:45 INFO executor.Executor: Running task 18.0 in stage 135.0 (TID 2707)
+17/07/27 21:36:45 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 141
+17/07/27 21:36:45 INFO storage.MemoryStore: Block broadcast_141_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.0 MB)
+17/07/27 21:36:45 INFO broadcast.TorrentBroadcast: Reading broadcast variable 141 took 7 ms
+17/07/27 21:36:45 INFO storage.MemoryStore: Block broadcast_141 stored as values in memory (estimated size 9.2 KB, free 11.0 MB)
+17/07/27 21:36:45 INFO spark.CacheManager: Partition rdd_217_18 not found, computing it
+17/07/27 21:36:45 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:46 INFO python.PythonRunner: Times: total = 910, boot = -103, init = 104, finish = 909
+17/07/27 21:36:46 INFO storage.MemoryStore: Block rdd_217_18 stored as bytes in memory (estimated size 13.3 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO python.PythonRunner: Times: total = 16, boot = 8, init = 0, finish = 8
+17/07/27 21:36:46 INFO executor.Executor: Finished task 18.0 in stage 135.0 (TID 2707). 2957 bytes result sent to driver
+17/07/27 21:36:46 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2725
+17/07/27 21:36:46 INFO executor.Executor: Running task 18.0 in stage 136.0 (TID 2725)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 142
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_142_piece0 stored as bytes in memory (estimated size 5.1 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Reading broadcast variable 142 took 9 ms
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_142 stored as values in memory (estimated size 8.9 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:46 INFO python.PythonRunner: Times: total = 42, boot = -276, init = 278, finish = 40
+17/07/27 21:36:46 INFO executor.Executor: Finished task 18.0 in stage 136.0 (TID 2725). 2088 bytes result sent to driver
+17/07/27 21:36:46 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2748
+17/07/27 21:36:46 INFO executor.Executor: Running task 18.0 in stage 137.0 (TID 2748)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 143
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_143_piece0 stored as bytes in memory (estimated size 5.6 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Reading broadcast variable 143 took 7 ms
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_143 stored as values in memory (estimated size 9.6 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:46 INFO python.PythonRunner: Times: total = 40, boot = -33, init = 34, finish = 39
+17/07/27 21:36:46 INFO executor.Executor: Finished task 18.0 in stage 137.0 (TID 2748). 2191 bytes result sent to driver
+17/07/27 21:36:46 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2768
+17/07/27 21:36:46 INFO executor.Executor: Running task 18.0 in stage 138.0 (TID 2768)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 144
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_144_piece0 stored as bytes in memory (estimated size 5.5 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Reading broadcast variable 144 took 7 ms
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_144 stored as values in memory (estimated size 9.5 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:46 INFO python.PythonRunner: Times: total = 41, boot = -44, init = 46, finish = 39
+17/07/27 21:36:46 INFO executor.Executor: Finished task 18.0 in stage 138.0 (TID 2768). 2076 bytes result sent to driver
+17/07/27 21:36:46 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2786
+17/07/27 21:36:46 INFO executor.Executor: Running task 18.0 in stage 139.0 (TID 2786)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 145
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_145_piece0 stored as bytes in memory (estimated size 28.6 KB, free 11.0 MB)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Reading broadcast variable 145 took 9 ms
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_145 stored as values in memory (estimated size 76.9 KB, free 11.1 MB)
+17/07/27 21:36:46 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:46 INFO python.PythonRunner: Times: total = 41, boot = -97, init = 99, finish = 39
+17/07/27 21:36:46 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:46 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0139_m_000018_2786' to hdfs://10.10.34.11:9000/pjhe/test/36/_temporary/0/task_201707272134_0139_m_000018
+17/07/27 21:36:46 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0139_m_000018_2786: Committed
+17/07/27 21:36:46 INFO executor.Executor: Finished task 18.0 in stage 139.0 (TID 2786). 2364 bytes result sent to driver
+17/07/27 21:36:46 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2801
+17/07/27 21:36:46 INFO executor.Executor: Running task 18.0 in stage 140.0 (TID 2801)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 146
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_146_piece0 stored as bytes in memory (estimated size 5.6 KB, free 10.9 MB)
+17/07/27 21:36:46 INFO broadcast.TorrentBroadcast: Reading broadcast variable 146 took 7 ms
+17/07/27 21:36:46 INFO storage.MemoryStore: Block broadcast_146 stored as values in memory (estimated size 9.6 KB, free 10.9 MB)
+17/07/27 21:36:46 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:47 INFO python.PythonRunner: Times: total = 42, boot = -100, init = 102, finish = 40
+17/07/27 21:36:47 INFO executor.Executor: Finished task 18.0 in stage 140.0 (TID 2801). 2377 bytes result sent to driver
+17/07/27 21:36:47 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2826
+17/07/27 21:36:47 INFO executor.Executor: Running task 18.0 in stage 141.0 (TID 2826)
+17/07/27 21:36:47 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 147
+17/07/27 21:36:47 INFO storage.MemoryStore: Block broadcast_147_piece0 stored as bytes in memory (estimated size 5.5 KB, free 10.9 MB)
+17/07/27 21:36:47 INFO broadcast.TorrentBroadcast: Reading broadcast variable 147 took 7 ms
+17/07/27 21:36:47 INFO storage.MemoryStore: Block broadcast_147 stored as values in memory (estimated size 9.5 KB, free 11.0 MB)
+17/07/27 21:36:47 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:47 INFO python.PythonRunner: Times: total = 45, boot = -40, init = 42, finish = 43
+17/07/27 21:36:47 INFO executor.Executor: Finished task 18.0 in stage 141.0 (TID 2826). 2237 bytes result sent to driver
+17/07/27 21:36:47 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2844
+17/07/27 21:36:47 INFO executor.Executor: Running task 18.0 in stage 142.0 (TID 2844)
+17/07/27 21:36:47 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 148
+17/07/27 21:36:47 INFO storage.MemoryStore: Block broadcast_148_piece0 stored as bytes in memory (estimated size 28.6 KB, free 11.0 MB)
+17/07/27 21:36:47 INFO broadcast.TorrentBroadcast: Reading broadcast variable 148 took 7 ms
+17/07/27 21:36:47 INFO storage.MemoryStore: Block broadcast_148 stored as values in memory (estimated size 76.9 KB, free 11.1 MB)
+17/07/27 21:36:47 INFO storage.BlockManager: Found block rdd_217_18 locally
+17/07/27 21:36:47 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:47 INFO python.PythonRunner: Times: total = 19, boot = -83, init = 84, finish = 18
+17/07/27 21:36:47 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272134_0142_m_000018_2844' to hdfs://10.10.34.11:9000/pjhe/test/37/_temporary/0/task_201707272134_0142_m_000018
+17/07/27 21:36:47 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272134_0142_m_000018_2844: Committed
+17/07/27 21:36:47 INFO executor.Executor: Finished task 18.0 in stage 142.0 (TID 2844). 2364 bytes result sent to driver
+17/07/27 21:36:47 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2865
+17/07/27 21:36:47 INFO executor.Executor: Running task 18.0 in stage 143.0 (TID 2865)
+17/07/27 21:36:47 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 149
+17/07/27 21:36:47 INFO storage.MemoryStore: Block broadcast_149_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.1 MB)
+17/07/27 21:36:47 INFO broadcast.TorrentBroadcast: Reading broadcast variable 149 took 6 ms
+17/07/27 21:36:47 INFO storage.MemoryStore: Block broadcast_149 stored as values in memory (estimated size 9.2 KB, free 11.1 MB)
+17/07/27 21:36:47 INFO spark.CacheManager: Partition rdd_230_18 not found, computing it
+17/07/27 21:36:47 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:48 INFO python.PythonRunner: Times: total = 1069, boot = -151, init = 153, finish = 1067
+17/07/27 21:36:48 INFO storage.MemoryStore: Block rdd_230_18 stored as bytes in memory (estimated size 16.0 B, free 11.1 MB)
+17/07/27 21:36:48 INFO python.PythonRunner: Times: total = 8, boot = 8, init = 0, finish = 0
+17/07/27 21:36:48 INFO executor.Executor: Finished task 18.0 in stage 143.0 (TID 2865). 2778 bytes result sent to driver
+17/07/27 21:36:48 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2889
+17/07/27 21:36:48 INFO executor.Executor: Running task 18.0 in stage 144.0 (TID 2889)
+17/07/27 21:36:48 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 150
+17/07/27 21:36:48 INFO storage.MemoryStore: Block broadcast_150_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.1 MB)
+17/07/27 21:36:48 INFO broadcast.TorrentBroadcast: Reading broadcast variable 150 took 5 ms
+17/07/27 21:36:48 INFO storage.MemoryStore: Block broadcast_150 stored as values in memory (estimated size 9.0 KB, free 11.1 MB)
+17/07/27 21:36:48 INFO storage.BlockManager: Found block rdd_230_18 locally
+17/07/27 21:36:48 INFO python.PythonRunner: Times: total = 38, boot = -85, init = 123, finish = 0
+17/07/27 21:36:48 INFO executor.Executor: Finished task 18.0 in stage 144.0 (TID 2889). 2076 bytes result sent to driver
+17/07/27 21:36:48 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2912
+17/07/27 21:36:48 INFO executor.Executor: Running task 18.0 in stage 145.0 (TID 2912)
+17/07/27 21:36:48 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 151
+17/07/27 21:36:48 INFO storage.MemoryStore: Block broadcast_151_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.1 MB)
+17/07/27 21:36:48 INFO broadcast.TorrentBroadcast: Reading broadcast variable 151 took 4 ms
+17/07/27 21:36:48 INFO storage.MemoryStore: Block broadcast_151 stored as values in memory (estimated size 76.4 KB, free 11.2 MB)
+17/07/27 21:36:48 INFO storage.BlockManager: Found block rdd_230_18 locally
+17/07/27 21:36:48 INFO python.PythonRunner: Times: total = 40, boot = -94, init = 133, finish = 1
+17/07/27 21:36:48 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:48 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0145_m_000018_2912' to hdfs://10.10.34.11:9000/pjhe/test/38/_temporary/0/task_201707272135_0145_m_000018
+17/07/27 21:36:48 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0145_m_000018_2912: Committed
+17/07/27 21:36:48 INFO executor.Executor: Finished task 18.0 in stage 145.0 (TID 2912). 2364 bytes result sent to driver
+17/07/27 21:36:48 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2927
+17/07/27 21:36:48 INFO executor.Executor: Running task 18.0 in stage 146.0 (TID 2927)
+17/07/27 21:36:48 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 152
+17/07/27 21:36:48 INFO storage.MemoryStore: Block broadcast_152_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.2 MB)
+17/07/27 21:36:48 INFO broadcast.TorrentBroadcast: Reading broadcast variable 152 took 7 ms
+17/07/27 21:36:48 INFO storage.MemoryStore: Block broadcast_152 stored as values in memory (estimated size 9.2 KB, free 11.2 MB)
+17/07/27 21:36:48 INFO spark.CacheManager: Partition rdd_236_18 not found, computing it
+17/07/27 21:36:48 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:49 INFO python.PythonRunner: Times: total = 1073, boot = -125, init = 127, finish = 1071
+17/07/27 21:36:50 INFO storage.MemoryStore: Block rdd_236_18 stored as bytes in memory (estimated size 16.0 B, free 11.2 MB)
+17/07/27 21:36:50 INFO python.PythonRunner: Times: total = 37, boot = 8, init = 29, finish = 0
+17/07/27 21:36:50 INFO executor.Executor: Finished task 18.0 in stage 146.0 (TID 2927). 2793 bytes result sent to driver
+17/07/27 21:36:50 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2940
+17/07/27 21:36:50 INFO executor.Executor: Running task 18.0 in stage 147.0 (TID 2940)
+17/07/27 21:36:50 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 153
+17/07/27 21:36:50 INFO storage.MemoryStore: Block broadcast_153_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.2 MB)
+17/07/27 21:36:50 INFO broadcast.TorrentBroadcast: Reading broadcast variable 153 took 5 ms
+17/07/27 21:36:50 INFO storage.MemoryStore: Block broadcast_153 stored as values in memory (estimated size 9.0 KB, free 11.2 MB)
+17/07/27 21:36:50 INFO storage.BlockManager: Found block rdd_236_18 locally
+17/07/27 21:36:50 INFO python.PythonRunner: Times: total = 37, boot = -62, init = 99, finish = 0
+17/07/27 21:36:50 INFO executor.Executor: Finished task 18.0 in stage 147.0 (TID 2940). 2076 bytes result sent to driver
+17/07/27 21:36:50 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2970
+17/07/27 21:36:50 INFO executor.Executor: Running task 18.0 in stage 148.0 (TID 2970)
+17/07/27 21:36:50 INFO storage.BlockManager: Removing RDD 230
+17/07/27 21:36:50 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 154
+17/07/27 21:36:50 INFO storage.MemoryStore: Block broadcast_154_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.2 MB)
+17/07/27 21:36:50 INFO broadcast.TorrentBroadcast: Reading broadcast variable 154 took 4 ms
+17/07/27 21:36:50 INFO storage.MemoryStore: Block broadcast_154 stored as values in memory (estimated size 76.4 KB, free 11.3 MB)
+17/07/27 21:36:50 INFO storage.BlockManager: Found block rdd_236_18 locally
+17/07/27 21:36:50 INFO python.PythonRunner: Times: total = 38, boot = -116, init = 153, finish = 1
+17/07/27 21:36:50 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:50 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0148_m_000018_2970' to hdfs://10.10.34.11:9000/pjhe/test/39/_temporary/0/task_201707272135_0148_m_000018
+17/07/27 21:36:50 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0148_m_000018_2970: Committed
+17/07/27 21:36:50 INFO executor.Executor: Finished task 18.0 in stage 148.0 (TID 2970). 2364 bytes result sent to driver
+17/07/27 21:36:50 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 2990
+17/07/27 21:36:50 INFO executor.Executor: Running task 18.0 in stage 149.0 (TID 2990)
+17/07/27 21:36:50 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 155
+17/07/27 21:36:50 INFO storage.MemoryStore: Block broadcast_155_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.0 MB)
+17/07/27 21:36:50 INFO broadcast.TorrentBroadcast: Reading broadcast variable 155 took 7 ms
+17/07/27 21:36:50 INFO storage.MemoryStore: Block broadcast_155 stored as values in memory (estimated size 9.2 KB, free 11.0 MB)
+17/07/27 21:36:50 INFO spark.CacheManager: Partition rdd_242_18 not found, computing it
+17/07/27 21:36:50 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:51 INFO python.PythonRunner: Times: total = 1073, boot = -125, init = 127, finish = 1071
+17/07/27 21:36:51 INFO storage.MemoryStore: Block rdd_242_18 stored as bytes in memory (estimated size 16.0 B, free 11.0 MB)
+17/07/27 21:36:51 INFO python.PythonRunner: Times: total = 41, boot = 8, init = 33, finish = 0
+17/07/27 21:36:51 INFO executor.Executor: Finished task 18.0 in stage 149.0 (TID 2990). 2800 bytes result sent to driver
+17/07/27 21:36:51 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3011
+17/07/27 21:36:51 INFO executor.Executor: Running task 18.0 in stage 150.0 (TID 3011)
+17/07/27 21:36:51 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 156
+17/07/27 21:36:51 INFO storage.MemoryStore: Block broadcast_156_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.0 MB)
+17/07/27 21:36:51 INFO broadcast.TorrentBroadcast: Reading broadcast variable 156 took 4 ms
+17/07/27 21:36:51 INFO storage.MemoryStore: Block broadcast_156 stored as values in memory (estimated size 9.0 KB, free 11.1 MB)
+17/07/27 21:36:51 INFO storage.BlockManager: Found block rdd_242_18 locally
+17/07/27 21:36:51 INFO python.PythonRunner: Times: total = 39, boot = -73, init = 112, finish = 0
+17/07/27 21:36:51 INFO executor.Executor: Finished task 18.0 in stage 150.0 (TID 3011). 2076 bytes result sent to driver
+17/07/27 21:36:51 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3027
+17/07/27 21:36:51 INFO executor.Executor: Running task 18.0 in stage 151.0 (TID 3027)
+17/07/27 21:36:51 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 157
+17/07/27 21:36:51 INFO storage.MemoryStore: Block broadcast_157_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.1 MB)
+17/07/27 21:36:51 INFO broadcast.TorrentBroadcast: Reading broadcast variable 157 took 4 ms
+17/07/27 21:36:51 INFO storage.MemoryStore: Block broadcast_157 stored as values in memory (estimated size 76.4 KB, free 11.2 MB)
+17/07/27 21:36:51 INFO storage.BlockManager: Found block rdd_242_18 locally
+17/07/27 21:36:51 INFO python.PythonRunner: Times: total = 39, boot = -104, init = 142, finish = 1
+17/07/27 21:36:51 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:51 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0151_m_000018_3027' to hdfs://10.10.34.11:9000/pjhe/test/40/_temporary/0/task_201707272135_0151_m_000018
+17/07/27 21:36:51 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0151_m_000018_3027: Committed
+17/07/27 21:36:51 INFO executor.Executor: Finished task 18.0 in stage 151.0 (TID 3027). 2364 bytes result sent to driver
+17/07/27 21:36:52 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3049
+17/07/27 21:36:52 INFO executor.Executor: Running task 18.0 in stage 152.0 (TID 3049)
+17/07/27 21:36:52 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 158
+17/07/27 21:36:52 INFO storage.MemoryStore: Block broadcast_158_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.2 MB)
+17/07/27 21:36:52 INFO broadcast.TorrentBroadcast: Reading broadcast variable 158 took 7 ms
+17/07/27 21:36:52 INFO storage.MemoryStore: Block broadcast_158 stored as values in memory (estimated size 9.2 KB, free 11.2 MB)
+17/07/27 21:36:52 INFO spark.CacheManager: Partition rdd_248_18 not found, computing it
+17/07/27 21:36:52 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:53 INFO python.PythonRunner: Times: total = 1034, boot = -184, init = 186, finish = 1032
+17/07/27 21:36:53 INFO storage.MemoryStore: Block rdd_248_18 stored as bytes in memory (estimated size 243.0 B, free 11.2 MB)
+17/07/27 21:36:53 INFO python.PythonRunner: Times: total = 38, boot = 8, init = 30, finish = 0
+17/07/27 21:36:53 INFO executor.Executor: Finished task 18.0 in stage 152.0 (TID 3049). 3101 bytes result sent to driver
+17/07/27 21:36:53 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3072
+17/07/27 21:36:53 INFO executor.Executor: Running task 18.0 in stage 153.0 (TID 3072)
+17/07/27 21:36:53 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 159
+17/07/27 21:36:53 INFO storage.MemoryStore: Block broadcast_159_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.2 MB)
+17/07/27 21:36:53 INFO broadcast.TorrentBroadcast: Reading broadcast variable 159 took 4 ms
+17/07/27 21:36:53 INFO storage.MemoryStore: Block broadcast_159 stored as values in memory (estimated size 9.0 KB, free 11.2 MB)
+17/07/27 21:36:53 INFO storage.BlockManager: Found block rdd_248_18 locally
+17/07/27 21:36:53 INFO python.PythonRunner: Times: total = 37, boot = -69, init = 106, finish = 0
+17/07/27 21:36:53 INFO executor.Executor: Finished task 18.0 in stage 153.0 (TID 3072). 2304 bytes result sent to driver
+17/07/27 21:36:53 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3091
+17/07/27 21:36:53 INFO executor.Executor: Running task 18.0 in stage 154.0 (TID 3091)
+17/07/27 21:36:53 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 160
+17/07/27 21:36:53 INFO storage.MemoryStore: Block broadcast_160_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.2 MB)
+17/07/27 21:36:53 INFO broadcast.TorrentBroadcast: Reading broadcast variable 160 took 4 ms
+17/07/27 21:36:53 INFO storage.MemoryStore: Block broadcast_160 stored as values in memory (estimated size 76.4 KB, free 11.3 MB)
+17/07/27 21:36:53 INFO storage.BlockManager: Found block rdd_248_18 locally
+17/07/27 21:36:53 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:53 INFO python.PythonRunner: Times: total = 38, boot = -92, init = 130, finish = 0
+17/07/27 21:36:53 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0154_m_000018_3091' to hdfs://10.10.34.11:9000/pjhe/test/41/_temporary/0/task_201707272135_0154_m_000018
+17/07/27 21:36:53 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0154_m_000018_3091: Committed
+17/07/27 21:36:53 INFO executor.Executor: Finished task 18.0 in stage 154.0 (TID 3091). 2364 bytes result sent to driver
+17/07/27 21:36:53 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3109
+17/07/27 21:36:53 INFO executor.Executor: Running task 18.0 in stage 155.0 (TID 3109)
+17/07/27 21:36:53 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 161
+17/07/27 21:36:53 INFO storage.MemoryStore: Block broadcast_161_piece0 stored as bytes in memory (estimated size 5.4 KB, free 11.3 MB)
+17/07/27 21:36:53 INFO broadcast.TorrentBroadcast: Reading broadcast variable 161 took 8 ms
+17/07/27 21:36:53 INFO storage.MemoryStore: Block broadcast_161 stored as values in memory (estimated size 9.2 KB, free 11.3 MB)
+17/07/27 21:36:53 INFO spark.CacheManager: Partition rdd_254_18 not found, computing it
+17/07/27 21:36:53 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:54 INFO python.PythonRunner: Times: total = 1005, boot = -195, init = 197, finish = 1003
+17/07/27 21:36:54 INFO storage.MemoryStore: Block rdd_254_18 stored as bytes in memory (estimated size 16.0 B, free 11.3 MB)
+17/07/27 21:36:54 INFO python.PythonRunner: Times: total = 38, boot = 9, init = 29, finish = 0
+17/07/27 21:36:54 INFO executor.Executor: Finished task 18.0 in stage 155.0 (TID 3109). 2814 bytes result sent to driver
+17/07/27 21:36:54 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3124
+17/07/27 21:36:54 INFO executor.Executor: Running task 18.0 in stage 156.0 (TID 3124)
+17/07/27 21:36:54 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 162
+17/07/27 21:36:54 INFO storage.MemoryStore: Block broadcast_162_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.3 MB)
+17/07/27 21:36:54 INFO broadcast.TorrentBroadcast: Reading broadcast variable 162 took 3 ms
+17/07/27 21:36:54 INFO storage.MemoryStore: Block broadcast_162 stored as values in memory (estimated size 9.0 KB, free 11.3 MB)
+17/07/27 21:36:54 INFO storage.BlockManager: Found block rdd_254_18 locally
+17/07/27 21:36:54 INFO python.PythonRunner: Times: total = 38, boot = -86, init = 124, finish = 0
+17/07/27 21:36:54 INFO executor.Executor: Finished task 18.0 in stage 156.0 (TID 3124). 2076 bytes result sent to driver
+17/07/27 21:36:54 INFO storage.BlockManager: Removing RDD 242
+17/07/27 21:36:54 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3149
+17/07/27 21:36:54 INFO executor.Executor: Running task 18.0 in stage 157.0 (TID 3149)
+17/07/27 21:36:54 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 163
+17/07/27 21:36:54 INFO storage.MemoryStore: Block broadcast_163_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.0 MB)
+17/07/27 21:36:54 INFO broadcast.TorrentBroadcast: Reading broadcast variable 163 took 3 ms
+17/07/27 21:36:54 INFO storage.MemoryStore: Block broadcast_163 stored as values in memory (estimated size 76.4 KB, free 11.0 MB)
+17/07/27 21:36:54 INFO storage.BlockManager: Found block rdd_254_18 locally
+17/07/27 21:36:54 INFO python.PythonRunner: Times: total = 37, boot = -90, init = 127, finish = 0
+17/07/27 21:36:54 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:54 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0157_m_000018_3149' to hdfs://10.10.34.11:9000/pjhe/test/42/_temporary/0/task_201707272135_0157_m_000018
+17/07/27 21:36:54 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0157_m_000018_3149: Committed
+17/07/27 21:36:54 INFO executor.Executor: Finished task 18.0 in stage 157.0 (TID 3149). 2364 bytes result sent to driver
+17/07/27 21:36:55 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3164
+17/07/27 21:36:55 INFO executor.Executor: Running task 18.0 in stage 158.0 (TID 3164)
+17/07/27 21:36:55 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 164
+17/07/27 21:36:55 INFO storage.MemoryStore: Block broadcast_164_piece0 stored as bytes in memory (estimated size 5.5 KB, free 11.0 MB)
+17/07/27 21:36:55 INFO broadcast.TorrentBroadcast: Reading broadcast variable 164 took 7 ms
+17/07/27 21:36:55 INFO storage.MemoryStore: Block broadcast_164 stored as values in memory (estimated size 9.2 KB, free 11.1 MB)
+17/07/27 21:36:55 INFO spark.CacheManager: Partition rdd_260_18 not found, computing it
+17/07/27 21:36:55 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:56 INFO python.PythonRunner: Times: total = 1027, boot = -127, init = 128, finish = 1026
+17/07/27 21:36:56 INFO storage.MemoryStore: Block rdd_260_18 stored as bytes in memory (estimated size 16.0 B, free 11.1 MB)
+17/07/27 21:36:56 INFO python.PythonRunner: Times: total = 41, boot = 7, init = 34, finish = 0
+17/07/27 21:36:56 INFO executor.Executor: Finished task 18.0 in stage 158.0 (TID 3164). 2828 bytes result sent to driver
+17/07/27 21:36:56 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3180
+17/07/27 21:36:56 INFO executor.Executor: Running task 18.0 in stage 159.0 (TID 3180)
+17/07/27 21:36:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 165
+17/07/27 21:36:56 INFO storage.MemoryStore: Block broadcast_165_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.1 MB)
+17/07/27 21:36:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 165 took 4 ms
+17/07/27 21:36:56 INFO storage.MemoryStore: Block broadcast_165 stored as values in memory (estimated size 9.0 KB, free 11.1 MB)
+17/07/27 21:36:56 INFO storage.BlockManager: Found block rdd_260_18 locally
+17/07/27 21:36:56 INFO python.PythonRunner: Times: total = 39, boot = -97, init = 136, finish = 0
+17/07/27 21:36:56 INFO executor.Executor: Finished task 18.0 in stage 159.0 (TID 3180). 2076 bytes result sent to driver
+17/07/27 21:36:56 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3203
+17/07/27 21:36:56 INFO executor.Executor: Running task 18.0 in stage 160.0 (TID 3203)
+17/07/27 21:36:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 166
+17/07/27 21:36:56 INFO storage.MemoryStore: Block broadcast_166_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.1 MB)
+17/07/27 21:36:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 166 took 4 ms
+17/07/27 21:36:56 INFO storage.MemoryStore: Block broadcast_166 stored as values in memory (estimated size 76.4 KB, free 11.2 MB)
+17/07/27 21:36:56 INFO storage.BlockManager: Found block rdd_260_18 locally
+17/07/27 21:36:56 INFO python.PythonRunner: Times: total = 39, boot = -104, init = 143, finish = 0
+17/07/27 21:36:56 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:56 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0160_m_000018_3203' to hdfs://10.10.34.11:9000/pjhe/test/43/_temporary/0/task_201707272135_0160_m_000018
+17/07/27 21:36:56 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0160_m_000018_3203: Committed
+17/07/27 21:36:56 INFO executor.Executor: Finished task 18.0 in stage 160.0 (TID 3203). 2364 bytes result sent to driver
+17/07/27 21:36:56 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3222
+17/07/27 21:36:56 INFO executor.Executor: Running task 18.0 in stage 161.0 (TID 3222)
+17/07/27 21:36:56 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 167
+17/07/27 21:36:56 INFO storage.MemoryStore: Block broadcast_167_piece0 stored as bytes in memory (estimated size 5.5 KB, free 11.2 MB)
+17/07/27 21:36:56 INFO broadcast.TorrentBroadcast: Reading broadcast variable 167 took 7 ms
+17/07/27 21:36:56 INFO storage.MemoryStore: Block broadcast_167 stored as values in memory (estimated size 9.3 KB, free 11.2 MB)
+17/07/27 21:36:56 INFO spark.CacheManager: Partition rdd_266_18 not found, computing it
+17/07/27 21:36:56 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:57 INFO python.PythonRunner: Times: total = 1019, boot = -119, init = 120, finish = 1018
+17/07/27 21:36:57 INFO storage.MemoryStore: Block rdd_266_18 stored as bytes in memory (estimated size 16.0 B, free 11.2 MB)
+17/07/27 21:36:57 INFO python.PythonRunner: Times: total = 41, boot = 8, init = 33, finish = 0
+17/07/27 21:36:57 INFO executor.Executor: Finished task 18.0 in stage 161.0 (TID 3222). 2835 bytes result sent to driver
+17/07/27 21:36:57 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3241
+17/07/27 21:36:57 INFO executor.Executor: Running task 18.0 in stage 162.0 (TID 3241)
+17/07/27 21:36:57 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 168
+17/07/27 21:36:57 INFO storage.MemoryStore: Block broadcast_168_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.2 MB)
+17/07/27 21:36:57 INFO broadcast.TorrentBroadcast: Reading broadcast variable 168 took 5 ms
+17/07/27 21:36:57 INFO storage.MemoryStore: Block broadcast_168 stored as values in memory (estimated size 9.0 KB, free 11.2 MB)
+17/07/27 21:36:57 INFO storage.BlockManager: Found block rdd_266_18 locally
+17/07/27 21:36:57 INFO python.PythonRunner: Times: total = 39, boot = -89, init = 128, finish = 0
+17/07/27 21:36:57 INFO executor.Executor: Finished task 18.0 in stage 162.0 (TID 3241). 2076 bytes result sent to driver
+17/07/27 21:36:57 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3267
+17/07/27 21:36:57 INFO executor.Executor: Running task 18.0 in stage 163.0 (TID 3267)
+17/07/27 21:36:57 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 169
+17/07/27 21:36:57 INFO storage.MemoryStore: Block broadcast_169_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.2 MB)
+17/07/27 21:36:57 INFO broadcast.TorrentBroadcast: Reading broadcast variable 169 took 3 ms
+17/07/27 21:36:57 INFO storage.MemoryStore: Block broadcast_169 stored as values in memory (estimated size 76.4 KB, free 11.3 MB)
+17/07/27 21:36:57 INFO storage.BlockManager: Found block rdd_266_18 locally
+17/07/27 21:36:57 INFO python.PythonRunner: Times: total = 37, boot = -93, init = 130, finish = 0
+17/07/27 21:36:57 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:57 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0163_m_000018_3267' to hdfs://10.10.34.11:9000/pjhe/test/44/_temporary/0/task_201707272135_0163_m_000018
+17/07/27 21:36:57 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0163_m_000018_3267: Committed
+17/07/27 21:36:57 INFO executor.Executor: Finished task 18.0 in stage 163.0 (TID 3267). 2364 bytes result sent to driver
+17/07/27 21:36:58 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3285
+17/07/27 21:36:58 INFO executor.Executor: Running task 18.0 in stage 164.0 (TID 3285)
+17/07/27 21:36:58 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 170
+17/07/27 21:36:58 INFO storage.MemoryStore: Block broadcast_170_piece0 stored as bytes in memory (estimated size 5.5 KB, free 11.3 MB)
+17/07/27 21:36:58 INFO broadcast.TorrentBroadcast: Reading broadcast variable 170 took 6 ms
+17/07/27 21:36:58 INFO storage.MemoryStore: Block broadcast_170 stored as values in memory (estimated size 9.3 KB, free 11.3 MB)
+17/07/27 21:36:58 INFO spark.CacheManager: Partition rdd_272_18 not found, computing it
+17/07/27 21:36:58 INFO storage.BlockManager: Found block rdd_2_18 locally
+17/07/27 21:36:59 INFO python.PythonRunner: Times: total = 1019, boot = -135, init = 136, finish = 1018
+17/07/27 21:36:59 INFO storage.MemoryStore: Block rdd_272_18 stored as bytes in memory (estimated size 16.0 B, free 11.3 MB)
+17/07/27 21:36:59 INFO python.PythonRunner: Times: total = 37, boot = 7, init = 30, finish = 0
+17/07/27 21:36:59 INFO executor.Executor: Finished task 18.0 in stage 164.0 (TID 3285). 2849 bytes result sent to driver
+17/07/27 21:36:59 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3311
+17/07/27 21:36:59 INFO executor.Executor: Running task 18.0 in stage 165.0 (TID 3311)
+17/07/27 21:36:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 171
+17/07/27 21:36:59 INFO storage.MemoryStore: Block broadcast_171_piece0 stored as bytes in memory (estimated size 5.3 KB, free 11.3 MB)
+17/07/27 21:36:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 171 took 5 ms
+17/07/27 21:36:59 INFO storage.MemoryStore: Block broadcast_171 stored as values in memory (estimated size 9.0 KB, free 11.3 MB)
+17/07/27 21:36:59 INFO storage.BlockManager: Found block rdd_272_18 locally
+17/07/27 21:36:59 INFO python.PythonRunner: Times: total = 39, boot = -104, init = 143, finish = 0
+17/07/27 21:36:59 INFO executor.Executor: Finished task 18.0 in stage 165.0 (TID 3311). 2076 bytes result sent to driver
+17/07/27 21:36:59 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 3326
+17/07/27 21:36:59 INFO executor.Executor: Running task 18.0 in stage 166.0 (TID 3326)
+17/07/27 21:36:59 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 172
+17/07/27 21:36:59 INFO storage.MemoryStore: Block broadcast_172_piece0 stored as bytes in memory (estimated size 28.3 KB, free 11.3 MB)
+17/07/27 21:36:59 INFO broadcast.TorrentBroadcast: Reading broadcast variable 172 took 7 ms
+17/07/27 21:36:59 INFO storage.MemoryStore: Block broadcast_172 stored as values in memory (estimated size 76.4 KB, free 11.3 MB)
+17/07/27 21:36:59 INFO storage.BlockManager: Found block rdd_272_18 locally
+17/07/27 21:36:59 INFO storage.BlockManager: Removing RDD 266
+17/07/27 21:36:59 INFO python.PythonRunner: Times: total = 40, boot = -134, init = 174, finish = 0
+17/07/27 21:36:59 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1
+17/07/27 21:36:59 INFO output.FileOutputCommitter: Saved output of task 'attempt_201707272135_0166_m_000018_3326' to hdfs://10.10.34.11:9000/pjhe/test/45/_temporary/0/task_201707272135_0166_m_000018
+17/07/27 21:36:59 INFO mapred.SparkHadoopMapRedUtil: attempt_201707272135_0166_m_000018_3326: Committed
+17/07/27 21:36:59 INFO executor.Executor: Finished task 18.0 in stage 166.0 (TID 3326). 2364 bytes result sent to driver
+17/07/27 21:36:59 INFO executor.CoarseGrainedExecutorBackend: Driver commanded a shutdown
+17/07/27 21:36:59 INFO storage.MemoryStore: MemoryStore cleared
+17/07/27 21:36:59 INFO storage.BlockManager: BlockManager stopped
+17/07/27 21:36:59 WARN executor.CoarseGrainedExecutorBackend: An unknown (mesos-master-1:54324) driver disconnected.
+17/07/27 21:36:59 ERROR executor.CoarseGrainedExecutorBackend: Driver 10.10.34.11:54324 disassociated! Shutting down.
+17/07/27 21:36:59 INFO util.ShutdownHookManager: Shutdown hook called
+17/07/27 21:36:59 INFO util.ShutdownHookManager: Deleting directory /opt/hdfs/nodemanager/usercache/curi/appcache/application_1485248649253_0187/spark-9d9ef368-e342-400d-bac4-bb74be4cdb04
+17/07/27 21:36:59 INFO remote.RemoteActorRefProvider$RemotingTerminator: Shutting down remote daemon.
+17/07/27 21:36:59 INFO remote.RemoteActorRefProvider$RemotingTerminator: Remote daemon shut down; proceeding with flushing remote transports.
+17/07/27 21:36:59 INFO remote.RemoteActorRefProvider$RemotingTerminator: Remoting shut down.
