@@ -57,8 +57,12 @@ func (s *logProducerService) ProcessLogs(ctx context.Context) error {
 
 	currentState, err := s.stateMgr.LoadState()
 	if err != nil {
-		log.Error().Err(err).Msg("Failed to load initial file state")
-		return fmt.Errorf("failed to load file state: %w", err)
+		if !os.IsNotExist(err) {
+			log.Error().Err(err).Msg("Failed to load initial file state")
+			return fmt.Errorf("failed to load file state: %w", err)
+		}
+		log.Warn().Str("file", s.stateMgr.GetStateFilePath()).Msg("State file not found, starting fresh.")
+		currentState = make(filestate.FileProcessState)
 	}
 
 	newState := make(filestate.FileProcessState)
@@ -72,29 +76,34 @@ func (s *logProducerService) ProcessLogs(ctx context.Context) error {
 	}
 	log.Debug().Int("file_count", len(logFiles)).Msg("Found log files to process")
 	var totalLinesRead int64
-	var totalLinesSent int64
+	var totalEntriesSent int64
 	var allLogs []model.LogEntry
 
 	for _, filePath := range logFiles {
-		processedCount, newOffset, fileLogs, err := s.processSingleFile(ctx, filePath, newState)
+		processedCount, newOffset, fileLogs, err := s.processSingleFileMultiline(ctx, filePath, newState)
 		if err != nil {
 			log.Error().Err(err).Str("file", filePath).Msg("Failed to process file")
+			newState[filePath] = currentState[filePath]
 			continue
 		}
 
+		newState[filePath] = newOffset
 		if processedCount > 0 {
-			log.Debug().Str("file", filePath).Int64("lines_read", processedCount).Msg("Read new lines from file")
-			newState[filePath] = newOffset
+			log.Debug().Str("file", filePath).Int64("lines_read", processedCount).Int("entries_found", len(fileLogs)).Msg("Processed file")
 			totalLinesRead += processedCount
 			allLogs = append(allLogs, fileLogs...)
 
 			if len(allLogs) >= s.cfg.BatchSize {
-				err := s.sendBatch(ctx, allLogs)
+				batchToSend := make([]model.LogEntry, len(allLogs))
+				copy(batchToSend, allLogs)
+				allLogs = []model.LogEntry{}
+
+				err := s.sendBatch(ctx, batchToSend) // Gửi batch
 				if err != nil {
 					log.Error().Err(err).Msg("Failed to send intermediate batch to Kafka")
+					// Tạm thời log lỗi và bỏ qua batch này (có thể mất log)
 				} else {
-					totalLinesSent += int64(len(allLogs))
-					allLogs = []model.LogEntry{} // Reset batch
+					totalEntriesSent += int64(len(batchToSend))
 				}
 			}
 		}
@@ -105,7 +114,7 @@ func (s *logProducerService) ProcessLogs(ctx context.Context) error {
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to send final batch to Kafka")
 		} else {
-			totalLinesSent += int64(len(allLogs))
+			totalEntriesSent += int64(len(allLogs))
 		}
 	}
 
@@ -117,13 +126,12 @@ func (s *logProducerService) ProcessLogs(ctx context.Context) error {
 	duration := time.Since(startTime)
 	log.Info().
 		Int64("lines_read", totalLinesRead).
-		Int64("lines_sent", totalLinesSent).
+		Int64("entries_sent", totalEntriesSent).
 		Int("files_processed", len(logFiles)).
 		Dur("duration", duration).
 		Msg("Finished log processing cycle.")
 
 	return nil
-
 }
 
 func (s *logProducerService) findLogFiles() ([]string, error) {
@@ -150,8 +158,7 @@ func (s *logProducerService) findLogFiles() ([]string, error) {
 	return logFiles, nil
 }
 
-func (s *logProducerService) processSingleFile(ctx context.Context, filePath string, state filestate.FileProcessState) (int64, int64, []model.LogEntry, error) {
-
+func (s *logProducerService) processSingleFileMultiline(ctx context.Context, filePath string, state filestate.FileProcessState) (linesRead int64, newOffset int64, entries []model.LogEntry, err error) {
 	lastOffset := state[filePath]
 
 	file, err := os.Open(filePath)
@@ -164,36 +171,107 @@ func (s *logProducerService) processSingleFile(ctx context.Context, filePath str
 	if err != nil {
 		return 0, lastOffset, nil, fmt.Errorf("failed to stat file %s: %w", filePath, err)
 	}
-
 	currentSize := info.Size()
+
 	if currentSize < lastOffset {
+		log.Warn().Str("file", filePath).Int64("last_offset", lastOffset).Int64("current_size", currentSize).Msg("File truncated or rotated? Resetting offset.")
 		lastOffset = 0
 	}
 
-	_, err = file.Seek(lastOffset, 0)
-	if err != nil {
-		return 0, lastOffset, nil, fmt.Errorf("failed to seek in file %s: %w", filePath, err)
+	if _, err = file.Seek(lastOffset, 0); err != nil {
+		return 0, lastOffset, nil, fmt.Errorf("failed to seek file %s to offset %d: %w", filePath, lastOffset, err)
 	}
 
 	scanner := bufio.NewScanner(file)
-	var linesRead int64
-	var currentOffset = lastOffset
-	var parsedLogs []model.LogEntry
+	currentOffset := lastOffset
+
+	var currentEntry *model.LogEntry  // Entry đang được xây dựng
+	var contentBuffer strings.Builder // Buffer cho content đa dòng
+	var rawBuffer strings.Builder     // Buffer cho raw log đa dòng
+
+	appID := parser.ExtractApplicationID(filePath)
+
+	// Hàm nội bộ để hoàn thiện và thêm entry vào kết quả
+	finalizeEntry := func() {
+		if currentEntry != nil {
+			currentEntry.Content = contentBuffer.String()
+			currentEntry.Raw = rawBuffer.String()
+			entries = append(entries, *currentEntry)
+			log.Trace().Str("file", filePath).Msg("Finalized log entry")
+		}
+		currentEntry = nil
+		contentBuffer.Reset()
+		rawBuffer.Reset()
+	}
 
 	for scanner.Scan() {
 		line := scanner.Text()
 		linesRead++
-		currentOffset += int64(len(line) + 1)
-		logEntry, err := s.parser.Parse(line, filePath)
-		if err != nil {
-			log.Warn().Err(err).Str("file", filePath).Str("line", line).Msg("Failed to parse log line")
+		lineOffset := int64(len(line)) + 1
+
+		select {
+		case <-ctx.Done():
+			log.Info().Str("file", filePath).Msg("Context cancelled during multiline file processing.")
+			finalizeEntry()
+			return linesRead, currentOffset, entries, ctx.Err()
+		default:
+			// Continue processing
 		}
-		if logEntry != nil {
-			parsedLogs = append(parsedLogs, *logEntry)
+
+		headerInfo, isHeader := s.parser.ParseHeader(line)
+
+		if isHeader {
+			// === Là dòng Header ===
+			log.Trace().Str("file", filePath).Msg("Detected header line")
+			// 1. Hoàn thiện entry trước đó (nếu có)
+			finalizeEntry()
+
+			// 2. Bắt đầu entry mới
+			currentEntry = &model.LogEntry{
+				Timestamp:   headerInfo.Timestamp,
+				Level:       headerInfo.Level,
+				Component:   headerInfo.Component,
+				Application: appID,
+				SourceFile:  filePath,
+			}
+			// 3. Thêm content và raw của dòng header vào buffer
+			contentBuffer.WriteString(headerInfo.InitialContent)
+			rawBuffer.WriteString(line)
+
+		} else {
+			// === Là dòng Continuation ===
+			log.Trace().Str("file", filePath).Msg("Detected continuation line")
+			if currentEntry != nil {
+				contentBuffer.WriteString("\n")
+				contentBuffer.WriteString(line)
+				rawBuffer.WriteString("\n")
+				rawBuffer.WriteString(line)
+			} else {
+				log.Warn().Str("file", filePath).Str("line", line).Msg("Orphan continuation line detected")
+				orphanEntry := model.LogEntry{
+					Timestamp:   time.Now().UTC(),
+					Level:       "UNKNOWN",
+					Component:   "ORPHAN",
+					Content:     line,
+					Application: appID,
+					SourceFile:  filePath,
+					Raw:         line,
+				}
+				entries = append(entries, orphanEntry)
+			}
 		}
-		lastOffset = currentOffset
+		currentOffset += lineOffset
 	}
-	return linesRead, lastOffset, parsedLogs, nil
+
+	if err := scanner.Err(); err != nil {
+		finalizeEntry()
+		return linesRead, currentOffset, entries, fmt.Errorf("error reading file %s: %w", filePath, err)
+	}
+
+	finalizeEntry()
+
+	log.Debug().Str("file", filePath).Int64("lines_read", linesRead).Int("entries_created", len(entries)).Msg("Finished processing file")
+	return linesRead, currentOffset, entries, nil
 }
 
 func (s *logProducerService) sendBatch(ctx context.Context, batch []model.LogEntry) error {
