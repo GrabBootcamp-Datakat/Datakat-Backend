@@ -48,7 +48,7 @@ func NewLogProducerService(
 func (s *logProducerService) ProcessLogs(ctx context.Context) error {
 	if !s.processLock.TryLock() {
 		log.Warn().Msg("Log processing already in progress, skipping run.")
-		return nil // Not an error, just skipping this scheduled run
+		return nil
 	}
 	defer s.processLock.Unlock()
 

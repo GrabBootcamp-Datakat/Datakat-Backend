@@ -155,15 +155,11 @@ func (s *elasticLogStore) StoreLogs(ctx context.Context, logs []model.LogEntry) 
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to add item to BulkIndexer")
 			atomic.AddUint64(&s.countFailed, 1)
-			// return fmt.Errorf("failed to add item to bulk indexer: %w", err)
 		}
 	}
 	log.Debug().Int("count", len(logs)).Msg("Added log entries to Elasticsearch BulkIndexer queue")
 
-	// Check if any failures occurred *during this call*
 	if atomic.LoadUint64(&s.countFailed) > currentFailed {
-		// Return a generic error indicating some logs might have failed to index
-		// More specific error handling can be done via callbacks if needed
 		return errors.New("one or more logs failed during bulk indexing attempt")
 	}
 

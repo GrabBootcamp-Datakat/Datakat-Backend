@@ -17,38 +17,32 @@ services:
     depends_on:
       - zookeeper
     ports:
-      - "9092:9092" # Map port 9092 cho truy cập từ host (EXTERNAL listener)
-      # Port 29092 chỉ dùng nội bộ trong Docker, không cần map ra ngoài
+      - "9092:9092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      # Định nghĩa 2 listeners: INTERNAL cho nội bộ Docker, EXTERNAL cho host
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
-      # Kafka lắng nghe trên port 29092 (INTERNAL) và 9092 (EXTERNAL) bên trong container
       KAFKA_LISTENERS: INTERNAL://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092
-      # Advertise đúng địa chỉ: kafka:29092 cho INTERNAL, localhost:9092 cho EXTERNAL
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://localhost:9092
-      # Listener cho giao tiếp giữa các broker (nếu có nhiều broker)
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 # Single node setup
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true" # Allow auto-creation for dev convenience
-      KAFKA_LOG_DIRS: '/var/lib/kafka/data' # Ensure Kafka data is stored in a volume
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true" 
+      KAFKA_LOG_DIRS: '/var/lib/kafka/data'
     volumes:
       - kafka_data:/var/lib/kafka/data
     networks:
       - app-network
     healthcheck:
-        # Sử dụng listener INTERNAL (kafka:29092) cho healthcheck vì nó chạy trong mạng Docker
         test: ["CMD-SHELL", "/usr/bin/kafka-topics --bootstrap-server kafka:29092 --list"]
         interval: 10s
         timeout: 5s
         retries: 5
   elasticsearch:
-    image: elasticsearch:8.14.0 # Use a specific recent version
+    image: elasticsearch:8.14.0 
     container_name: elasticsearch
     environment:
-      - discovery.type=single-node # Important for single node setup
+      - discovery.type=single-node 
       - xpack.security.enabled=false # Disable security for dev (NOT FOR PRODUCTION)
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Limit memory usage
     ports:
@@ -78,14 +72,12 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASSWORD=password
       - DATABASE_NAME=todo_db
-      # Đảm bảo app sử dụng listener INTERNAL
       - KAFKA_BROKERS=kafka:29092
       - ELASTICSEARCH_ADDRESSES=http://elasticsearch:9200
     depends_on:
       mysql:
         condition: service_healthy
       kafka:
-        # Phụ thuộc vào healthcheck đã cập nhật
         condition: service_healthy
       elasticsearch:
         condition: service_healthy
