@@ -1,0 +1,557 @@
+17/07/27 21:32:22 INFO ApplicationMaster: Registered signal handlers for [TERM, HUP, INT]
+17/07/27 21:32:23 INFO ApplicationMaster: ApplicationAttemptId: appattempt_1485248649253_0186_000002
+17/07/27 21:32:23 INFO SecurityManager: Changing view acls to: yarn,curi
+17/07/27 21:32:23 INFO SecurityManager: Changing modify acls to: yarn,curi
+17/07/27 21:32:23 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(yarn, curi); users with modify permissions: Set(yarn, curi)
+17/07/27 21:32:24 INFO ApplicationMaster: Waiting for Spark driver to be reachable.
+17/07/27 21:32:24 INFO ApplicationMaster: Driver now available: 10.10.34.11:59814
+17/07/27 21:32:24 INFO ApplicationMaster$AMEndpoint: Add WebUI Filter. AddWebUIFilter(org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter,Map(PROXY_HOSTS -> mesos-master-1, PROXY_URI_BASES -> http://mesos-master-1:8088/proxy/application_1485248649253_0186),/proxy/application_1485248649253_0186)
+17/07/27 21:32:24 INFO RMProxy: Connecting to ResourceManager at mesos-master-1/10.10.34.11:8030
+17/07/27 21:32:24 INFO YarnRMClient: Registering the ApplicationMaster
+17/07/27 21:32:24 INFO YarnAllocator: Will request 16 executor containers, each with 5 cores and 28160 MB memory including 2560 MB overhead
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO YarnAllocator: Container request (host: Any, capability: <memory:28160, vCores:5>)
+17/07/27 21:32:24 INFO ApplicationMaster: Started progress reporter thread with (heartbeat : 3000, initial allocation : 200) intervals
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-slave-15:33449
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-slave-09:51130
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000002 for on host mesos-slave-15
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-15
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000003 for on host mesos-slave-09
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-09
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO YarnAllocator: Received 2 containers from YARN, launching executors on 2 of them.
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-slave-06:34105
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-slave-13:38324
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-slave-10:60295
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-master-2:41860
+17/07/27 21:32:24 INFO AMRMClientImpl: Received new token for : mesos-slave-16:43341
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000004 for on host mesos-slave-06
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-06
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000005 for on host mesos-slave-13
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-13
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000006 for on host mesos-slave-10
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-10
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000007 for on host mesos-master-2
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-master-2
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000008 for on host mesos-slave-16
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-16
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:24 INFO YarnAllocator: Received 5 containers from YARN, launching executors on 5 of them.
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:24 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:24 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-09:8042/node/containerlogs/container_1485248649253_0186_02_000003/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-09:8042/node/containerlogs/container_1485248649253_0186_02_000003/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 2 --hostname mesos-slave-09 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-13:8042/node/containerlogs/container_1485248649253_0186_02_000005/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-13:8042/node/containerlogs/container_1485248649253_0186_02_000005/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 4 --hostname mesos-slave-13 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-16:8042/node/containerlogs/container_1485248649253_0186_02_000008/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-16:8042/node/containerlogs/container_1485248649253_0186_02_000008/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 7 --hostname mesos-slave-16 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-06:8042/node/containerlogs/container_1485248649253_0186_02_000004/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-06:8042/node/containerlogs/container_1485248649253_0186_02_000004/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 3 --hostname mesos-slave-06 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-10:8042/node/containerlogs/container_1485248649253_0186_02_000006/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-10:8042/node/containerlogs/container_1485248649253_0186_02_000006/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 5 --hostname mesos-slave-10 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-master-2:8042/node/containerlogs/container_1485248649253_0186_02_000007/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-master-2:8042/node/containerlogs/container_1485248649253_0186_02_000007/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 6 --hostname mesos-master-2 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-15:8042/node/containerlogs/container_1485248649253_0186_02_000002/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-15:8042/node/containerlogs/container_1485248649253_0186_02_000002/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 1 --hostname mesos-slave-15 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-10:60295
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-15:33449
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-06:34105
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-master-2:41860
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-16:43341
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-13:38324
+17/07/27 21:32:24 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-09:51130
+Exception in thread "ContainerLauncher-6" Exception in thread "ContainerLauncher-0" Exception in thread "ContainerLauncher-1" java.lang.Error: org.apache.spark.SparkException: Exception while starting container container_1485248649253_0186_02_000003 on host mesos-slave-09
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1151)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.spark.SparkException: Exception while starting container container_1485248649253_0186_02_000003 on host mesos-slave-09
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.startContainer(ExecutorRunnable.scala:125)
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.run(ExecutorRunnable.scala:68)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	... 2 more
+Caused by: org.apache.hadoop.yarn.exceptions.YarnException: Unauthorized request to start container. 
+This token is expired. current time is 1501162708621 found 1501162567859
+Note: System times on machines may be out of sync. Check system time and time zones.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.instantiateException(SerializedExceptionPBImpl.java:168)
+	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.deSerialize(SerializedExceptionPBImpl.java:106)
+	at org.apache.hadoop.yarn.client.api.impl.NMClientImpl.startContainer(NMClientImpl.java:206)
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.startContainer(ExecutorRunnable.scala:122)
+	... 4 more
+java.lang.Error: org.apache.spark.SparkException: Exception while starting container container_1485248649253_0186_02_000008 on host mesos-slave-16
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1151)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.spark.SparkException: Exception while starting container container_1485248649253_0186_02_000008 on host mesos-slave-16
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.startContainer(ExecutorRunnable.scala:125)
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.run(ExecutorRunnable.scala:68)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	... 2 more
+Caused by: org.apache.hadoop.yarn.exceptions.YarnException: Unauthorized request to start container. 
+This token is expired. current time is 1501162616818 found 1501162568102
+Note: System times on machines may be out of sync. Check system time and time zones.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.instantiateException(SerializedExceptionPBImpl.java:168)
+	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.deSerialize(SerializedExceptionPBImpl.java:106)
+	at org.apache.hadoop.yarn.client.api.impl.NMClientImpl.startContainer(NMClientImpl.java:206)
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.startContainer(ExecutorRunnable.scala:122)
+	... 4 more
+java.lang.Error: org.apache.spark.SparkException: Exception while starting container container_1485248649253_0186_02_000002 on host mesos-slave-15
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1151)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.spark.SparkException: Exception while starting container container_1485248649253_0186_02_000002 on host mesos-slave-15
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.startContainer(ExecutorRunnable.scala:125)
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.run(ExecutorRunnable.scala:68)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	... 2 more
+Caused by: org.apache.hadoop.yarn.exceptions.YarnException: Unauthorized request to start container. 
+This token is expired. current time is 1501162578221 found 1501162567858
+Note: System times on machines may be out of sync. Check system time and time zones.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.instantiateException(SerializedExceptionPBImpl.java:168)
+	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.deSerialize(SerializedExceptionPBImpl.java:106)
+	at org.apache.hadoop.yarn.client.api.impl.NMClientImpl.startContainer(NMClientImpl.java:206)
+	at org.apache.spark.deploy.yarn.ExecutorRunnable.startContainer(ExecutorRunnable.scala:122)
+	... 4 more
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-master-3:42043
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-07:39967
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-08:38529
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-11:41985
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-05:33209
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-19:35680
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-25:40086
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-master-1:35426
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-26:36438
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-21:57813
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-20:49854
+17/07/27 21:32:25 INFO AMRMClientImpl: Received new token for : mesos-slave-28:39598
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000009 for on host mesos-master-3
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-master-3
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000010 for on host mesos-slave-07
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-07
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000011 for on host mesos-slave-08
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-08
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000012 for on host mesos-slave-11
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-11
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000013 for on host mesos-slave-05
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-05
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000014 for on host mesos-slave-19
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-19
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000015 for on host mesos-slave-25
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-25
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000016 for on host mesos-master-1
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-master-1
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO YarnAllocator: Launching container container_1485248649253_0186_02_000017 for on host mesos-slave-26
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO YarnAllocator: Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.10.34.11:59814,  executorHostname: mesos-slave-26
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO YarnAllocator: Received 12 containers from YARN, launching executors on 9 of them.
+17/07/27 21:32:25 INFO ExecutorRunnable: Starting Executor Container
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: yarn.client.max-cached-nodemanagers-proxies : 0
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-07:8042/node/containerlogs/container_1485248649253_0186_02_000010/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-07:8042/node/containerlogs/container_1485248649253_0186_02_000010/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 9 --hostname mesos-slave-07 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ExecutorRunnable: Setting up ContainerLaunchContext
+17/07/27 21:32:25 INFO ExecutorRunnable: Preparing Local resources
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-07:39967
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-master-3:8042/node/containerlogs/container_1485248649253_0186_02_000009/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-master-3:8042/node/containerlogs/container_1485248649253_0186_02_000009/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 8 --hostname mesos-master-3 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ExecutorRunnable: Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar" } size: 109525492 timestamp: 1501161963599 type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip" } size: 355358 timestamp: 1501161963686 type: FILE visibility: PRIVATE, py4j-0.9-src.zip -> resource { scheme: "hdfs" host: "10.10.34.11" port: 9000 file: "/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip" } size: 44846 timestamp: 1501161963712 type: FILE visibility: PRIVATE)
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-master-3:42043
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-11:8042/node/containerlogs/container_1485248649253_0186_02_000012/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-11:8042/node/containerlogs/container_1485248649253_0186_02_000012/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 11 --hostname mesos-slave-11 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-11:41985
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-08:8042/node/containerlogs/container_1485248649253_0186_02_000011/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-08:8042/node/containerlogs/container_1485248649253_0186_02_000011/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 10 --hostname mesos-slave-08 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-08:38529
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-05:8042/node/containerlogs/container_1485248649253_0186_02_000013/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-05:8042/node/containerlogs/container_1485248649253_0186_02_000013/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 12 --hostname mesos-slave-05 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-05:33209
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-19:8042/node/containerlogs/container_1485248649253_0186_02_000014/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-19:8042/node/containerlogs/container_1485248649253_0186_02_000014/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 13 --hostname mesos-slave-19 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-19:35680
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-25:8042/node/containerlogs/container_1485248649253_0186_02_000015/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-25:8042/node/containerlogs/container_1485248649253_0186_02_000015/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 14 --hostname mesos-slave-25 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-25:40086
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-slave-26:8042/node/containerlogs/container_1485248649253_0186_02_000017/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-slave-26:8042/node/containerlogs/container_1485248649253_0186_02_000017/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 16 --hostname mesos-slave-26 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-slave-26:36438
+17/07/27 21:32:25 INFO ExecutorRunnable: 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*<CPS>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_LOG_URL_STDERR -> http://mesos-master-1:8042/node/containerlogs/container_1485248649253_0186_02_000016/curi/stderr?start=-4096
+    SPARK_DIST_CLASSPATH -> /usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1485248649253_0186
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 109525492,355358,44846
+    SPARK_USER -> curi
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE,PRIVATE,PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1501161963599,1501161963686,1501161963712
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.9-src.zip
+    SPARK_LOG_URL_STDOUT -> http://mesos-master-1:8042/node/containerlogs/container_1485248649253_0186_02_000016/curi/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/spark-assembly-1.6.0-hadoop2.2.0.jar#__spark__.jar,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/pyspark.zip#pyspark.zip,hdfs://10.10.34.11:9000/user/curi/.sparkStaging/application_1485248649253_0186/py4j-0.9-src.zip#py4j-0.9-src.zip
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms25600m -Xmx25600m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=59814' -Dspark.yarn.app.container.log.dir=<LOG_DIR> -XX:MaxPermSize=256m org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.10.34.11:59814 --executor-id 15 --hostname mesos-master-1 --cores 5 --app-id application_1485248649253_0186 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+17/07/27 21:32:25 INFO ContainerManagementProtocolProxy: Opening proxy : mesos-master-1:35426
+17/07/27 21:32:28 INFO AMRMClientImpl: Received new token for : mesos-slave-23:39541
+17/07/27 21:32:28 INFO AMRMClientImpl: Received new token for : mesos-slave-17:46510
+17/07/27 21:32:28 INFO AMRMClientImpl: Received new token for : mesos-slave-14:39461
+17/07/27 21:32:28 INFO AMRMClientImpl: Received new token for : mesos-slave-22:42600
+17/07/27 21:32:28 INFO AMRMClientImpl: Received new token for : mesos-slave-27:49350
+17/07/27 21:32:28 INFO YarnAllocator: Received 9 containers from YARN, launching executors on 0 of them.
+17/07/27 21:34:47 INFO ApplicationMaster$AMEndpoint: Driver terminated or disconnected! Shutting down. mesos-master-1:59814
+17/07/27 21:34:47 INFO ApplicationMaster: Final app status: SUCCEEDED, exitCode: 0
+17/07/27 21:34:47 INFO ApplicationMaster: Unregistering ApplicationMaster with SUCCEEDED
+17/07/27 21:34:47 INFO AMRMClientImpl: Waiting for application to be successfully unregistered.
+17/07/27 21:34:47 INFO ApplicationMaster: Deleting staging directory .sparkStaging/application_1485248649253_0186
+17/07/27 21:34:47 INFO ShutdownHookManager: Shutdown hook called
