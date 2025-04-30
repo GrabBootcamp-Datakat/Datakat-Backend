@@ -21,10 +21,12 @@ import (
 	"skeleton-internship-backend/internal/filestate"
 	"skeleton-internship-backend/internal/kafka"
 	"skeleton-internship-backend/internal/logger"
+	"skeleton-internship-backend/internal/metrics"
 	"skeleton-internship-backend/internal/parser"
 	"skeleton-internship-backend/internal/repository"
 	"skeleton-internship-backend/internal/scheduler"
 	"skeleton-internship-backend/internal/service"
+	"skeleton-internship-backend/internal/timescaledb"
 )
 
 // @title           Todo List API
@@ -77,6 +79,8 @@ func main() {
 			kafka.NewKafkaLogProducer,
 			kafka.NewKafkaLogConsumer,
 			elasticsearch.NewElasticLogStore,
+			timescaledb.ProvideTimescaleDBPool,
+			metrics.NewSparkLogExtractor,
 			service.NewLogProducerService,
 			service.NewLogConsumerService,
 		),

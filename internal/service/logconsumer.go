@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"skeleton-internship-backend/config"
 	"skeleton-internship-backend/internal/elasticsearch"
+	"skeleton-internship-backend/internal/metrics"
 	"skeleton-internship-backend/internal/model"
+	"skeleton-internship-backend/internal/timescaledb"
 	"sync"
 	"time"
 
@@ -25,12 +27,16 @@ type logConsumerService struct {
 	logStore    elasticsearch.LogStore
 	batchSize   int           // How many Kafka messages to process at once
 	maxWaitTime time.Duration // Max time to wait for batchSize messages
+	metricStore timescaledb.MetricStore
+	extractor   metrics.Extractor
 }
 
 func NewLogConsumerService(
 	consumer kafka.LogConsumer,
 	logStore elasticsearch.LogStore,
 	cfg *config.Config,
+	metricStore timescaledb.MetricStore,
+	extractor metrics.Extractor,
 ) LogConsumerService {
 	batchSize := cfg.LogProcessor.BatchSize
 	maxWaitTime := time.Duration(cfg.LogProcessor.MaxBatchWait) * time.Second
@@ -40,6 +46,8 @@ func NewLogConsumerService(
 		logStore:    logStore,
 		batchSize:   batchSize,
 		maxWaitTime: maxWaitTime,
+		metricStore: metricStore,
+		extractor:   extractor,
 	}
 }
 
@@ -131,14 +139,19 @@ func (s *logConsumerService) processBatch(ctx context.Context) error {
 	log.Debug().Int("batch_size", len(logEntries)).Msg("Processing collected batch...")
 
 	// 1. Extract Metrics
-
-	// 2. Store Logs (Elasticsearch) - Filter out nil entries before sending
+	allMetricEvents := make([]model.MetricEvent, 0)
 	validLogEntries := make([]model.LogEntry, 0, len(logEntries))
 	for _, entry := range logEntries {
 		if entry != nil {
 			validLogEntries = append(validLogEntries, *entry)
+			events := s.extractor.ExtractMetricEvents(entry) // Gọi extractor
+			if len(events) > 0 {
+				allMetricEvents = append(allMetricEvents, events...)
+			}
 		}
 	}
+
+	// 2. Store Logs (Elasticsearch) - Filter out nil entries before sending
 	errLogStore := s.logStore.StoreLogs(ctx, validLogEntries)
 	if errLogStore != nil {
 		log.Error().Err(errLogStore).Msg("Failed to store logs to Elasticsearch")
@@ -148,7 +161,11 @@ func (s *logConsumerService) processBatch(ctx context.Context) error {
 	}
 
 	// 3. Store Metrics (TimescaleDB)
-
+	errMetricStore := s.metricStore.StoreMetricEvents(ctx, allMetricEvents)
+	if errMetricStore != nil {
+		log.Error().Err(errMetricStore).Msg("Failed to store metric events to TimescaleDB")
+		return fmt.Errorf("failed storing metrics: %w", errMetricStore)
+	}
 	// 4. Commit to Kafka (only if both stores succeeded)
 	if commitNeeded && errLogStore == nil {
 		log.Debug().Int("message_count", len(originalMessages)).Msg("Attempting to commit Kafka messages...")

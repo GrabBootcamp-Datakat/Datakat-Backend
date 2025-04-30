@@ -74,6 +74,7 @@ services:
       - DATABASE_NAME=todo_db
       - KAFKA_BROKERS=kafka:29092
       - ELASTICSEARCH_ADDRESSES=http://elasticsearch:9200
+      - TIMESCALEDB_DSN=postgres://${TIMESCALEDB_USER:-user}:${TIMESCALEDB_PASSWORD:-password}@timescaledb:5432/${TIMESCALEDB_DB_NAME:-logdb}?sslmode=disable
     depends_on:
       mysql:
         condition: service_healthy
@@ -81,11 +82,32 @@ services:
         condition: service_healthy
       elasticsearch:
         condition: service_healthy
+      timescaledb:
+        condition: service_healthy
     volumes:
       - ./SparkLogs:/app/host_logs:ro
       - ./state:/app/state
     networks:
       - app-network
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16 
+    container_name: timescaledb
+    environment:
+      - POSTGRES_USER=${TIMESCALEDB_USER:-user}
+      - POSTGRES_PASSWORD=${TIMESCALEDB_PASSWORD:-password}
+      - POSTGRES_DB=${TIMESCALEDB_DB_NAME:-logdb}
+    ports:
+      - "5432:5432" 
+    volumes:
+      - timescale_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-user} -d $${POSTGRES_DB:-logdb}"] # $${VAR} để escape $
+        interval: 10s
+        timeout: 5s
+        retries: 5
+        start_period: 10s
 
   mysql:
     image: mysql:latest
@@ -110,6 +132,7 @@ volumes:
   mysql_data: 
   kafka_data:
   es_data:
+  timescale_data: {}
 networks:
   app-network:
     driver: bridge
