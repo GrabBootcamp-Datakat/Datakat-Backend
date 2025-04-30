@@ -20,7 +20,6 @@ import (
 	"skeleton-internship-backend/internal/elasticsearch"
 	"skeleton-internship-backend/internal/filestate"
 	"skeleton-internship-backend/internal/kafka"
-	"skeleton-internship-backend/internal/logger"
 	"skeleton-internship-backend/internal/metrics"
 	"skeleton-internship-backend/internal/parser"
 	"skeleton-internship-backend/internal/repository"
@@ -71,10 +70,12 @@ func main() {
 			database.NewDB,
 			NewGinEngine,
 			repository.NewRepository,
+			elasticsearch.NewElasticsearchLogRepository,
 			service.NewService,
-			controller.NewController,
+			service.NewLogQueryService,
+			// controller.NewController,
+			controller.NewLogController,
 			NewFileStateManager,
-			// parser.NewSimpleLogParser,
 			parser.NewMultilineCapableParser,
 			kafka.NewKafkaLogProducer,
 			kafka.NewKafkaLogConsumer,
@@ -84,7 +85,8 @@ func main() {
 			service.NewLogProducerService,
 			service.NewLogConsumerService,
 		),
-		fx.Invoke(RegisterRoutes, RegisterScheduler,
+		fx.Invoke(RegisterLogProcessingRoutes,
+			RegisterScheduler,
 			func(lc fx.Lifecycle, consumerService service.LogConsumerService) { // Invoker to start consumer
 				startLogConsumer(lc, &wg, consumerService)
 			},
@@ -139,32 +141,33 @@ func NewGinEngine() *gin.Engine {
 	return r
 }
 
-func RegisterRoutes(
+func RegisterLogProcessingRoutes(
 	lifecycle fx.Lifecycle,
 	router *gin.Engine,
 	cfg *config.Config,
-	controller *controller.Controller,
+	logController *controller.LogController,
 ) {
-	controller.RegisterRoutes(router)
-	logger.Init()
-
+	if logController != nil {
+		controller.RegisterLogRoutes(router, logController)
+	} else {
+		log.Warn().Msg("LogController not provided, skipping log API routes.")
+	}
 	server := &http.Server{
 		Addr:    ":" + cfg.Server.Port,
 		Handler: router,
 	}
-
 	lifecycle.Append(fx.Hook{
 		OnStart: func(ctx context.Context) error {
-			log.Info().Msgf("Starting server on port %s", cfg.Server.Port)
+			log.Info().Msgf("Starting HTTP server on port %s", cfg.Server.Port)
 			go func() {
 				if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-					log.Fatal().Err(err).Msg("Failed to start server")
+					log.Error().Err(err).Msg("HTTP server ListenAndServe error")
 				}
 			}()
 			return nil
 		},
 		OnStop: func(ctx context.Context) error {
-			log.Info().Msg("Shutting down server")
+			log.Info().Msg("Shutting down HTTP server...")
 			return server.Shutdown(ctx)
 		},
 	})

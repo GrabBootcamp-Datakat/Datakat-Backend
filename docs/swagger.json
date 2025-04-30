@@ -22,6 +22,112 @@
     "host": "localhost:8080",
     "basePath": "/",
     "paths": {
+        "/api/v1/logs": {
+            "get": {
+                "description": "Retrieves logs based on specified time range, search query, levels, and applications. Supports pagination and sorting.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "logs"
+                ],
+                "summary": "Search and filter logs",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Start time in ISO 8601 format (e.g., 2023-04-29T09:00:00Z) or epoch milliseconds",
+                        "name": "startTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "End time in ISO 8601 format (e.g., 2023-04-29T10:00:00Z) or epoch milliseconds",
+                        "name": "endTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Free text search query",
+                        "name": "query",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated list of log levels (e.g., ERROR,WARN)",
+                        "name": "levels",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated list of application IDs (e.g., application_123,app_456)",
+                        "name": "applications",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            "@timestamp",
+                            "level",
+                            "component",
+                            "application"
+                        ],
+                        "type": "string",
+                        "description": "Field to sort by (default: @timestamp)",
+                        "name": "sortBy",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            "asc",
+                            "desc"
+                        ],
+                        "type": "string",
+                        "description": "Sort order (asc or desc, default: desc)",
+                        "name": "sortOrder",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "Page number (default: 1)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "Number of logs per page (default: 50, max: 1000)",
+                        "name": "size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved logs",
+                        "schema": {
+                            "$ref": "#/definitions/dto.LogSearchResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameters",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/todos": {
             "get": {
                 "description": "get all todos",
@@ -308,6 +414,26 @@
         }
     },
     "definitions": {
+        "dto.LogSearchResponse": {
+            "type": "object",
+            "properties": {
+                "logs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.LogEntry"
+                    }
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "type": "integer"
+                }
+            }
+        },
         "dto.TodoCreate": {
             "description": "Todo creation request body",
             "type": "object",
@@ -334,6 +460,32 @@
                     "description": "Title of the todo item",
                     "type": "string",
                     "example": "Complete project documentation"
+                }
+            }
+        },
+        "model.LogEntry": {
+            "type": "object",
+            "properties": {
+                "@timestamp": {
+                    "type": "string"
+                },
+                "application": {
+                    "type": "string"
+                },
+                "component": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "raw_log": {
+                    "type": "string"
+                },
+                "source_file": {
+                    "type": "string"
                 }
             }
         },

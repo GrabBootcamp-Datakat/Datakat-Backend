@@ -1,5 +1,18 @@
 basePath: /
 definitions:
+  dto.LogSearchResponse:
+    properties:
+      logs:
+        items:
+          $ref: '#/definitions/model.LogEntry'
+        type: array
+      page:
+        type: integer
+      size:
+        type: integer
+      totalCount:
+        type: integer
+    type: object
   dto.TodoCreate:
     description: Todo creation request body
     properties:
@@ -21,6 +34,23 @@ definitions:
         type: string
     required:
     - title
+    type: object
+  model.LogEntry:
+    properties:
+      '@timestamp':
+        type: string
+      application:
+        type: string
+      component:
+        type: string
+      content:
+        type: string
+      level:
+        type: string
+      raw_log:
+        type: string
+      source_file:
+        type: string
     type: object
   model.Response:
     properties:
@@ -76,6 +106,82 @@ info:
   title: Todo List API
   version: "1.0"
 paths:
+  /api/v1/logs:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves logs based on specified time range, search query, levels,
+        and applications. Supports pagination and sorting.
+      parameters:
+      - description: Start time in ISO 8601 format (e.g., 2023-04-29T09:00:00Z) or
+          epoch milliseconds
+        in: query
+        name: startTime
+        required: true
+        type: string
+      - description: End time in ISO 8601 format (e.g., 2023-04-29T10:00:00Z) or epoch
+          milliseconds
+        in: query
+        name: endTime
+        required: true
+        type: string
+      - description: Free text search query
+        in: query
+        name: query
+        type: string
+      - description: Comma-separated list of log levels (e.g., ERROR,WARN)
+        in: query
+        name: levels
+        type: string
+      - description: Comma-separated list of application IDs (e.g., application_123,app_456)
+        in: query
+        name: applications
+        type: string
+      - description: 'Field to sort by (default: @timestamp)'
+        enum:
+        - '@timestamp'
+        - level
+        - component
+        - application
+        in: query
+        name: sortBy
+        type: string
+      - description: 'Sort order (asc or desc, default: desc)'
+        enum:
+        - asc
+        - desc
+        in: query
+        name: sortOrder
+        type: string
+      - description: 'Page number (default: 1)'
+        in: query
+        minimum: 1
+        name: page
+        type: integer
+      - description: 'Number of logs per page (default: 50, max: 1000)'
+        in: query
+        maximum: 1000
+        minimum: 1
+        name: size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved logs
+          schema:
+            $ref: '#/definitions/dto.LogSearchResponse'
+        "400":
+          description: Invalid query parameters
+          schema:
+            $ref: '#/definitions/model.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.Response'
+      summary: Search and filter logs
+      tags:
+      - logs
   /api/v1/todos:
     get:
       consumes:
