@@ -128,6 +128,210 @@
                 }
             }
         },
+        "/api/v1/logs/applications": {
+            "get": {
+                "description": "Retrieves a list of unique application IDs found within a time range.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "logs"
+                ],
+                "summary": "Get distinct application IDs",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Start time (ISO 8601 or epoch ms)",
+                        "name": "startTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "End time (ISO 8601 or epoch ms)",
+                        "name": "endTime",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved application list",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ApplicationListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameters",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/metrics/summary": {
+            "get": {
+                "description": "Retrieves total log and error counts within a time range, optionally filtered by applications.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "metrics"
+                ],
+                "summary": "Get summary metrics",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Start time (ISO 8601 or epoch ms)",
+                        "name": "startTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "End time (ISO 8601 or epoch ms)",
+                        "name": "endTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated list of application IDs",
+                        "name": "applications",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved summary metrics",
+                        "schema": {
+                            "$ref": "#/definitions/dto.MetricSummaryResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameters",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/metrics/timeseries": {
+            "get": {
+                "description": "Retrieves timeseries data for a specific metric, aggregated over an interval and optionally grouped by a tag.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "metrics"
+                ],
+                "summary": "Get timeseries metrics",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Start time (ISO 8601 or epoch ms)",
+                        "name": "startTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "End time (ISO 8601 or epoch ms)",
+                        "name": "endTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated list of application IDs",
+                        "name": "applications",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            "log_event",
+                            "error_event"
+                        ],
+                        "type": "string",
+                        "description": "Metric name (e.g., log_event, error_event)",
+                        "name": "metricName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "1 minute",
+                            "5 minute",
+                            "10 minute",
+                            "30 minute",
+                            "1 hour",
+                            "1 day"
+                        ],
+                        "type": "string",
+                        "description": "Time interval for bucketing (e.g., '5 minute', '1 hour')",
+                        "name": "interval",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "level",
+                            "component",
+                            "error_key",
+                            "application",
+                            "total"
+                        ],
+                        "type": "string",
+                        "description": "Tag key to group by (e.g., level, component, error_key, application, total)",
+                        "name": "groupBy",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved timeseries metrics",
+                        "schema": {
+                            "$ref": "#/definitions/dto.MetricTimeseriesResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameters",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/todos": {
             "get": {
                 "description": "get all todos",
@@ -414,6 +618,17 @@
         }
     },
     "definitions": {
+        "dto.ApplicationListResponse": {
+            "type": "object",
+            "properties": {
+                "applications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "dto.LogSearchResponse": {
             "type": "object",
             "properties": {
@@ -431,6 +646,55 @@
                 },
                 "totalCount": {
                     "type": "integer"
+                }
+            }
+        },
+        "dto.MetricSummaryResponse": {
+            "type": "object",
+            "properties": {
+                "totalErrorEvents": {
+                    "type": "integer"
+                },
+                "totalLogEvents": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.MetricTimeseriesResponse": {
+            "type": "object",
+            "properties": {
+                "series": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.TimeseriesSeries"
+                    }
+                }
+            }
+        },
+        "dto.TimeseriesDataPoint": {
+            "type": "object",
+            "properties": {
+                "timestamp": {
+                    "description": "Epoch Milliseconds",
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TimeseriesSeries": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.TimeseriesDataPoint"
+                    }
+                },
+                "name": {
+                    "description": "Tên của series (ví dụ: \"INFO\", \"WARN\", \"YarnAllocator\")",
+                    "type": "string"
                 }
             }
         },

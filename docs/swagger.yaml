@@ -1,5 +1,12 @@
 basePath: /
 definitions:
+  dto.ApplicationListResponse:
+    properties:
+      applications:
+        items:
+          type: string
+        type: array
+    type: object
   dto.LogSearchResponse:
     properties:
       logs:
@@ -12,6 +19,38 @@ definitions:
         type: integer
       totalCount:
         type: integer
+    type: object
+  dto.MetricSummaryResponse:
+    properties:
+      totalErrorEvents:
+        type: integer
+      totalLogEvents:
+        type: integer
+    type: object
+  dto.MetricTimeseriesResponse:
+    properties:
+      series:
+        items:
+          $ref: '#/definitions/dto.TimeseriesSeries'
+        type: array
+    type: object
+  dto.TimeseriesDataPoint:
+    properties:
+      timestamp:
+        description: Epoch Milliseconds
+        type: integer
+      value:
+        type: integer
+    type: object
+  dto.TimeseriesSeries:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/dto.TimeseriesDataPoint'
+        type: array
+      name:
+        description: 'Tên của series (ví dụ: "INFO", "WARN", "YarnAllocator")'
+        type: string
     type: object
   dto.TodoCreate:
     description: Todo creation request body
@@ -182,6 +221,150 @@ paths:
       summary: Search and filter logs
       tags:
       - logs
+  /api/v1/logs/applications:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of unique application IDs found within a time
+        range.
+      parameters:
+      - description: Start time (ISO 8601 or epoch ms)
+        in: query
+        name: startTime
+        required: true
+        type: string
+      - description: End time (ISO 8601 or epoch ms)
+        in: query
+        name: endTime
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved application list
+          schema:
+            $ref: '#/definitions/dto.ApplicationListResponse'
+        "400":
+          description: Invalid query parameters
+          schema:
+            $ref: '#/definitions/model.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.Response'
+      summary: Get distinct application IDs
+      tags:
+      - logs
+  /api/v1/metrics/summary:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves total log and error counts within a time range, optionally
+        filtered by applications.
+      parameters:
+      - description: Start time (ISO 8601 or epoch ms)
+        in: query
+        name: startTime
+        required: true
+        type: string
+      - description: End time (ISO 8601 or epoch ms)
+        in: query
+        name: endTime
+        required: true
+        type: string
+      - description: Comma-separated list of application IDs
+        in: query
+        name: applications
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved summary metrics
+          schema:
+            $ref: '#/definitions/dto.MetricSummaryResponse'
+        "400":
+          description: Invalid query parameters
+          schema:
+            $ref: '#/definitions/model.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.Response'
+      summary: Get summary metrics
+      tags:
+      - metrics
+  /api/v1/metrics/timeseries:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves timeseries data for a specific metric, aggregated over
+        an interval and optionally grouped by a tag.
+      parameters:
+      - description: Start time (ISO 8601 or epoch ms)
+        in: query
+        name: startTime
+        required: true
+        type: string
+      - description: End time (ISO 8601 or epoch ms)
+        in: query
+        name: endTime
+        required: true
+        type: string
+      - description: Comma-separated list of application IDs
+        in: query
+        name: applications
+        type: string
+      - description: Metric name (e.g., log_event, error_event)
+        enum:
+        - log_event
+        - error_event
+        in: query
+        name: metricName
+        required: true
+        type: string
+      - description: Time interval for bucketing (e.g., '5 minute', '1 hour')
+        enum:
+        - 1 minute
+        - 5 minute
+        - 10 minute
+        - 30 minute
+        - 1 hour
+        - 1 day
+        in: query
+        name: interval
+        required: true
+        type: string
+      - description: Tag key to group by (e.g., level, component, error_key, application,
+          total)
+        enum:
+        - level
+        - component
+        - error_key
+        - application
+        - total
+        in: query
+        name: groupBy
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved timeseries metrics
+          schema:
+            $ref: '#/definitions/dto.MetricTimeseriesResponse'
+        "400":
+          description: Invalid query parameters
+          schema:
+            $ref: '#/definitions/model.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.Response'
+      summary: Get timeseries metrics
+      tags:
+      - metrics
   /api/v1/todos:
     get:
       consumes:

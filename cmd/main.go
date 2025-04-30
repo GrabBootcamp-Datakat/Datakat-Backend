@@ -71,10 +71,12 @@ func main() {
 			NewGinEngine,
 			repository.NewRepository,
 			elasticsearch.NewElasticsearchLogRepository,
+			timescaledb.NewTimescaleMetricRepository,
 			service.NewService,
 			service.NewLogQueryService,
-			// controller.NewController,
+			service.NewMetricQueryService,
 			controller.NewLogController,
+			controller.NewMetricController,
 			NewFileStateManager,
 			parser.NewMultilineCapableParser,
 			kafka.NewKafkaLogProducer,
@@ -85,7 +87,7 @@ func main() {
 			service.NewLogProducerService,
 			service.NewLogConsumerService,
 		),
-		fx.Invoke(RegisterLogProcessingRoutes,
+		fx.Invoke(RegisterAPIRoutes,
 			RegisterScheduler,
 			func(lc fx.Lifecycle, consumerService service.LogConsumerService) { // Invoker to start consumer
 				startLogConsumer(lc, &wg, consumerService)
@@ -141,17 +143,25 @@ func NewGinEngine() *gin.Engine {
 	return r
 }
 
-func RegisterLogProcessingRoutes(
+func RegisterAPIRoutes(
 	lifecycle fx.Lifecycle,
 	router *gin.Engine,
 	cfg *config.Config,
 	logController *controller.LogController,
+	metricController *controller.MetricController,
 ) {
 	if logController != nil {
 		controller.RegisterLogRoutes(router, logController)
 	} else {
 		log.Warn().Msg("LogController not provided, skipping log API routes.")
 	}
+
+	if metricController != nil {
+		controller.RegisterMetricRoutes(router, metricController) // Gọi hàm đăng ký của metric controller
+	} else {
+		log.Warn().Msg("MetricController not provided")
+	}
+
 	server := &http.Server{
 		Addr:    ":" + cfg.Server.Port,
 		Handler: router,
