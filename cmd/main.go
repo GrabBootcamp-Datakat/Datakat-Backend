@@ -75,8 +75,11 @@ func main() {
 			service.NewService,
 			service.NewLogQueryService,
 			service.NewMetricQueryService,
+			service.NewNLVService,
+			service.NewGeminiLLMService,
 			controller.NewLogController,
 			controller.NewMetricController,
+			controller.NewNLVController,
 			NewFileStateManager,
 			parser.NewMultilineCapableParser,
 			kafka.NewKafkaLogProducer,
@@ -149,6 +152,7 @@ func RegisterAPIRoutes(
 	cfg *config.Config,
 	logController *controller.LogController,
 	metricController *controller.MetricController,
+	nlvController *controller.NLVController,
 ) {
 	if logController != nil {
 		controller.RegisterLogRoutes(router, logController)
@@ -160,6 +164,11 @@ func RegisterAPIRoutes(
 		controller.RegisterMetricRoutes(router, metricController) // Gọi hàm đăng ký của metric controller
 	} else {
 		log.Warn().Msg("MetricController not provided")
+	}
+	if nlvController != nil {
+		controller.RegisterNLVRoutes(router, nlvController)
+	} else {
+		log.Warn().Msg("NLVController not provided")
 	}
 
 	server := &http.Server{

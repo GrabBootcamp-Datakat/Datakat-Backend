@@ -334,6 +334,52 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/nlv/query": {
+            "post": {
+                "description": "Takes a natural language query, analyzes it (using LLM simulation), queries data, and returns formatted data for frontend visualization.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "nlv"
+                ],
+                "summary": "Process Natural Language Query for Visualization",
+                "parameters": [
+                    {
+                        "description": "User's natural language query",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.NLVQueryRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Query processed successfully (may contain data or error message)",
+                        "schema": {
+                            "$ref": "#/definitions/dto.NLVQueryResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error during processing",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/todos": {
             "get": {
                 "description": "get all todos",
@@ -631,6 +677,41 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.LLMAnalysisResult": {
+            "type": "object",
+            "properties": {
+                "aggregation": {
+                    "description": "\"COUNT\", \"AVG\", \"SUM\", \"NONE\"",
+                    "type": "string"
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.QueryFilter"
+                    }
+                },
+                "group_by": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "intent": {
+                    "description": "\"query_metric\", \"query_log\", \"unknown\"",
+                    "type": "string"
+                },
+                "metric_name": {
+                    "description": "\"error_event\" | \"log_event\" | null",
+                    "type": "string"
+                },
+                "time_range": {
+                    "$ref": "#/definitions/dto.TimeRange"
+                },
+                "visualization_hint": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.LogSearchResponse": {
             "type": "object",
             "properties": {
@@ -670,6 +751,84 @@ const docTemplate = `{
                     "items": {
                         "$ref": "#/definitions/dto.TimeseriesSeries"
                     }
+                }
+            }
+        },
+        "dto.NLVQueryRequest": {
+            "type": "object",
+            "required": [
+                "query"
+            ],
+            "properties": {
+                "query": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.NLVQueryResponse": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "description": "Tên các cột dữ liệu trả về",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "data": {
+                    "description": "[[val1, val2,...], [val1, val2,...]]",
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "interpretedQuery": {
+                    "description": "(optional)",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/dto.LLMAnalysisResult"
+                        }
+                    ]
+                },
+                "originalQuery": {
+                    "type": "string"
+                },
+                "resultType": {
+                    "description": "\"timeseries\", \"table\", \"scalar\", \"log_list\", \"error\"",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.QueryFilter": {
+            "type": "object",
+            "properties": {
+                "field": {
+                    "description": "\"level\", \"component\", \"tags.error_key\", \"application\"",
+                    "type": "string"
+                },
+                "operator": {
+                    "description": "\"=\", \"!=\", \"IN\", \"NOT IN\", \"CONTAINS\" (cho text)",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "string, []string, number"
+                }
+            }
+        },
+        "dto.TimeRange": {
+            "type": "object",
+            "properties": {
+                "end": {
+                    "description": "\"now\", \"ISO8601\", epoch ms",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "\"now-1h\", \"ISO8601\", epoch ms",
+                    "type": "string"
                 }
             }
         },

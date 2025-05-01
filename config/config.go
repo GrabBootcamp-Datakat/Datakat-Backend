@@ -16,6 +16,7 @@ type Config struct {
 	Elasticsearch ElasticsearchConfig
 	TimescaleDB   TimescaleDBConfig
 	FileState     FileStateConfig
+	APIKey        string
 }
 
 type ServerConfig struct {
@@ -123,6 +124,8 @@ func NewConfig() (*Config, error) {
 
 	// --- File State ---
 	config.FileState.FilePath = viper.GetString("FILE_STATE_PATH")
+
+	config.APIKey = viper.GetString("API_KEY")
 
 	log.Info().Interface("config", config).Msg("Config loaded")
 	return &config, nil

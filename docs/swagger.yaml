@@ -7,6 +7,30 @@ definitions:
           type: string
         type: array
     type: object
+  dto.LLMAnalysisResult:
+    properties:
+      aggregation:
+        description: '"COUNT", "AVG", "SUM", "NONE"'
+        type: string
+      filters:
+        items:
+          $ref: '#/definitions/dto.QueryFilter'
+        type: array
+      group_by:
+        items:
+          type: string
+        type: array
+      intent:
+        description: '"query_metric", "query_log", "unknown"'
+        type: string
+      metric_name:
+        description: '"error_event" | "log_event" | null'
+        type: string
+      time_range:
+        $ref: '#/definitions/dto.TimeRange'
+      visualization_hint:
+        type: string
+    type: object
   dto.LogSearchResponse:
     properties:
       logs:
@@ -33,6 +57,58 @@ definitions:
         items:
           $ref: '#/definitions/dto.TimeseriesSeries'
         type: array
+    type: object
+  dto.NLVQueryRequest:
+    properties:
+      query:
+        type: string
+    required:
+    - query
+    type: object
+  dto.NLVQueryResponse:
+    properties:
+      columns:
+        description: Tên các cột dữ liệu trả về
+        items:
+          type: string
+        type: array
+      data:
+        description: '[[val1, val2,...], [val1, val2,...]]'
+        items:
+          items: {}
+          type: array
+        type: array
+      errorMessage:
+        type: string
+      interpretedQuery:
+        allOf:
+        - $ref: '#/definitions/dto.LLMAnalysisResult'
+        description: (optional)
+      originalQuery:
+        type: string
+      resultType:
+        description: '"timeseries", "table", "scalar", "log_list", "error"'
+        type: string
+    type: object
+  dto.QueryFilter:
+    properties:
+      field:
+        description: '"level", "component", "tags.error_key", "application"'
+        type: string
+      operator:
+        description: '"=", "!=", "IN", "NOT IN", "CONTAINS" (cho text)'
+        type: string
+      value:
+        description: string, []string, number
+    type: object
+  dto.TimeRange:
+    properties:
+      end:
+        description: '"now", "ISO8601", epoch ms'
+        type: string
+      start:
+        description: '"now-1h", "ISO8601", epoch ms'
+        type: string
     type: object
   dto.TimeseriesDataPoint:
     properties:
@@ -365,6 +441,37 @@ paths:
       summary: Get timeseries metrics
       tags:
       - metrics
+  /api/v1/nlv/query:
+    post:
+      consumes:
+      - application/json
+      description: Takes a natural language query, analyzes it (using LLM simulation),
+        queries data, and returns formatted data for frontend visualization.
+      parameters:
+      - description: User's natural language query
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.NLVQueryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Query processed successfully (may contain data or error message)
+          schema:
+            $ref: '#/definitions/dto.NLVQueryResponse'
+        "400":
+          description: Invalid request body
+          schema:
+            $ref: '#/definitions/model.Response'
+        "500":
+          description: Internal server error during processing
+          schema:
+            $ref: '#/definitions/model.Response'
+      summary: Process Natural Language Query for Visualization
+      tags:
+      - nlv
   /api/v1/todos:
     get:
       consumes:
