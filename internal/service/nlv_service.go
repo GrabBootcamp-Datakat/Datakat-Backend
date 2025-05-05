@@ -44,7 +44,7 @@ func (s *nlvService) ProcessNaturalLanguageQuery(ctx context.Context, req dto.NL
 	analysis, err := s.llmService.AnalyzeQuery(ctx, req.Query, s.schemaContext)
 	if err != nil {
 		log.Error().Err(err).Msg("LLM analysis failed")
-		return createErrorResponse(req.Query, "Failed to analyze query with LLM"), nil // Trả 200 với lỗi trong body
+		return createErrorResponse(req.Query, "Failed to analyze query with LLM"), nil
 	}
 
 	// 2. Xử lý dựa trên Intent từ LLM
@@ -85,7 +85,7 @@ func (s *nlvService) handleMetricQuery(ctx context.Context, originalQuery string
 		return createErrorResponse(originalQuery, "Failed to retrieve metric data."), nil
 	}
 
-	// Chuyển đổi kết quả thành định dạng NLVQueryResponse (gửi data gốc)
+	// Chuyển đổi kết quả thành định dạng NLVQueryResponse
 	resp := &dto.NLVQueryResponse{
 		OriginalQuery:    originalQuery,
 		InterpretedQuery: analysis,
@@ -181,16 +181,31 @@ func determineGroupByField(groupBy []string) string {
 }
 
 // formatTimeseriesData chuyển đổi kết quả repo thành mảng 2 chiều
+/*
+[]TimeseriesSeries{
+  {
+    Name: "INFO",
+    Data: []TimeseriesDataPoint{                              [][]interface{}{
+      {Timestamp: 1000, Value: 20},					          {1000, "INFO", 20},
+      {Timestamp: 2000, Value: 30},					          {2000, "INFO", 30},
+    },                                            -> 		  {1000, "INFO", 5},
+      {Timestamp: 3000, Value: 40},					          {2000, "INFO", 8},
+    },
+  },
+  {
+    Name: "ERROR",
+    Data: []TimeseriesDataPoint{
+      {Timestamp: 1000, Value: 5},
+      {Timestamp: 2000, Value: 8},
+    },
+  },
+}
+*/
 func formatTimeseriesData(series []dto.TimeseriesSeries) [][]interface{} {
 	if len(series) == 0 {
 		return [][]interface{}{}
 	}
 
-	// Logic này cần xem xét lại nếu có nhiều group by
-	// Giả sử FE có thể xử lý nhiều series
-	// Chúng ta cần trả về data dạng [[timestamp, groupKey1, value1], [timestamp, groupKey2, value2], ...]
-	// Hoặc FE tự pivot từ cấu trúc series trả về từ repo?
-	// --> Gửi data phẳng để FE dễ xử lý hơn: [[timestamp, seriesName, value]]
 	var formattedData [][]interface{}
 	for _, s := range series {
 		for _, dp := range s.Data {

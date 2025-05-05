@@ -54,6 +54,8 @@ func (s *logQueryService) SearchLogs(ctx context.Context, req dto.LogSearchReque
 		Str("query", req.Query).
 		Strs("levels", req.Levels).
 		Strs("applications", req.Applications).
+		Str("sort_by", req.SortBy).
+		Str("sort_order", req.SortOrder).
 		Int("page", req.Page).
 		Int("size", req.Size).
 		Msg("Searching logs")

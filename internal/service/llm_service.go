@@ -44,7 +44,7 @@ type LLMService interface {
 type geminiLLMService struct {
 	apiKey     string
 	httpClient *http.Client
-	modelID    string // Ví dụ: "gemini-1.5-flash-latest"
+	modelID    string
 }
 
 func NewGeminiLLMService(cfg *config.Config) (LLMService, error) {

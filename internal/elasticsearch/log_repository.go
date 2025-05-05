@@ -53,11 +53,9 @@ func (r *elasticsearchLogRepository) Search(ctx context.Context, req dto.LogSear
 	indexPattern := fmt.Sprintf("%s-*", r.indexPrefix)
 	queryParts := []types.Query{}
 
-	// Convert time.Time to string in RFC3339 format
 	startTimeStr := req.StartTime.Format(time.RFC3339)
 	endTimeStr := req.EndTime.Format(time.RFC3339)
 
-	// Time range filter
 	queryParts = append(queryParts, types.Query{
 		Range: map[string]types.RangeQuery{
 			"@timestamp": types.DateRangeQuery{
@@ -67,7 +65,6 @@ func (r *elasticsearchLogRepository) Search(ctx context.Context, req dto.LogSear
 		},
 	})
 
-	// Text query filter
 	if req.Query != "" {
 		queryString := req.Query
 
@@ -82,7 +79,6 @@ func (r *elasticsearchLogRepository) Search(ctx context.Context, req dto.LogSear
 		})
 	}
 
-	// Levels filter
 	if len(req.Levels) > 0 {
 		levelTerms := make([]types.FieldValue, len(req.Levels))
 		for i, level := range req.Levels {
@@ -97,7 +93,6 @@ func (r *elasticsearchLogRepository) Search(ctx context.Context, req dto.LogSear
 		})
 	}
 
-	// Applications filter
 	if len(req.Applications) > 0 {
 		appTerms := make([]types.FieldValue, len(req.Applications))
 		for i, app := range req.Applications {
@@ -117,8 +112,22 @@ func (r *elasticsearchLogRepository) Search(ctx context.Context, req dto.LogSear
 	if req.SortOrder == "asc" {
 		order = sortorder.Asc
 	}
+	sortField := req.SortBy
+	if sortField != "@timestamp" {
+		knownKeywordFields := map[string]bool{
+			"level":       true,
+			"component":   true,
+			"application": true,
+			"source_file": true,
+		}
+		if knownKeywordFields[sortField] {
+			sortField = fmt.Sprintf("%s.keyword", req.SortBy)
+			log.Debug().Str("original_sort", req.SortBy).Str("effective_sort", sortField).Msg("Appending .keyword for sorting")
+		} else {
+			log.Warn().Str("sort_field", req.SortBy).Msg("Attempting to sort on unknown field")
+		}
+	}
 
-	// Build search request
 	searchRequest := &search.Request{
 		Query: &types.Query{
 			Bool: &types.BoolQuery{
@@ -130,13 +139,12 @@ func (r *elasticsearchLogRepository) Search(ctx context.Context, req dto.LogSear
 		Sort: []types.SortCombinations{
 			types.SortOptions{
 				SortOptions: map[string]types.FieldSort{
-					req.SortBy: {Order: &order},
+					sortField: {Order: &order},
 				},
 			},
 		},
 	}
 
-	// Execute search
 	res, err := r.esTypedClient.Search().
 		Index(indexPattern).
 		Request(searchRequest).
