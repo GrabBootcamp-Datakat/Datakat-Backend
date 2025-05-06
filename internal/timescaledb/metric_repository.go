@@ -48,14 +48,12 @@ func (r *timescaleMetricRepository) GetSummaryMetrics(ctx context.Context, req d
 	}
 	whereSQL := strings.Join(whereClauses, " AND ")
 
-	// Count Log Events
 	logCountSQL := fmt.Sprintf("SELECT COUNT(*) FROM %s WHERE metric_name = 'log_event' AND %s", r.eventTable, whereSQL)
 	err = r.pool.QueryRow(ctx, logCountSQL, args...).Scan(&resp.TotalLogEvents)
 	if err != nil {
 		log.Error().Err(err).Str("query", logCountSQL).Msg("Failed to count log events")
 	}
 
-	// Count Error Events
 	errorCountSQL := fmt.Sprintf("SELECT COUNT(*) FROM %s WHERE metric_name = 'error_event' AND %s", r.eventTable, whereSQL)
 	err = r.pool.QueryRow(ctx, errorCountSQL, args...).Scan(&resp.TotalErrorEvents)
 	if err != nil {
@@ -69,7 +67,6 @@ func (r *timescaleMetricRepository) GetSummaryMetrics(ctx context.Context, req d
 	return resp, nil
 }
 
-// GetTimeseriesMetrics thực hiện truy vấn time_bucket và GROUP BY
 func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, req dto.MetricTimeseriesRequest) (*dto.MetricTimeseriesResponse, error) {
 	allowedGroupBy := map[string]string{
 		"level":       "tags->>'level'",
@@ -92,7 +89,6 @@ func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, re
 		return nil, fmt.Errorf("invalid interval: %s", req.Interval)
 	}
 
-	// Build WHERE clause
 	whereClauses := []string{"metric_name = $1", "time >= $2", "time < $3"}
 	args := []interface{}{req.MetricName, req.StartTime, req.EndTime}
 	argCounter := 4
@@ -113,7 +109,6 @@ func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, re
 
 	whereSQL := strings.Join(whereClauses, " AND ")
 
-	// Build a base query using time_bucket
 	querySQL := fmt.Sprintf(`
         SELECT
             time_bucket($%d::interval, time) AS bucket,
@@ -181,7 +176,6 @@ func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, re
 	return response, nil
 }
 
-// GetDistinctApplications lấy danh sách application IDs duy nhất
 func (r *timescaleMetricRepository) GetDistinctApplications(ctx context.Context, req dto.ApplicationListRequest) (*dto.ApplicationListResponse, error) {
 	querySQL := fmt.Sprintf("SELECT DISTINCT application FROM %s WHERE time >= $1 AND time < $2 ORDER BY application", r.eventTable)
 	args := []interface{}{req.StartTime, req.EndTime}
@@ -209,20 +203,4 @@ func (r *timescaleMetricRepository) GetDistinctApplications(ctx context.Context,
 	}
 
 	return &dto.ApplicationListResponse{Applications: apps}, nil
-}
-
-// --- noOpMetricRepository implementation (cho trường hợp TimescaleDB không cấu hình) ---
-type noOpMetricRepository struct{}
-
-func (r *noOpMetricRepository) GetSummaryMetrics(ctx context.Context, req dto.MetricSummaryRequest) (*dto.MetricSummaryResponse, error) {
-	log.Warn().Msg("GetSummaryMetrics called but TimescaleDB is not configured.")
-	return &dto.MetricSummaryResponse{}, nil // Trả về giá trị 0
-}
-func (r *noOpMetricRepository) GetTimeseriesMetrics(ctx context.Context, req dto.MetricTimeseriesRequest) (*dto.MetricTimeseriesResponse, error) {
-	log.Warn().Msg("GetTimeseriesMetrics called but TimescaleDB is not configured.")
-	return &dto.MetricTimeseriesResponse{Series: []dto.TimeseriesSeries{}}, nil // Trả về mảng rỗng
-}
-func (r *noOpMetricRepository) GetDistinctApplications(ctx context.Context, req dto.ApplicationListRequest) (*dto.ApplicationListResponse, error) {
-	log.Warn().Msg("GetDistinctApplications called but TimescaleDB is not configured.")
-	return &dto.ApplicationListResponse{Applications: []string{}}, nil // Trả về mảng rỗng
 }

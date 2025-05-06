@@ -18,22 +18,18 @@ type MetricController struct {
 	metricQueryService service.MetricQueryService
 }
 
-// NewMetricController Provider function for fx
 func NewMetricController(metricQueryService service.MetricQueryService) *MetricController {
 	return &MetricController{
 		metricQueryService: metricQueryService,
 	}
 }
 
-// RegisterMetricRoutes đăng ký các route cho metric API
 func RegisterMetricRoutes(router *gin.Engine, controller *MetricController) {
-	// Có thể tạo group riêng /api/v1/metrics hoặc gộp vào /api/v1/logs tùy cấu trúc bạn muốn
 	v1Metrics := router.Group("/api/v1/metrics")
 	{
 		v1Metrics.GET("/summary", controller.GetSummaryMetrics)
 		v1Metrics.GET("/timeseries", controller.GetTimeseriesMetrics)
 	}
-	// Endpoint lấy applications có thể đặt ở /logs cho tiện FE
 	v1Logs := router.Group("/api/v1/logs")
 	{
 		v1Logs.GET("/applications", controller.GetApplications)
@@ -167,7 +163,6 @@ func (c *MetricController) GetApplications(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, result)
 }
 
-// Helper function to parse common query params
 func parseBaseQueryParams(ctx *gin.Context) (time.Time, time.Time, []string, error) {
 	startTimeStr := ctx.Query("startTime")
 	endTimeStr := ctx.Query("endTime")

@@ -46,13 +46,11 @@ func (s *metricQueryService) GetTimeseries(ctx context.Context, req dto.MetricTi
 		return nil, errors.New("endTime cannot be before startTime")
 	}
 
-	// Validate metric name
 	allowedMetrics := map[string]bool{"log_event": true, "error_event": true}
 	if !allowedMetrics[req.MetricName] {
 		return nil, fmt.Errorf("invalid metricName: %s", req.MetricName)
 	}
 
-	// Validate interval
 	allowedIntervals := map[string]bool{
 		"1 minute": true, "5 minute": true, "10 minute": true,
 		"30 minute": true, "1 hour": true, "1 day": true,
@@ -61,12 +59,11 @@ func (s *metricQueryService) GetTimeseries(ctx context.Context, req dto.MetricTi
 		return nil, fmt.Errorf("invalid interval: %s", req.Interval)
 	}
 
-	// Validate groupBy (nên có danh sách chặt chẽ hơn)
 	allowedGroupBy := map[string]bool{
 		"level": true, "component": true, "error_key": true, "application": true, "total": true, "": true, // Chấp nhận rỗng hoặc 'total'
 	}
 	if req.GroupBy == "" {
-		req.GroupBy = "total" // Mặc định nếu rỗng
+		req.GroupBy = "total"
 	}
 	if !allowedGroupBy[req.GroupBy] {
 		return nil, fmt.Errorf("invalid groupBy: %s", req.GroupBy)
