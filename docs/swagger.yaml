@@ -60,6 +60,8 @@ definitions:
     type: object
   dto.NLVQueryRequest:
     properties:
+      conversationId:
+        type: string
       query:
         type: string
     required:
@@ -72,6 +74,8 @@ definitions:
         items:
           type: string
         type: array
+      conversationId:
+        type: string
       data:
         description: '[[val1, val2,...], [val1, val2,...]]'
         items:
@@ -445,10 +449,12 @@ paths:
     post:
       consumes:
       - application/json
-      description: Takes a natural language query, analyzes it (using LLM simulation),
-        queries data, and returns formatted data for frontend visualization.
+      description: Takes a natural language query and an optional conversation ID.
+        Analyzes the query in the context of the conversation (using LLM), queries
+        the appropriate data source (TimescaleDB for metrics, Elasticsearch for logs),
+        and returns structured data suitable for frontend visualization.
       parameters:
-      - description: User's natural language query
+      - description: User query and optional conversation ID
         in: body
         name: request
         required: true
@@ -458,15 +464,17 @@ paths:
       - application/json
       responses:
         "200":
-          description: Query processed successfully (may contain data or error message)
+          description: Query processed. Contains data and visualization info, or an
+            error message.
           schema:
             $ref: '#/definitions/dto.NLVQueryResponse'
         "400":
-          description: Invalid request body
+          description: Invalid request body or parameters
           schema:
             $ref: '#/definitions/model.Response'
         "500":
-          description: Internal server error during processing
+          description: Internal server error during processing (e.g., LLM unavailable,
+            DB error)
           schema:
             $ref: '#/definitions/model.Response'
       summary: Process Natural Language Query for Visualization

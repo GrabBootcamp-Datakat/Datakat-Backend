@@ -2,9 +2,12 @@ package service
 
 import (
 	"context"
+	"encoding/json"
+	"errors"
 	"skeleton-internship-backend/internal/dto"
 	"skeleton-internship-backend/internal/model"
 	"skeleton-internship-backend/internal/repository"
+	"skeleton-internship-backend/internal/store"
 	"strings"
 	"time"
 
@@ -21,10 +24,11 @@ type nlvService struct {
 	llmService    LLMService
 	metricRepo    repository.MetricRepository
 	logRepo       repository.LogRepository
+	convoStore    store.ConversationStore
 	schemaContext string
 }
 
-func NewNLVService(llmService LLMService, metricRepo repository.MetricRepository, logRepo repository.LogRepository) NLVService {
+func NewNLVService(llmService LLMService, metricRepo repository.MetricRepository, logRepo repository.LogRepository, convoStore store.ConversationStore) NLVService {
 	schemaCtx := `
         TimescaleDB table 'log_metric_events': columns time (timestamp), metric_name (text, values: 'log_event', 'error_event'), application (text), tags (jsonb keys: 'level', 'component', 'error_key', 'parse_status').
         Elasticsearch index 'applogs-*': fields @timestamp, level (keyword), component (keyword), application (keyword), content (text), raw_log (text).
@@ -33,6 +37,7 @@ func NewNLVService(llmService LLMService, metricRepo repository.MetricRepository
 		llmService:    llmService,
 		metricRepo:    metricRepo,
 		logRepo:       logRepo,
+		convoStore:    convoStore,
 		schemaContext: schemaCtx,
 	}
 }
@@ -40,32 +45,84 @@ func NewNLVService(llmService LLMService, metricRepo repository.MetricRepository
 func (s *nlvService) ProcessNaturalLanguageQuery(ctx context.Context, req dto.NLVQueryRequest) (*dto.NLVQueryResponse, error) {
 	log.Info().Str("query", req.Query).Msg("Processing NLV query")
 
+	var conversationId string
+	var history []dto.ConversationTurn
+	var err error
+
+	if req.ConversationId == nil || *req.ConversationId == "" {
+		conversationId, err = s.convoStore.CreateConversation(ctx)
+		if err != nil {
+			log.Error().Err(err).Msg("Failed to create new conversation")
+			return createErrorResponse(req.Query, "Failed to start conversation."), nil
+		}
+		history = []dto.ConversationTurn{}
+		log.Info().Str("new_conversation_id", conversationId).Msg("Created new conversation")
+	} else {
+		conversationId = *req.ConversationId
+		history, err = s.convoStore.GetHistory(ctx, conversationId)
+		if err != nil {
+			if errors.Is(err, store.ErrConversationNotFound) {
+				log.Warn().Str("conversation_id", conversationId).Msg("Conversation ID not found, starting new conversation.")
+				conversationId, err = s.convoStore.CreateConversation(ctx)
+				if err != nil {
+					return createErrorResponse(req.Query, "Failed to start conversation."), nil
+				}
+				history = []dto.ConversationTurn{}
+			} else {
+				log.Error().Err(err).Str("conversation_id", conversationId).Msg("Failed to get conversation history")
+				return createErrorResponse(req.Query, "Failed to retrieve conversation history."), nil
+			}
+		}
+		log.Info().Str("conversation_id", conversationId).Int("history_len", len(history)).Msg("Continuing conversation")
+	}
+
 	// 1. Gọi LLM Service để phân tích
-	analysis, err := s.llmService.AnalyzeQuery(ctx, req.Query, s.schemaContext)
+	analysis, err := s.llmService.AnalyzeQueryWithHistory(ctx, history, req.Query, s.schemaContext)
 	if err != nil {
 		log.Error().Err(err).Msg("LLM analysis failed")
-		return createErrorResponse(req.Query, "Failed to analyze query with LLM"), nil
+		return createErrorResponseWithId(conversationId, req.Query, "Failed to analyze query with LLM"), nil
+	}
+
+	userTurn := dto.ConversationTurn{Role: "user", Content: req.Query}
+	analysisJsonBytes, _ := json.Marshal(analysis)
+	modelTurn := dto.ConversationTurn{Role: "model", Content: string(analysisJsonBytes)}
+
+	if err := s.convoStore.AddTurn(ctx, conversationId, userTurn); err != nil {
+		log.Error().Err(err).Msg("Failed to save user turn")
+	}
+	if err := s.convoStore.AddTurn(ctx, conversationId, modelTurn); err != nil {
+		log.Error().Err(err).Msg("Failed to save model turn")
 	}
 
 	// 2. Xử lý dựa trên Intent từ LLM
 	switch analysis.Intent {
 	case "query_metric":
-		return s.handleMetricQuery(ctx, req.Query, analysis)
+		return s.handleMetricQuery(ctx, conversationId, req.Query, analysis)
 	case "query_log":
-		return s.handleLogQuery(ctx, req.Query, analysis)
+		return s.handleLogQuery(ctx, conversationId, req.Query, analysis)
 	default: // "unknown" hoặc intent không hỗ trợ
 		log.Warn().Str("intent", analysis.Intent).Str("query", req.Query).Msg("LLM returned unknown or unsupported intent")
-		return createErrorResponse(req.Query, "Sorry, I could not understand that query or it's not supported yet."), nil
+		return createErrorResponseWithId(conversationId, req.Query, "Sorry, I could not understand that query or it's not supported yet."), nil
 	}
 }
 
-func (s *nlvService) handleMetricQuery(ctx context.Context, originalQuery string, analysis *dto.LLMAnalysisResult) (*dto.NLVQueryResponse, error) {
+func createErrorResponseWithId(convoId, query, message string) *dto.NLVQueryResponse {
+	errMsg := message
+	return &dto.NLVQueryResponse{
+		ConversationId: convoId,
+		OriginalQuery:  query,
+		ResultType:     "error",
+		ErrorMessage:   &errMsg,
+	}
+}
+
+func (s *nlvService) handleMetricQuery(ctx context.Context, conversationId, originalQuery string, analysis *dto.LLMAnalysisResult) (*dto.NLVQueryResponse, error) {
 
 	startTime, errStart := util.ParseTimeInput(analysis.TimeRange.Start)
 	endTime, errEnd := util.ParseTimeInput(analysis.TimeRange.End)
 	if errStart != nil || errEnd != nil || endTime.Before(startTime) {
 		log.Warn().Interface("range", analysis.TimeRange).Msg("LLM returned invalid time range")
-		return createErrorResponse(originalQuery, "Could not understand the time range in your query."), nil
+		return createErrorResponseWithId(conversationId, originalQuery, "Could not understand the time range."), nil
 	}
 
 	interval := determineInterval(startTime, endTime, analysis.GroupBy)
@@ -82,11 +139,11 @@ func (s *nlvService) handleMetricQuery(ctx context.Context, originalQuery string
 	result, err := s.metricRepo.GetTimeseriesMetrics(ctx, metricReq)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to get timeseries metrics from repository")
-		return createErrorResponse(originalQuery, "Failed to retrieve metric data."), nil
+		return createErrorResponseWithId(conversationId, originalQuery, "Failed to retrieve metric data."), nil
 	}
 
-	// Chuyển đổi kết quả thành định dạng NLVQueryResponse
 	resp := &dto.NLVQueryResponse{
+		ConversationId:   conversationId,
 		OriginalQuery:    originalQuery,
 		InterpretedQuery: analysis,
 		ResultType:       "timeseries",
@@ -97,11 +154,11 @@ func (s *nlvService) handleMetricQuery(ctx context.Context, originalQuery string
 	return resp, nil
 }
 
-func (s *nlvService) handleLogQuery(ctx context.Context, originalQuery string, analysis *dto.LLMAnalysisResult) (*dto.NLVQueryResponse, error) {
+func (s *nlvService) handleLogQuery(ctx context.Context, conversationId, originalQuery string, analysis *dto.LLMAnalysisResult) (*dto.NLVQueryResponse, error) {
 	startTime, errStart := util.ParseTimeInput(analysis.TimeRange.Start)
 	endTime, errEnd := util.ParseTimeInput(analysis.TimeRange.End)
 	if errStart != nil || errEnd != nil || endTime.Before(startTime) {
-		return createErrorResponse(originalQuery, "Could not understand the time range."), nil
+		return createErrorResponseWithId(conversationId, originalQuery, "Could not understand the time range."), nil
 	}
 
 	logReq := dto.LogSearchRequest{
@@ -120,23 +177,20 @@ func (s *nlvService) handleLogQuery(ctx context.Context, originalQuery string, a
 	result, err := s.logRepo.Search(ctx, logReq)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to search logs from repository")
-		return createErrorResponse(originalQuery, "Failed to retrieve log data."), nil
+		return createErrorResponseWithId(conversationId, originalQuery, "Failed to retrieve log data."), nil
 	}
 
 	// Format response
 	resp := &dto.NLVQueryResponse{
+		ConversationId:   conversationId,
 		OriginalQuery:    originalQuery,
 		InterpretedQuery: analysis,
 		ResultType:       "log_list",
-		// Cần định nghĩa cột trả về cho log list
-		Columns: []string{"@timestamp", "level", "component", "application", "content", "raw_log"},
-		Data:    formatLogListData(result.Logs),
+		Columns:          []string{"@timestamp", "level", "component", "application", "content", "raw_log"},
+		Data:             formatLogListData(result.Logs),
 	}
-	// Có thể thêm thông tin totalCount từ result nếu muốn
 	return resp, nil
 }
-
-// --- Helper Functions ---
 
 func createErrorResponse(query, message string) *dto.NLVQueryResponse {
 	errMsg := message

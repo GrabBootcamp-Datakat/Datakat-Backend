@@ -22,10 +22,16 @@ type QueryFilter struct {
 }
 
 type NLVQueryResponse struct {
+	ConversationId   string             `json:"conversationId"`
 	OriginalQuery    string             `json:"originalQuery"`
 	InterpretedQuery *LLMAnalysisResult `json:"interpretedQuery,omitempty"` // (optional)
 	ResultType       string             `json:"resultType"`                 // "timeseries", "table", "scalar", "log_list", "error"
 	Columns          []string           `json:"columns,omitempty"`          // Tên các cột dữ liệu trả về
 	Data             [][]interface{}    `json:"data,omitempty"`             // [[val1, val2,...], [val1, val2,...]]
 	ErrorMessage     *string            `json:"errorMessage,omitempty"`
+}
+
+type ConversationTurn struct {
+	Role    string `json:"role"`    // "user" | "model"
+	Content string `json:"content"` // Prompt | JSON Analysis
 }

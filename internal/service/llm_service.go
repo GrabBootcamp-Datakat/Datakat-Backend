@@ -38,7 +38,7 @@ type GeminiResponse struct {
 }
 
 type LLMService interface {
-	AnalyzeQuery(ctx context.Context, userQuery string, schemaContext string) (*dto.LLMAnalysisResult, error)
+	AnalyzeQueryWithHistory(ctx context.Context, conversationHistory []dto.ConversationTurn, newUserQuery string, schemaContext string) (*dto.LLMAnalysisResult, error)
 }
 
 type geminiLLMService struct {
@@ -57,13 +57,19 @@ func NewGeminiLLMService(cfg *config.Config) (LLMService, error) {
 	}, nil
 }
 
-func (s *geminiLLMService) AnalyzeQuery(ctx context.Context, userQuery string, schemaContext string) (*dto.LLMAnalysisResult, error) {
-	log.Info().Str("user_query", userQuery).Msg("Gemini LLM Service: Analyzing query")
+func (s *geminiLLMService) AnalyzeQueryWithHistory(ctx context.Context, conversationHistory []dto.ConversationTurn, newUserQuery string, schemaContext string) (*dto.LLMAnalysisResult, error) {
+	log.Info().Str("new_query", newUserQuery).Int("history_len", len(conversationHistory)).Msg("Gemini LLM Service: Analyzing query with history")
 
-	prompt := buildPrompt(userQuery, schemaContext)
-	log.Debug().Str("prompt", prompt).Msg("Gemini LLM Service: Generated prompt")
+	prompt := buildGeminiContents(conversationHistory, newUserQuery, schemaContext)
 
-	respBodyBytes, err := s.callGeminiAPI(ctx, prompt)
+	requestBody := GeminiRequestBody{Contents: prompt}
+	bodyBytes, err := json.Marshal(requestBody)
+	if err != nil {
+		log.Error().Err(err).Msg("Failed to marshal Gemini request body")
+		return nil, fmt.Errorf("failed to marshal request body: %w", err)
+	}
+
+	respBodyBytes, err := s.callGeminiAPI(ctx, bodyBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -103,25 +109,8 @@ func (s *geminiLLMService) AnalyzeQuery(ctx context.Context, userQuery string, s
 	return &analysisResult, nil
 }
 
-func (s *geminiLLMService) callGeminiAPI(ctx context.Context, prompt string) ([]byte, error) {
+func (s *geminiLLMService) callGeminiAPI(ctx context.Context, bodyBytes []byte) ([]byte, error) {
 	url := fmt.Sprintf("https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s", s.modelID, s.apiKey)
-
-	requestBody := GeminiRequestBody{
-		Contents: []GeminiContent{
-			{
-				Role: "user",
-				Parts: []GeminiPart{
-					{Text: prompt},
-				},
-			},
-		},
-	}
-	bodyBytes, err := json.Marshal(requestBody)
-	if err != nil {
-		log.Error().Err(err).Msg("Failed to marshal Gemini request body")
-		return nil, fmt.Errorf("failed to marshal request body: %w", err)
-	}
-	log.Trace().RawJSON("request_body", bodyBytes).Msg("Gemini request body")
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(bodyBytes))
 	if err != nil {
@@ -149,6 +138,35 @@ func (s *geminiLLMService) callGeminiAPI(ctx context.Context, prompt string) ([]
 	}
 
 	return respBodyBytes, nil
+}
+
+func buildGeminiContents(history []dto.ConversationTurn, newUserQuery string, schemaContext string) []GeminiContent {
+	contents := make([]GeminiContent, 0, len(history)+1) // +1 cho query mới
+
+	initialPrompt := buildPrompt(newUserQuery, schemaContext)
+	if len(history) == 0 {
+		contents = append(contents, GeminiContent{
+			Role:  "user",
+			Parts: []GeminiPart{{Text: initialPrompt}},
+		})
+		return contents
+	}
+	for _, turn := range history {
+		contents = append(contents, GeminiContent{
+			Role:  turn.Role,
+			Parts: []GeminiPart{{Text: turn.Content}},
+		})
+	}
+
+	followUpInstruction := fmt.Sprintf(`Follow-up User Query: "%s"
+
+Update the last JSON analysis based on this new query and the conversation history. Respond ONLY with the updated valid JSON object.`, newUserQuery)
+	contents = append(contents, GeminiContent{
+		Role:  "user",
+		Parts: []GeminiPart{{Text: followUpInstruction}},
+	})
+
+	return contents
 }
 
 func buildPrompt(userQuery string, schemaContext string) string {

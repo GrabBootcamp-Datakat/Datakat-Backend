@@ -25,6 +25,7 @@ import (
 	"skeleton-internship-backend/internal/repository"
 	"skeleton-internship-backend/internal/scheduler"
 	"skeleton-internship-backend/internal/service"
+	"skeleton-internship-backend/internal/store"
 	"skeleton-internship-backend/internal/timescaledb"
 )
 
@@ -72,6 +73,7 @@ func main() {
 			repository.NewRepository,
 			elasticsearch.NewElasticsearchLogRepository,
 			timescaledb.NewTimescaleMetricRepository,
+			store.NewInMemoryConversationStore,
 			service.NewService,
 			service.NewLogQueryService,
 			service.NewMetricQueryService,

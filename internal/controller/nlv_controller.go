@@ -29,14 +29,14 @@ func RegisterNLVRoutes(router *gin.Engine, controller *NLVController) {
 
 // HandleNLVQuery godoc
 // @Summary      Process Natural Language Query for Visualization
-// @Description  Takes a natural language query, analyzes it (using LLM simulation), queries data, and returns formatted data for frontend visualization.
+// @Description  Takes a natural language query and an optional conversation ID. Analyzes the query in the context of the conversation (using LLM), queries the appropriate data source (TimescaleDB for metrics, Elasticsearch for logs), and returns structured data suitable for frontend visualization.
 // @Tags         nlv
 // @Accept       json
 // @Produce      json
-// @Param        request body dto.NLVQueryRequest true "User's natural language query"
-// @Success      200 {object} dto.NLVQueryResponse "Query processed successfully (may contain data or error message)"
-// @Failure      400 {object} model.Response "Invalid request body"
-// @Failure      500 {object} model.Response "Internal server error during processing"
+// @Param        request body dto.NLVQueryRequest true "User query and optional conversation ID"
+// @Success      200 {object} dto.NLVQueryResponse "Query processed. Contains data and visualization info, or an error message."
+// @Failure      400 {object} model.Response "Invalid request body or parameters"
+// @Failure      500 {object} model.Response "Internal server error during processing (e.g., LLM unavailable, DB error)"
 // @Router       /api/v1/nlv/query [post]
 func (c *NLVController) HandleNLVQuery(ctx *gin.Context) {
 	var req dto.NLVQueryRequest

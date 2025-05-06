@@ -336,7 +336,7 @@ const docTemplate = `{
         },
         "/api/v1/nlv/query": {
             "post": {
-                "description": "Takes a natural language query, analyzes it (using LLM simulation), queries data, and returns formatted data for frontend visualization.",
+                "description": "Takes a natural language query and an optional conversation ID. Analyzes the query in the context of the conversation (using LLM), queries the appropriate data source (TimescaleDB for metrics, Elasticsearch for logs), and returns structured data suitable for frontend visualization.",
                 "consumes": [
                     "application/json"
                 ],
@@ -349,7 +349,7 @@ const docTemplate = `{
                 "summary": "Process Natural Language Query for Visualization",
                 "parameters": [
                     {
-                        "description": "User's natural language query",
+                        "description": "User query and optional conversation ID",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -360,19 +360,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Query processed successfully (may contain data or error message)",
+                        "description": "Query processed. Contains data and visualization info, or an error message.",
                         "schema": {
                             "$ref": "#/definitions/dto.NLVQueryResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request body",
+                        "description": "Invalid request body or parameters",
                         "schema": {
                             "$ref": "#/definitions/model.Response"
                         }
                     },
                     "500": {
-                        "description": "Internal server error during processing",
+                        "description": "Internal server error during processing (e.g., LLM unavailable, DB error)",
                         "schema": {
                             "$ref": "#/definitions/model.Response"
                         }
@@ -760,6 +760,9 @@ const docTemplate = `{
                 "query"
             ],
             "properties": {
+                "conversationId": {
+                    "type": "string"
+                },
                 "query": {
                     "type": "string"
                 }
@@ -774,6 +777,9 @@ const docTemplate = `{
                     "items": {
                         "type": "string"
                     }
+                },
+                "conversationId": {
+                    "type": "string"
                 },
                 "data": {
                     "description": "[[val1, val2,...], [val1, val2,...]]",
