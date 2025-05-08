@@ -1,0 +1,99 @@
+event_id,template
+E1,"Registered signal handlers for [TERM, HUP, INT]"
+E2,Changing <*> acls to: <*>
+E3,SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(<*>); users with modify permissions: Set(<*>)
+E4,Slf4jLogger started
+E5,Starting remoting
+E6,Remoting started; listening on addresses :[<*>]
+E7,Successfully started service <*> on port <*>.
+E8,Shutting down remote daemon.
+E9,Remote daemon shut down; proceeding with flushing remote transports.
+E10,Remoting shut down.
+E11,Created local directory at <*>
+E12,MemoryStore started with capacity <*> <*>
+E13,Connecting to driver: <*>
+E14,Successfully registered with driver
+E15,Starting executor ID <*> on host <*>
+E16,Server created on <*>
+E17,Trying to register BlockManager
+E18,Registered BlockManager
+E19,Using REPL class URI: http:<*>:<*>
+E20,Got assigned task <*>
+E21,Running task <*> in stage <*> (TID <*>)
+E22,Started reading broadcast variable <*>
+E23,"ensureFreeSpace(<*>) called with curMem=<*>, maxMem=<*>"
+E24,Block <*> stored as <*> in memory (estimated size <*> <*> free <*> <*>
+E25,Reading broadcast variable <*> took <*> ms
+E26,Input split: <*>
+E27,Finished task <*> in stage <*> (TID <*>). <*> bytes result sent to driver
+E28,Driver <*>:<*> disassociated! Shutting down.
+E29,Shutdown hook called
+E30,"SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(yarn, curi); users with modify permissions: Set(yarn, curi)"
+E31,Driver commanded a shutdown
+E32,MemoryStore cleared
+E33,BlockManager stopped
+E34,An unknown (mesos-slave-<*>:<*>) driver disconnected.
+E35,"mapred.tip.id is deprecated. Instead, use mapreduce.task.id"
+E36,"mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id"
+E37,"mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap"
+E38,"mapred.task.partition is deprecated. Instead, use mapreduce.task.partition"
+E39,"mapred.job.id is deprecated. Instead, use mapreduce.job.id"
+E40,Exception while deleting local spark dir: <*>
+E41,<*>
+E42,Exception in task <*> in stage <*> (TID <*>)
+E43,Deleting directory <*>
+E44,RECEIVED SIGNAL <*>: SIGTERM
+E45,ApplicationAttemptId: appattempt_1448006111297_0137_000002
+E46,Starting the user application in a separate Thread
+E47,Waiting for spark context initialization
+E48,Waiting for spark context initialization ...
+E49,Running Spark version <*>.<*>
+E50,Registering <*>
+E51,Adding filter: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+E52,jetty-<*>.y.z-SNAPSHOT
+E53,Started SelectChannelConnector@<*>:<*>
+E54,Started SparkUI at http:<*>:<*>
+E55,Created YarnClusterScheduler
+E56,"Registering block manager <*> with <*> <*> RAM, <*> <*> <*>)"
+E57,ApplicationMaster registered as NettyRpcEndpointRef(<*>
+E58,Connecting to ResourceManager at mesos-master-<*><*>:<*>
+E59,Registering the ApplicationMaster
+E60,"Will request <*> executor containers, each with <*> cores and <*> MB memory including <*> MB overhead"
+E61,"Container request (host: Any, capability: <memory:<*>, vCores:<*>>)"
+E62,"Started progress reporter thread with (heartbeat : <*>, initial allocation : <*>) intervals"
+E63,Received new token for : <*>
+E64,Launching container <*> for on host <*>
+E65,Launching ExecutorRunnable. driverUrl: <*> executorHostname: <*>
+E66,Starting Executor Container
+E67,"Received <*> containers from YARN, launching executors on <*> of them."
+E68,yarn.client.max-cached-nodemanagers-proxies : <*>
+E69,Setting up ContainerLaunchContext
+E70,Preparing Local resources
+E71,"Prepared Local resources Map(__spark__.jar -> resource { scheme: ""hdfs"" host: ""<*>"" port: <*> file: ""<*>"" } size: <*> timestamp: <*> type: FILE visibility: PRIVATE, pyspark.zip -> resource { scheme: ""hdfs"" host: ""<*>"" port: <*> file: ""<*>"" } size: <*> timestamp: <*> type: FILE visibility: PRIVATE, py4j-<*>-src.zip -> resource { scheme: ""hdfs"" host: ""<*>"" port: <*> file: ""<*>"" } size: <*> timestamp: <*> type: FILE visibility: PRIVATE)"
+E72,Opening proxy : <*>
+E73,Registered executor NettyRpcEndpointRef(null) <*> with ID <*>
+E74,SchedulerBackend is ready for scheduling beginning after waiting maxRegisteredResourcesWaitingTime: <*>(ms)
+E75,YarnClusterScheduler.postStartHook done
+E76,Added <*> in memory on <*>:<*> (size: <*> <*> free: <*> MB)
+E77,Created broadcast <*> from <*> at <*>
+E78,Total input paths to process : <*>
+E79,Starting job: collect at IPLoM.py:<*>
+E80,Registering RDD <*> (reduceByKey at IPLoM.py:<*>)
+E81,Got job <*> (collect at IPLoM.py:<*>) with <*> output partitions
+E82,Final stage: ResultStage <*> (collect at IPLoM.py:<*>)
+E83,Parents of final stage: List(ShuffleMapStage <*>)
+E84,Missing parents: List(ShuffleMapStage <*>)
+E85,"Submitting ShuffleMapStage <*> (PairwiseRDD[<*>] at reduceByKey at IPLoM.py:<*>), which has no missing parents"
+E86,"Times: total = <*>, boot = <*> init = <*>, finish = <*>"
+E87,Updating epoch to <*> and clearing cache
+E88,File Output Committer Algorithm version is <*>
+E89,Saved output of task <*> to <*>
+E90,<*> Committed
+E91,"Don't have map outputs for shuffle <*>, fetching them"
+E92,Doing the fetch; tracker endpoint = NettyRpcEndpointRef(<*>
+E93,Got the output locations
+E94,Getting <*> non-empty blocks out of <*> blocks
+E95,Started <*> remote fetches in <*> ms
+E96,Removing RDD <*>
+E97,"Partition <*> not found, computing it"
+E98,Found block <*> locally
