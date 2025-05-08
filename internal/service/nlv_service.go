@@ -134,6 +134,8 @@ func (s *nlvService) handleMetricQuery(ctx context.Context, conversationId, orig
 		Interval:     interval,
 		GroupBy:      determineGroupByField(analysis.GroupBy),
 		Applications: extractApplicationsFromFilters(analysis.Filters),
+		Sort:         analysis.Sort,
+		Limit:        analysis.Limit,
 	}
 
 	result, err := s.metricRepo.GetTimeseriesMetrics(ctx, metricReq)
@@ -161,6 +163,32 @@ func (s *nlvService) handleLogQuery(ctx context.Context, conversationId, origina
 		return createErrorResponseWithId(conversationId, originalQuery, "Could not understand the time range."), nil
 	}
 
+	sortBy := "@timestamp"
+	sortOrder := "desc"
+	if analysis.Sort != nil {
+		sortBy = analysis.Sort.Field
+		sortOrder = strings.ToLower(analysis.Sort.Order)
+		if sortOrder != "asc" && sortOrder != "desc" {
+			log.Warn().Str("llm_sort_order", analysis.Sort.Order).Msg("Invalid sort order from LLM, defaulting to desc")
+			sortOrder = "desc" // Fallback
+		}
+		log.Debug().Str("field", sortBy).Str("order", sortOrder).Msg("Using sort info from LLM analysis for logs")
+	} else {
+		log.Debug().Msg("No sort info from LLM for logs, using default timestamp desc")
+	}
+
+	size := 50
+	if analysis.Limit != nil && *analysis.Limit > 0 {
+		size = *analysis.Limit
+		log.Debug().Int("limit", size).Msg("Using limit from LLM analysis as request size for logs")
+		if size > 1000 {
+			log.Warn().Int("requested_limit", size).Int("capped_size", 1000).Msg("LLM limit exceeds max allowed size for logs, capping.")
+			size = 1000
+		}
+	} else {
+		log.Debug().Int("size", size).Msg("No limit info from LLM for logs, using default size")
+	}
+
 	logReq := dto.LogSearchRequest{
 		StartTime:    startTime,
 		EndTime:      endTime,
@@ -168,9 +196,9 @@ func (s *nlvService) handleLogQuery(ctx context.Context, conversationId, origina
 		Levels:       extractLevelsFromFilters(analysis.Filters),
 		Applications: extractApplicationsFromFilters(analysis.Filters),
 		Page:         1,
-		Size:         50, // Giới hạn số log trả về
-		SortBy:       "@timestamp",
-		SortOrder:    "desc",
+		Size:         size,
+		SortBy:       sortBy,
+		SortOrder:    sortOrder,
 	}
 
 	// Gọi Log Repository

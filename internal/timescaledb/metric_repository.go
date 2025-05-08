@@ -74,24 +74,35 @@ func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, re
 		"error_key":   "tags->>'error_key'",
 		"application": "application",
 	}
+	groupByTag := req.GroupBy
 	groupBySQL, ok := allowedGroupBy[req.GroupBy]
+	isGroupByTotal := false
 	if !ok {
-		log.Warn().Str("group_by_requested", req.GroupBy).Msg("Invalid or no groupBy provided, aggregating total.")
 		groupBySQL = "'total'"
-		req.GroupBy = "total"
+		isGroupByTotal = true
 	}
 
-	validIntervals := map[string]bool{
-		"1 minute": true, "5 minute": true, "10 minute": true,
-		"30 minute": true, "1 hour": true, "1 day": true,
-	}
+	validIntervals := map[string]bool{"1 minute": true, "5 minute": true, "10 minute": true, "30 minute": true, "1 hour": true, "1 day": true}
 	if !validIntervals[req.Interval] {
 		return nil, fmt.Errorf("invalid interval: %s", req.Interval)
 	}
 
-	whereClauses := []string{"metric_name = $1", "time >= $2", "time < $3"}
-	args := []interface{}{req.MetricName, req.StartTime, req.EndTime}
-	argCounter := 4
+	var queryBuilder strings.Builder
+	args := []interface{}{}
+	argCounter := 1
+
+	queryBuilder.WriteString(fmt.Sprintf("SELECT time_bucket($%d::interval, time) AS bucket, ", argCounter))
+	args = append(args, req.Interval)
+	argCounter++
+
+	if isGroupByTotal {
+		queryBuilder.WriteString("'total' AS group_key, ")
+	} else {
+		queryBuilder.WriteString(fmt.Sprintf("%s AS group_key, ", groupBySQL))
+	}
+	queryBuilder.WriteString(fmt.Sprintf("COUNT(*) AS value FROM %s WHERE metric_name = $%d AND time >= $%d AND time < $%d ", r.eventTable, argCounter, argCounter+1, argCounter+2))
+	args = append(args, req.MetricName, req.StartTime, req.EndTime)
+	argCounter += 3
 
 	if len(req.Applications) > 0 {
 		appPlaceholders := make([]string, len(req.Applications))
@@ -100,32 +111,61 @@ func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, re
 			args = append(args, app)
 			argCounter++
 		}
-		whereClauses = append(whereClauses, fmt.Sprintf("application IN (%s)", strings.Join(appPlaceholders, ",")))
+		queryBuilder.WriteString(fmt.Sprintf("AND application IN (%s) ", strings.Join(appPlaceholders, ",")))
 	}
 
-	if req.GroupBy == "component" {
-		whereClauses = append(whereClauses, "tags->>'component' NOT IN ('UNKNOWN', 'ORPHAN')")
+	if groupByTag == "component" {
+		queryBuilder.WriteString("AND tags->>'component' NOT IN ('UNKNOWN', 'ORPHAN') ")
 	}
 
-	whereSQL := strings.Join(whereClauses, " AND ")
+	queryBuilder.WriteString("GROUP BY bucket")
+	if !isGroupByTotal {
+		queryBuilder.WriteString(", group_key ")
+	}
 
-	querySQL := fmt.Sprintf(`
-        SELECT
-            time_bucket($%d::interval, time) AS bucket,
-            %s AS group_key,
-            COUNT(*) AS value
-        FROM %s
-        WHERE %s
-        GROUP BY bucket, group_key
-        ORDER BY bucket ASC
-    `, argCounter, groupBySQL, r.eventTable, whereSQL)
-	args = append(args, req.Interval)
+	orderByClause := "ORDER BY bucket ASC"
+	var limitClause string
 
-	log.Debug().Str("query", querySQL).Interface("args", args).Msg("Executing TimescaleDB timeseries query")
+	if req.Sort != nil {
+		sortField := req.Sort.Field
+		if sortField == "value" {
+			sortField = "value"
+		} else if sortField == "time" || sortField == "@timestamp" {
+			sortField = "bucket"
+		} else if _, isTag := allowedGroupBy[sortField]; isTag {
+			sortField = "group_key"
+		} else {
+			log.Warn().Str("sort_field", req.Sort.Field).Msg("Unsupported sort field requested, defaulting to time bucket.")
+			sortField = "bucket"
+		}
+
+		sortOrder := "ASC"
+		if strings.ToLower(req.Sort.Order) == "desc" {
+			sortOrder = "DESC"
+		}
+		orderByClause = fmt.Sprintf("ORDER BY %s %s, bucket ASC", sortField, sortOrder)
+	}
+
+	if req.Limit != nil && *req.Limit > 0 {
+		limitClause = fmt.Sprintf(" LIMIT $%d", argCounter)
+		args = append(args, *req.Limit)
+		argCounter++
+	}
+
+	queryBuilder.WriteString(" ")
+	queryBuilder.WriteString(orderByClause)
+	if limitClause != "" {
+		queryBuilder.WriteString(" ")
+		queryBuilder.WriteString(limitClause)
+	}
+
+	querySQL := queryBuilder.String()
+
+	log.Debug().Str("query", querySQL).Interface("args", args).Msg("Executing TimescaleDB timeseries query with sort/limit")
 
 	rows, err := r.pool.Query(ctx, querySQL, args...)
 	if err != nil {
-		log.Error().Err(err).Msg("Failed to execute timeseries query")
+		log.Error().Err(err).Str("query", querySQL).Interface("args", args).Msg("Failed to execute timeseries query with sort/limit")
 		return nil, fmt.Errorf("timeseries query failed: %w", err)
 	}
 	defer rows.Close()
@@ -139,14 +179,22 @@ func (r *timescaleMetricRepository) GetTimeseriesMetrics(ctx context.Context, re
 
 		if err := rows.Scan(&bucket, &groupKey, &value); err != nil {
 			log.Error().Err(err).Msg("Failed to scan timeseries row")
-			continue // Bỏ qua dòng lỗi
+			continue
 		}
 
-		key := "total"
-		if groupKey != nil {
-			key = *groupKey
-		} else if req.GroupBy != "total" {
-			key = fmt.Sprintf("%s_NULL", req.GroupBy)
+		var key string
+		if isGroupByTotal {
+			key = "total"
+			if groupKey == nil || (groupKey != nil && *groupKey != "total") {
+				log.Warn().Str("groupByTag", groupByTag).Bool("isGroupByTotal", isGroupByTotal).
+					Interface("scanned_groupKey", groupKey).Msg("Unexpected groupKey value when isGroupByTotal is true; using 'total'")
+			}
+		} else {
+			if groupKey != nil {
+				key = *groupKey
+			} else {
+				key = fmt.Sprintf("%s_NULL", groupByTag)
+			}
 		}
 
 		if _, exists := seriesMap[key]; !exists {

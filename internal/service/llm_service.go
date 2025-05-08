@@ -140,64 +140,6 @@ func (s *geminiLLMService) callGeminiAPI(ctx context.Context, bodyBytes []byte) 
 	return respBodyBytes, nil
 }
 
-func buildGeminiContents(history []dto.ConversationTurn, newUserQuery string, schemaContext string) []GeminiContent {
-	contents := make([]GeminiContent, 0, len(history)+1) // +1 cho query mới
-
-	initialPrompt := buildPrompt(newUserQuery, schemaContext)
-	if len(history) == 0 {
-		contents = append(contents, GeminiContent{
-			Role:  "user",
-			Parts: []GeminiPart{{Text: initialPrompt}},
-		})
-		return contents
-	}
-	for _, turn := range history {
-		contents = append(contents, GeminiContent{
-			Role:  turn.Role,
-			Parts: []GeminiPart{{Text: turn.Content}},
-		})
-	}
-
-	followUpInstruction := fmt.Sprintf(`Follow-up User Query: "%s"
-
-Update the last JSON analysis based on this new query and the conversation history. Respond ONLY with the updated valid JSON object.`, newUserQuery)
-	contents = append(contents, GeminiContent{
-		Role:  "user",
-		Parts: []GeminiPart{{Text: followUpInstruction}},
-	})
-
-	return contents
-}
-
-func buildPrompt(userQuery string, schemaContext string) string {
-	return fmt.Sprintf(
-		`Analyze the user's natural language query to extract structured information for querying logs or metrics. Respond *ONLY* with a valid JSON object matching the specified format, without any introductory text or markdown formatting.
-		Data Schema Context:
-		%s
-		Desired JSON Output Format:
-		{
-		"intent": ("query_metric" | "query_log" | "unknown"), // Identify if the user wants aggregated metrics or raw logs.
-		"metric_name": (string | null), // "error_event" or "log_event" if intent is "query_metric", otherwise null.
-		"time_range": { // Always extract or infer a time range. Default to "now-1h" to "now" if not specified.
-			"start": (string), // ISO8601 format or relative like "now-1h", "yesterday".
-			"end": (string)    // ISO8601 format or relative like "now".
-		},
-		"filters": [ // List of filters extracted from the query. Map field names based on intent.
-			// Example for metrics: { "field": "tags.level", "operator": "=", "value": "ERROR" }
-			// Example for logs: { "field": "component.keyword", "operator": "!=", "value": "Heartbeat" }
-			// Example for logs text search: { "field": "content", "operator": "CONTAINS", "value": "connection refused" }
-			// Example for multiple apps: { "field": "application", "operator": "IN", "value": ["app_123", "app_456"] }
-			{ "field": string, "operator": ("=" | "!=" | "IN" | "NOT IN" | "CONTAINS"), "value": (string | array[string] | number) }
-		],
-		"group_by": (array[string] | null), // Fields to group by for metrics (e.g., ["application", "tags.level"]). Null for logs or no aggregation. Include time bucketing like "time_bucket('5m', time)" if applicable based on query and time range.
-		"aggregation": ("COUNT" | "AVG" | "SUM" | "NONE"), // Aggregation for metrics. "NONE" for logs. Default to "COUNT" for metrics if not specified.
-		"visualization_hint": (string | null) // User's preference like "bar", "line", "table". Null if not mentioned.
-		}
-		User Query: "%s"
-
-JSON Output:`, schemaContext, userQuery)
-}
-
 func cleanLLMJsonOutput(raw string) string {
 	startIndex := strings.Index(raw, "{")
 	if startIndex == -1 {
@@ -213,9 +155,98 @@ func cleanLLMJsonOutput(raw string) string {
 
 	var js map[string]interface{}
 	if json.Unmarshal([]byte(potentialJson), &js) == nil {
-		return potentialJson // Trả về nếu parse thành công
+		return potentialJson
 	}
 
 	log.Warn().Str("potential_json", potentialJson).Msg("Could not validate potential JSON extracted from LLM response")
 	return ""
+}
+
+func buildGeminiContents(history []dto.ConversationTurn, newUserQuery string, schemaContext string) []GeminiContent {
+	contents := make([]GeminiContent, 0, len(history)+1)
+
+	if len(history) == 0 {
+		initialPrompt := buildInitialPrompt(newUserQuery, schemaContext)
+		contents = append(contents, GeminiContent{
+			Role:  "user",
+			Parts: []GeminiPart{{Text: initialPrompt}},
+		})
+	} else {
+		for _, turn := range history {
+			contents = append(contents, GeminiContent{
+				Role:  turn.Role,
+				Parts: []GeminiPart{{Text: turn.Content}},
+			})
+		}
+		followUpPrompt := buildFollowUpPrompt(newUserQuery)
+		contents = append(contents, GeminiContent{
+			Role:  "user",
+			Parts: []GeminiPart{{Text: followUpPrompt}},
+		})
+	}
+
+	return contents
+}
+
+func buildInitialPrompt(userQuery string, schemaContext string) string {
+	return fmt.Sprintf(`
+Analyze the user's natural language query to extract structured information for querying logs or metrics. Respond *ONLY* with a valid JSON object matching the specified format, without any introductory text or markdown formatting.
+
+Data Schema Context:
+%s
+
+Desired JSON Output Format:
+{
+  "intent": ("query_metric" | "query_log" | "unknown"),
+  "metric_name": (string | null),
+  "time_range": { // ALWAYS use ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ) or relative strings ("now", "now-1h", "now-7d"). DO NOT use formats like MM/DD/YYYY.
+    "start": string,
+    "end": string
+  },
+  "filters": [ { "field": string, "operator": string, "value": any } ],
+  "group_by": (array[string] | null), // e.g., ["application", "tags.level"] or ["time_bucket('5m', time)", "application"]
+  "aggregation": ("COUNT" | "AVG" | "SUM" | "NONE"),
+  "sort": { "field": string, "order": ("asc" | "desc") } | null, // Optional: Infer from "top", "most", "least", "latest", "oldest". Field is often the aggregated "value" or a time field like "@timestamp" or "time".
+  "limit": number | null, // Optional: Infer from "top 5", "only 1", etc.
+  "visualization_hint": (string | null)
+}
+
+Example for "top 5 components with most errors in last hour":
+{
+  "intent": "query_metric",
+  "metric_name": "error_event",
+  "time_range": {"start": "now-1h", "end": "now"},
+  "filters": [],
+  "group_by": ["tags.component"],
+  "aggregation": "COUNT",
+  "sort": {"field": "value", "order": "desc"}, // Sort by the aggregated count
+  "limit": 5,
+  "visualization_hint": null
+}
+
+Example for "latest 10 logs containing 'timeout'":
+{
+  "intent": "query_log",
+  "metric_name": null,
+  "time_range": {"start": "now-1h", "end": "now"}, // Default range if not specified
+  "filters": [{"field": "content", "operator": "CONTAINS", "value": "timeout"}],
+  "group_by": null,
+  "aggregation": "NONE",
+  "sort": {"field": "@timestamp", "order": "desc"},
+  "limit": 10,
+  "visualization_hint": "table"
+}
+
+
+User Query: "%s"
+
+JSON Output:`, schemaContext, userQuery)
+}
+
+func buildFollowUpPrompt(newUserQuery string) string {
+	return fmt.Sprintf(`Follow-up User Query: "%s"
+
+Based on the previous context and this new query, update the *entire* previous JSON analysis. For example, if the user asks to "group by level instead", only change the "group_by" field in the JSON, keeping other fields like time_range and filters the same unless explicitly changed by the new query. If the user asks for "top 3", add or update the "sort" and "limit" fields. Respond ONLY with the complete, updated, valid JSON object.
+
+Updated JSON Output:`, newUserQuery)
 }

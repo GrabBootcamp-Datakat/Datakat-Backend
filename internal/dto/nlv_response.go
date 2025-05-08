@@ -1,5 +1,9 @@
 package dto
 
+type SortInfo struct {
+	Field string `json:"field"`
+	Order string `json:"order"`
+}
 type LLMAnalysisResult struct {
 	Intent            string        `json:"intent"`      // "query_metric", "query_log", "unknown"
 	MetricName        *string       `json:"metric_name"` // "error_event" | "log_event" | null
@@ -8,6 +12,8 @@ type LLMAnalysisResult struct {
 	GroupBy           []string      `json:"group_by"`
 	Aggregation       string        `json:"aggregation"` // "COUNT", "AVG", "SUM", "NONE"
 	VisualizationHint *string       `json:"visualization_hint"`
+	Sort              *SortInfo     `json:"sort,omitempty"`
+	Limit             *int          `json:"limit,omitempty"`
 }
 
 type TimeRange struct {
