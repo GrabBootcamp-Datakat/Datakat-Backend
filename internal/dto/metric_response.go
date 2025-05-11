@@ -26,3 +26,14 @@ type MetricTimeseriesResponse struct {
 type ApplicationListResponse struct {
 	Applications []string `json:"applications"`
 }
+
+type DistributionDataPoint struct {
+	Name  string `json:"name"`  // Tên của phần (ví dụ: "INFO", "ERROR", "YarnAllocator")
+	Value int64  `json:"value"` // Giá trị đếm
+}
+
+type MetricDistributionResponse struct {
+	MetricName   string                  `json:"metricName"`
+	Dimension    string                  `json:"dimension"`
+	Distribution []DistributionDataPoint `json:"distribution"`
+}

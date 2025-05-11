@@ -252,3 +252,83 @@ func (r *timescaleMetricRepository) GetDistinctApplications(ctx context.Context,
 
 	return &dto.ApplicationListResponse{Applications: apps}, nil
 }
+
+func (r *timescaleMetricRepository) GetDistributionMetrics(ctx context.Context, req dto.MetricDistributionRequest) (*dto.MetricDistributionResponse, error) {
+	tagColumnSQL, ok := map[string]string{
+		"level":       "tags->>'level'",
+		"component":   "tags->>'component'",
+		"error_key":   "tags->>'error_key'",
+		"application": "application",
+	}[req.Dimension]
+
+	if !ok {
+		return nil, fmt.Errorf("unsupported dimension for distribution: %s", req.Dimension)
+	}
+
+	whereClauses := []string{"metric_name = $1", "time >= $2", "time < $3"}
+	args := []interface{}{req.MetricName, req.StartTime, req.EndTime}
+	argCounter := 4
+
+	if len(req.Applications) > 0 {
+		appPlaceholders := make([]string, len(req.Applications))
+		for i, app := range req.Applications {
+			appPlaceholders[i] = fmt.Sprintf("$%d", argCounter)
+			args = append(args, app)
+			argCounter++
+		}
+		whereClauses = append(whereClauses, fmt.Sprintf("application IN (%s)", strings.Join(appPlaceholders, ",")))
+	}
+
+	if req.Dimension == "component" {
+		whereClauses = append(whereClauses, "tags->>'component' NOT IN ('UNKNOWN', 'ORPHAN')")
+	}
+	whereClauses = append(whereClauses, fmt.Sprintf("%s IS NOT NULL", tagColumnSQL))
+
+	whereSQL := strings.Join(whereClauses, " AND ")
+
+	querySQL := fmt.Sprintf(`
+        SELECT
+            %s AS dimension_key,
+            COUNT(*) AS value
+        FROM %s
+        WHERE %s
+        GROUP BY dimension_key
+        ORDER BY value DESC
+    `, tagColumnSQL, r.eventTable, whereSQL)
+
+	log.Debug().Str("query", querySQL).Interface("args", args).Msg("Executing TimescaleDB distribution query")
+
+	rows, err := r.pool.Query(ctx, querySQL, args...)
+	if err != nil {
+		log.Error().Err(err).Msg("Failed to execute distribution query")
+		return nil, fmt.Errorf("distribution query failed: %w", err)
+	}
+	defer rows.Close()
+
+	distribution := make([]dto.DistributionDataPoint, 0)
+	for rows.Next() {
+		var key *string
+		var value int64
+		if err := rows.Scan(&key, &value); err != nil {
+			log.Error().Err(err).Msg("Failed to scan distribution row")
+			continue
+		}
+		if key != nil {
+			distribution = append(distribution, dto.DistributionDataPoint{
+				Name:  *key,
+				Value: value,
+			})
+		}
+	}
+
+	if err := rows.Err(); err != nil {
+		log.Error().Err(err).Msg("Error iterating distribution rows")
+		return nil, fmt.Errorf("failed iterating distribution results: %w", err)
+	}
+
+	return &dto.MetricDistributionResponse{
+		MetricName:   req.MetricName,
+		Dimension:    req.Dimension,
+		Distribution: distribution,
+	}, nil
+}

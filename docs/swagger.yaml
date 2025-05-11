@@ -7,6 +7,15 @@ definitions:
           type: string
         type: array
     type: object
+  dto.DistributionDataPoint:
+    properties:
+      name:
+        description: 'Tên của phần (ví dụ: "INFO", "ERROR", "YarnAllocator")'
+        type: string
+      value:
+        description: Giá trị đếm
+        type: integer
+    type: object
   dto.LLMAnalysisResult:
     properties:
       aggregation:
@@ -23,9 +32,13 @@ definitions:
       intent:
         description: '"query_metric", "query_log", "unknown"'
         type: string
+      limit:
+        type: integer
       metric_name:
         description: '"error_event" | "log_event" | null'
         type: string
+      sort:
+        $ref: '#/definitions/dto.SortInfo'
       time_range:
         $ref: '#/definitions/dto.TimeRange'
       visualization_hint:
@@ -43,6 +56,17 @@ definitions:
         type: integer
       totalCount:
         type: integer
+    type: object
+  dto.MetricDistributionResponse:
+    properties:
+      dimension:
+        type: string
+      distribution:
+        items:
+          $ref: '#/definitions/dto.DistributionDataPoint'
+        type: array
+      metricName:
+        type: string
     type: object
   dto.MetricSummaryResponse:
     properties:
@@ -104,6 +128,13 @@ definitions:
         type: string
       value:
         description: string, []string, number
+    type: object
+  dto.SortInfo:
+    properties:
+      field:
+        type: string
+      order:
+        type: string
     type: object
   dto.TimeRange:
     properties:
@@ -336,6 +367,65 @@ paths:
       summary: Get distinct application IDs
       tags:
       - logs
+  /api/v1/metrics/distribution:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the distribution of a metric (e.g., log_event count)
+        grouped by a specified dimension (e.g., level, component) within a time range.
+        Suitable for pie charts or bar charts showing proportions.
+      parameters:
+      - description: Start time (ISO 8601 or epoch ms)
+        in: query
+        name: startTime
+        required: true
+        type: string
+      - description: End time (ISO 8601 or epoch ms)
+        in: query
+        name: endTime
+        required: true
+        type: string
+      - description: Comma-separated list of application IDs
+        in: query
+        name: applications
+        type: string
+      - description: Metric name (e.g., log_event, error_event)
+        enum:
+        - log_event
+        - error_event
+        in: query
+        name: metricName
+        required: true
+        type: string
+      - description: Dimension to group by for distribution (e.g., level, component,
+          error_key)
+        enum:
+        - level
+        - component
+        - error_key
+        - application
+        in: query
+        name: dimension
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved metric distribution
+          schema:
+            $ref: '#/definitions/dto.MetricDistributionResponse'
+        "400":
+          description: Invalid query parameters
+          schema:
+            $ref: '#/definitions/model.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.Response'
+      summary: Get metric distribution
+      tags:
+      - metrics
   /api/v1/metrics/summary:
     get:
       consumes:

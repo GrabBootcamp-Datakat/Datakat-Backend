@@ -29,6 +29,7 @@ func RegisterMetricRoutes(router *gin.Engine, controller *MetricController) {
 	{
 		v1Metrics.GET("/summary", controller.GetSummaryMetrics)
 		v1Metrics.GET("/timeseries", controller.GetTimeseriesMetrics)
+		v1Metrics.GET("/distribution", controller.GetDistributionMetrics)
 	}
 	v1Logs := router.Group("/api/v1/logs")
 	{
@@ -189,4 +190,59 @@ func parseBaseQueryParams(ctx *gin.Context) (time.Time, time.Time, []string, err
 		}
 	}
 	return startTime, endTime, applications, nil
+}
+
+// GetDistributionMetrics godoc
+// @Summary      Get metric distribution
+// @Description  Retrieves the distribution of a metric (e.g., log_event count) grouped by a specified dimension (e.g., level, component) within a time range. Suitable for pie charts or bar charts showing proportions.
+// @Tags         metrics
+// @Accept       json
+// @Produce      json
+// @Param        startTime    query     string  true   "Start time (ISO 8601 or epoch ms)"
+// @Param        endTime      query     string  true   "End time (ISO 8601 or epoch ms)"
+// @Param        applications query     string  false  "Comma-separated list of application IDs"
+// @Param        metricName   query     string  true   "Metric name (e.g., log_event, error_event)" Enums(log_event, error_event)
+// @Param        dimension    query     string  true   "Dimension to group by for distribution (e.g., level, component, error_key)" Enums(level, component, error_key, application)
+// @Success      200          {object}  dto.MetricDistributionResponse "Successfully retrieved metric distribution"
+// @Failure      400          {object}  model.Response "Invalid query parameters"
+// @Failure      500          {object}  model.Response "Internal server error"
+// @Router       /api/v1/metrics/distribution [get]
+func (c *MetricController) GetDistributionMetrics(ctx *gin.Context) {
+	startTime, endTime, applications, err := parseBaseQueryParams(ctx)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, model.NewResponse(err.Error(), nil))
+		return
+	}
+
+	metricName := ctx.Query("metricName")
+	dimension := ctx.Query("dimension")
+
+	if metricName == "" {
+		ctx.JSON(http.StatusBadRequest, model.NewResponse("metricName is required", nil))
+		return
+	}
+	if dimension == "" {
+		ctx.JSON(http.StatusBadRequest, model.NewResponse("dimension is required", nil))
+		return
+	}
+
+	req := dto.MetricDistributionRequest{
+		StartTime:    startTime,
+		EndTime:      endTime,
+		Applications: applications,
+		MetricName:   metricName,
+		Dimension:    dimension,
+	}
+
+	result, err := c.metricQueryService.GetDistribution(ctx.Request.Context(), req)
+	if err != nil {
+		log.Error().Err(err).Msg("Error getting distribution metrics")
+		if strings.Contains(err.Error(), "invalid dimension") {
+			ctx.JSON(http.StatusBadRequest, model.NewResponse(err.Error(), nil))
+		} else {
+			ctx.JSON(http.StatusInternalServerError, model.NewResponse("Failed to get distribution metrics", nil))
+		}
+		return
+	}
+	ctx.JSON(http.StatusOK, result)
 }

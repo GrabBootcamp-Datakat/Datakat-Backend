@@ -23,3 +23,11 @@ type ApplicationListRequest struct {
 	StartTime time.Time
 	EndTime   time.Time
 }
+
+type MetricDistributionRequest struct {
+	StartTime    time.Time
+	EndTime      time.Time
+	Applications []string
+	MetricName   string
+	Dimension    string
+}

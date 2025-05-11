@@ -181,6 +181,87 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/metrics/distribution": {
+            "get": {
+                "description": "Retrieves the distribution of a metric (e.g., log_event count) grouped by a specified dimension (e.g., level, component) within a time range. Suitable for pie charts or bar charts showing proportions.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "metrics"
+                ],
+                "summary": "Get metric distribution",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Start time (ISO 8601 or epoch ms)",
+                        "name": "startTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "End time (ISO 8601 or epoch ms)",
+                        "name": "endTime",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated list of application IDs",
+                        "name": "applications",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            "log_event",
+                            "error_event"
+                        ],
+                        "type": "string",
+                        "description": "Metric name (e.g., log_event, error_event)",
+                        "name": "metricName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "level",
+                            "component",
+                            "error_key",
+                            "application"
+                        ],
+                        "type": "string",
+                        "description": "Dimension to group by for distribution (e.g., level, component, error_key)",
+                        "name": "dimension",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved metric distribution",
+                        "schema": {
+                            "$ref": "#/definitions/dto.MetricDistributionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameters",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/metrics/summary": {
             "get": {
                 "description": "Retrieves total log and error counts within a time range, optionally filtered by applications.",
@@ -677,6 +758,19 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.DistributionDataPoint": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "Tên của phần (ví dụ: \"INFO\", \"ERROR\", \"YarnAllocator\")",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Giá trị đếm",
+                    "type": "integer"
+                }
+            }
+        },
         "dto.LLMAnalysisResult": {
             "type": "object",
             "properties": {
@@ -700,9 +794,15 @@ const docTemplate = `{
                     "description": "\"query_metric\", \"query_log\", \"unknown\"",
                     "type": "string"
                 },
+                "limit": {
+                    "type": "integer"
+                },
                 "metric_name": {
                     "description": "\"error_event\" | \"log_event\" | null",
                     "type": "string"
+                },
+                "sort": {
+                    "$ref": "#/definitions/dto.SortInfo"
                 },
                 "time_range": {
                     "$ref": "#/definitions/dto.TimeRange"
@@ -729,6 +829,23 @@ const docTemplate = `{
                 },
                 "totalCount": {
                     "type": "integer"
+                }
+            }
+        },
+        "dto.MetricDistributionResponse": {
+            "type": "object",
+            "properties": {
+                "dimension": {
+                    "type": "string"
+                },
+                "distribution": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.DistributionDataPoint"
+                    }
+                },
+                "metricName": {
+                    "type": "string"
                 }
             }
         },
@@ -822,6 +939,17 @@ const docTemplate = `{
                 },
                 "value": {
                     "description": "string, []string, number"
+                }
+            }
+        },
+        "dto.SortInfo": {
+            "type": "object",
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "string"
                 }
             }
         },
